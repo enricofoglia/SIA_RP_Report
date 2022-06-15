@@ -1,7 +1,5 @@
 # Introduction
 
-# Introduction
-
 ## Scope of the work and state of the art
 
 The goal of the project here presented is to identify sparse and reliable models for the unsteady lift of an airfoil undergoing a general motion purely from data captured from simulations of increasing complexity. 

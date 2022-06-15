@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Introduction &#8212; My sample book</title>
+    <title>Bibliography &#8212; My sample book</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="System Identification for unsteady Airfoils" href="intro.html" />
+    <link rel="prev" title="Introduction" href="01Introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -113,9 +113,14 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01Introduction.html">
+   Introduction
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Introduction
+   Bibliography
   </a>
  </li>
 </ul>
@@ -208,7 +213,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F01Introduction.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fbibliography.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -236,7 +241,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/01Introduction.md"
+        <a href="_sources/bibliography.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -273,60 +278,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scope-of-the-work-and-state-of-the-art">
-   Scope of the work and state of the art
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introduction</h1>
+                <h1>Bibliography</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scope-of-the-work-and-state-of-the-art">
-   Scope of the work and state of the art
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -334,18 +302,30 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
-<section id="scope-of-the-work-and-state-of-the-art">
-<h2>Scope of the work and state of the art<a class="headerlink" href="#scope-of-the-work-and-state-of-the-art" title="Permalink to this headline">#</a></h2>
-<p>The goal of the project here presented is to identify sparse and reliable models for the unsteady lift of an airfoil undergoing a general motion purely from data captured from simulations of increasing complexity.</p>
-<p>Classical analytical models already exist in the framework of potential flow theory. In particular Theodorsen computed a frequency domain function that model a delay and scaling effect of sinusoidal variations of vertical position and angle of attack <span id="id1">[]</span>. This model has been computed in the time domain for impulsive chages in angle of attack by Wagner <span id="id2">[]</span> generalised by Von Kármán for arbitrary motion <span id="id3">[]</span>. However, both this time-domain approaches involve integration of the complex Theodorsen function or of the distribution of vorticity in the wake, and can be thus impractical to compute in many real time applications. Moreover, their true limit lies in the assumption of potential flow, that disregard completely any effect due to viscosity.</p>
-<p>Nonetheless, improvements on the classical models have been made in recent years, allowing to apply them to wings of finite span <span id="id4">[]</span> or viscous flow for low frequecy oscillations <span id="id5">[]</span>. In fact it has been proved by Limacher that the classical separation in added mass and circulatory forces already identified by Theodorsen and Von Kármán is indeed more general and applies beyond potential flow theory <span id="id6">[]</span>.</p>
-<p>The project here presented is not just a thought exercise in order to go beyond classical analytical models with modern machine learning techniques. The need for precise and interpretable models for airfoils in unsteady flow conditions is felt in diverse fields of the aerospace industry.</p>
-<p>The first analytical models by Wagner \cite{dawson2021} and Theodorsen \cite{theodorsen1979} can be applied to the prediction of the onset of flutter and the structural response of a wing to a gust of various shapes \cite{CHIOCCHIA}.</p>
-<p>The forward flight of an helicopter induces on the rotor a cyclic load due to the fact that the blade encounters a flow with a changing velocity due to the summation of the linear and rotating motion. The prediction of such loads, and of the lift force generated by the rotor, can only be made considering the time-varying nature of the flow \cite{johnson2013}.</p>
-<p>Another emerging field where unsteady airfoil aerodynamics comes into play is Boundary Layer Ingestion engines. Such systems are projected to have up to a 19% efficiency increment over conventional configurations (considering the overall system improvement \cite{uranga2018}) and are thus studied with great attention. However, due to the presence at the inlet of a varying velocity field, the fan blades undergo time varying loading that can result in flutter or fatigue damage \cite{bakhle2018}.</p>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="bibliography">
+<h1>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">#</a></h1>
+<div class="docutils container" id="id1">
+<dl class="citation">
+<dt class="label" id="id13"><span class="brackets">BD18</span></dt>
+<dd><p>Johan Boutet and Grigorios Dimitriadis. Unsteady lifting line theory using the wagner function for the aerodynamic and aeroelastic modeling of 3d wings. <em>Aerospace</em>, 5(3):92, 2018.</p>
+</dd>
+<dt class="label" id="id7"><span class="brackets">DB21</span></dt>
+<dd><p>Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. <em>AIAA Journal</em>, pages 1–17, 2021.</p>
+</dd>
+<dt class="label" id="id2"><span class="brackets">KS38</span></dt>
+<dd><p>T. Von Kármán and W. R. Sears. Airfoil theory for non-uniform motion. <em>Journal of the aeronautical sciences</em>, 1938.</p>
+</dd>
+<dt class="label" id="id3"><span class="brackets">LMW18</span></dt>
+<dd><p>Eric Limacher, Chris Morton, and David Wood. Generalized derivation of the added-mass and circulatory forces for viscous flows. <em>Physical Review Fluids</em>, 3(1):1–25, 2018.</p>
+</dd>
+<dt class="label" id="id15"><span class="brackets">LWZH15</span></dt>
+<dd><p>Tianshu Liu, Shizhao Wang, Xing Zhang, and Guowei He. Unsteady thin-airfoil theory revisited: application of a simple lift formula. <em>Aiaa Journal</em>, 53(6):1492–1502, 2015.</p>
+</dd>
+<dt class="label" id="id6"><span class="brackets">The79</span></dt>
+<dd><p>Theodore Theodorsen. General theory of aerodynamic instability and the mechanism of flutter. Technical Report, NACA, 1979.</p>
+</dd>
+</dl>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -375,11 +355,11 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="01Introduction.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">System Identification for unsteady Airfoils</p>
+            <p class="prev-next-title">Introduction</p>
         </div>
     </a>
 </div>

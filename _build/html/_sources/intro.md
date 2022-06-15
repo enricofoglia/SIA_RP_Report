@@ -3,7 +3,7 @@
 
 Secon report for the research project "System Identification for unsteady Airfoils", carried out in the context of the Master of Science course at ISAE-SUPAERO, Toulouse.
 
-Authors: Enrico Foglia, Maciej Michałów [//]: # (insert surname with proper characters)
+Authors: Enrico Foglia, Maciej Michałów 
 
 Advisors: hierry Jardin, Michael Bauerheim, Michele Colombo
 
