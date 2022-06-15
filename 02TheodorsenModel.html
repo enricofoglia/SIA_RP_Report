@@ -381,11 +381,19 @@ title="Print to PDF"
 </ul>
 <p>The coordiante system used in the formula is shown in <a class="reference internal" href="#vonkarmancoordinates"><span class="std std-numref">Fig. 1</span></a></p>
 <figure class="align-default" id="vonkarmancoordinates">
-<a class="reference internal image-reference" href="_images/VonKarmanCoordinates.png"><img alt="_images/VonKarmanCoordinates.png" src="_images/VonKarmanCoordinates.png" style="height: 150px;" /></a>
+<a class="reference internal image-reference" href="_images/VonKarmanCoordinates.png"><img alt="_images/VonKarmanCoordinates.png" src="_images/VonKarmanCoordinates.png" style="height: 200px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 1 </span><span class="caption-text">Coordiante system for the Von Kármán model <a class="reference internal" href="#equation-vonkarmanmodel">(1)</a></span><a class="headerlink" href="#vonkarmancoordinates" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<p>In equation <a class="reference internal" href="#equation-vonkarmanmodel">(1)</a> <span class="math notranslate nohighlight">\(\Gamma_0\)</span> is the quas-steady circulation, <span class="math notranslate nohighlight">\(\gamma_0(x)\)</span> the vorticity distribution on the surface of the airfoil and <span class="math notranslate nohighlight">\(\gamma(\xi)\)</span> the vorticity distribution of the wake.</p>
+<p>In the case of a purely sinusoidal motion with frequency <span class="math notranslate nohighlight">\(k\)</span> it is possible to write a simpler formula for the lift coefficient:</p>
+<div class="math notranslate nohighlight">
+\[	C_L = C_1 \left(\ddot{h}+\dot{\alpha}-a\ddot{\alpha} \right) + C_2 \left(\alpha + \dot{h} + \dot{\alpha}\left(\frac{1}{2}-a \right) \right)C(k) = C_L^{AM} + C_L^{QS}C(k)\]</div>
+<p>where <span class="math notranslate nohighlight">\(C(k)\)</span> is the Theodorsen function, defined as:</p>
+<div class="math notranslate nohighlight">
+\[C(k) = \frac{H_1^{(2)}(k)}{H_1^{(2)}(k) + jH_0^{(2)}(k)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(H_\nu^{(2)}(k)\)</span> are Hankel functions, defined by an expression using Bessel functions, <span class="math notranslate nohighlight">\(H_\nu^{(2)}(k) - J_\nu + jY_\nu\)</span>. The variables of the system are the angle of attack <span class="math notranslate nohighlight">\(\alpha\)</span> and the vertical velocity <span class="math notranslate nohighlight">\(\dot h\)</span> with their respective derivatives <span class="math notranslate nohighlight">\(\dot \alpha\)</span>, <span class="math notranslate nohighlight">\(\ddot \alpha\)</span> and <span class="math notranslate nohighlight">\(\ddot h\)</span>. The pitch rotation centre is called <span class="math notranslate nohighlight">\(a\)</span>, and <span class="math notranslate nohighlight">\(C_1\)</span> and <span class="math notranslate nohighlight">\(C_2\)</span> are real coefficients for the added mass (<span class="math notranslate nohighlight">\(C_L^{AM}\)</span>) and the quasi-steady vortical lift (<span class="math notranslate nohighlight">\(C_L^{QS}\)</span>) respectively. For the classical model <span class="math notranslate nohighlight">\(C_1 = \pi\)</span> and <span class="math notranslate nohighlight">\(C_2 = 2\pi\)</span>.</p>
 </section>
 </section>
 
