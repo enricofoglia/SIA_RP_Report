@@ -3,6 +3,13 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: 01Introduction
-- file: bibliography
+parts:
+  -caption: Introduction
+    chapters:
+    - file: 01Introduction
+  -caption: Thedorsen Model
+    chapters:
+    - file: 02TheodorsenModel
+  -caption: Bibliography
+    chapters:
+    - file: bibliography
