@@ -370,21 +370,20 @@ title="Print to PDF"
 <h1>The Theodorsen Model<a class="headerlink" href="#the-theodorsen-model" title="Permalink to this headline">#</a></h1>
 <section id="relevant-mathematics">
 <h2>Relevant mathematics<a class="headerlink" href="#relevant-mathematics" title="Permalink to this headline">#</a></h2>
-<p>As shown in the previous report, Von Kármán arrives at the following form for the usteady lift of an airfoil undergoing a general motion:
-$<span class="math notranslate nohighlight">\(
-	L = -\rho\frac{d}{dt}\int_{-1}^1\gamma_0(x)xdx + \rho U \Gamma_0 + \rho U\int_1^{\infty}\frac{\gamma(\xi)d\xi}{\sqrt{\xi^2-1}}
-\)</span>$
-where we can identify:</p>
+<p>As shown in the previous report, Von Kármán arrives at the following form for the usteady lift of an airfoil undergoing a general motion:</p>
+<div class="math notranslate nohighlight" id="equation-vonkarmanmodel">
+<span class="eqno">(1)<a class="headerlink" href="#equation-vonkarmanmodel" title="Permalink to this equation">#</a></span>\[ L = -\rho\frac{d}{dt}\int_{-1}^1\gamma_0(x)xdx + \rho U \Gamma_0 + \rho U\int_1^{\infty}\frac{\gamma(\xi)d\xi}{\sqrt{\xi^2-1}} \]</div>
+<p>where we can identify the following terms:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(L_1 = -\rho (d/dt)\int_{-1}^1\gamma_0(x)xdx\)</span> is the added mass term.</p></li>
 <li><p><span class="math notranslate nohighlight">\(L_0 = \rho U \Gamma_0\)</span> is the quasi-steady lift.</p></li>
 <li><p><span class="math notranslate nohighlight">\(L_2 = \rho U\int_1^{\infty}\gamma(\xi)d\xi/\sqrt{\xi^2-1}\)</span> is the contribution of the wake to the overall lift.</p></li>
 </ul>
-<p>The coordiante system used in the formula is shown in figure</p>
-<figure class="align-default" id="directive-fig">
+<p>The coordiante system used in the formula is shown in <a class="reference internal" href="#vonkarmancoordinates"><span class="std std-numref">Fig. 1</span></a></p>
+<figure class="align-default" id="vonkarmancoordinates">
 <a class="reference internal image-reference" href="_images/VonKarmanCoordinates.png"><img alt="_images/VonKarmanCoordinates.png" src="_images/VonKarmanCoordinates.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Coordiante system for the Von Kármán model</span><a class="headerlink" href="#directive-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Coordiante system for the Von Kármán model <a class="reference internal" href="#equation-vonkarmanmodel">(1)</a></span><a class="headerlink" href="#vonkarmancoordinates" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
