@@ -273,12 +273,48 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Introduction
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scope-of-the-work-and-state-of-the-art">
+     Scope of the work and state of the art
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -290,6 +326,31 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Introduction
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scope-of-the-work-and-state-of-the-art">
+     Scope of the work and state of the art
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -299,7 +360,19 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
-<p>Here goes the introduction</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>Introduction<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<section id="scope-of-the-work-and-state-of-the-art">
+<h2>Scope of the work and state of the art<a class="headerlink" href="#scope-of-the-work-and-state-of-the-art" title="Permalink to this headline">#</a></h2>
+<p>The goal of the project here presented is to identify sparse and reliable models for the unsteady lift of an airfoil undergoing a general motion purely from data captured from simulations of increasing complexity.</p>
+<p>Classical analytical models already exist in the framework of potential flow theory. In particular Theodorsen computed a frequency domain function that model a delay and scaling effect of sinusoidal variations of vertical position and angle of attack <span id="id2">[]</span>. This model has been computed in the time domain for impulsive chages in angle of attack by Wagner <span id="id3">[]</span> generalised by Von Kármán for arbitrary motion <span id="id4">[]</span>. However, both this time-domain approaches involve integration of the complex Theodorsen function or of the distribution of vorticity in the wake, and can be thus impractical to compute in many real time applications. Moreover, their true limit lies in the assumption of potential flow, that disregard completely any effect due to viscosity.</p>
+<p>Nonetheless, improvements on the classical models have been made in recent years, allowing to apply them to wings of finite span <span id="id5">[]</span> or viscous flow for low frequecy oscillations <span id="id6">[]</span>. In fact it has been proved by Limacher that the classical separation in added mass and circulatory forces already identified by Theodorsen and Von Kármán is indeed more general and applies beyond potential flow theory <span id="id7">[]</span>.</p>
+<p>The project here presented is not just a thought exercise in order to go beyond classical analytical models with modern machine learning techniques. The need for precise and interpretable models for airfoils in unsteady flow conditions is felt in diverse fields of the aerospace industry.</p>
+<p>The first analytical models by Wagner \cite{dawson2021} and Theodorsen \cite{theodorsen1979} can be applied to the prediction of the onset of flutter and the structural response of a wing to a gust of various shapes \cite{CHIOCCHIA}.</p>
+<p>The forward flight of an helicopter induces on the rotor a cyclic load due to the fact that the blade encounters a flow with a changing velocity due to the summation of the linear and rotating motion. The prediction of such loads, and of the lift force generated by the rotor, can only be made considering the time-varying nature of the flow \cite{johnson2013}.</p>
+<p>Another emerging field where unsteady airfoil aerodynamics comes into play is Boundary Layer Ingestion engines. Such systems are projected to have up to a 19% efficiency increment over conventional configurations (considering the overall system improvement \cite{uranga2018}) and are thus studied with great attention. However, due to the presence at the inlet of a varying velocity field, the fan blades undergo time varying loading that can result in flutter or fatigue damage \cite{bakhle2018}.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
