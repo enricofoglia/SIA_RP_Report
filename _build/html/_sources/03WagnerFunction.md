@@ -1,4 +1,4 @@
-### The Wagner function 
+# The Wagner function 
 
 The Wagner function can be seen as the time domain representation of the Theodorsen function. In particular it can be defined as the time-response of an airfoil undergoing a sudden change in angle of attack for time $t=0$, i.e. the step response of the system to a change in $\alpha_e$ {cite}`dawson2022improved`.
 
