@@ -107,7 +107,7 @@ In case we desire the basis to be ortho*normal* we can simply divide the coeffic
 \| \pi_i\|_ w^2 = \int_{\mathcal{X}} \pi_i^2(x)w(x)dx 
 :::
 
-Thus, from {numref}`norm_polynomial`, for calculating the norm of $\pi_i$ it is necessary to know the moments up to $\mu_{2i}$. Thus in the orthonormal expansion of degree $d$ we need to compute the moments up to $\mu_{2d}$
+Thus, from {eq}`norm_polynomial`, for calculating the norm of $\pi_i$ it is necessary to know the moments up to $\mu_{2i}$. Thus in the orthonormal expansion of degree $d$ we need to compute the moments up to $\mu_{2d}$
 
 A comment is due to the invertibility of the matrix of the moments. As stated in {cite}`oladyshkin2012data` if $\mbox{rank}(M) = k$ then $\mbox{det}(M) = 0$ if and only if the cardinality of $\mathcal X$ is $\leq k$. This, as it will be shown in <span style="color: red;">section</span>, limits the form that the input to the system may take, but assures that the numerical method can be carried out without problems if this condition is respected, which is the case for most real case scenarios.
 
