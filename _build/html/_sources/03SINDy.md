@@ -26,8 +26,10 @@ Let the vector $v = [1.5,\; 0.8]^T$ be the alias for the function we are trying 
 
 ```{figure} images/orthogonal_basis.png
 ---
-height: 200px
+height: 300px
 name: OrthogonalBasis
 ---
 Representation of the projection of the vector $v$ on two different sets of basis vectors, $\mathcal C = \{e_1,\;e_2\}$ and $\mathcal B = \{e_1,\; u\}$
 ```
+
+The fact that newly added parameters don't influence with already computed ones id of great importance if we set as an objective the interpretability of the results: if any modification of the library changes all the parameters it will be difficult if not impossible to identify those that represent a real physical phenomenon and those that are just a byproduct of the fitting technique used.
