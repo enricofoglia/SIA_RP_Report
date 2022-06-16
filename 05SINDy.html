@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>System Identification for unsteady Airfoils &#8212; System Identification for unsteady Airfoils</title>
+    <title>System Identification Algorithms &#8212; System Identification for unsteady Airfoils</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,9 +50,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Introduction" href="01Introduction.html" />
+    <link rel="next" title="Orthogonal basis and Polynomial Chaos" href="06PolynomialChaos.html" />
+    <link rel="prev" title="Models for low Reynolds numbers" href="04LowReynolds.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -106,8 +109,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     System Identification for unsteady Airfoils
                 </a>
             </li>
@@ -151,9 +154,9 @@ const thebe_selector_output = ".output, .cell_output"
   System identification
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="05SINDy.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    System Identification Algorithms
   </a>
  </li>
@@ -264,7 +267,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F05SINDy.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -292,7 +295,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/intro.md"
+        <a href="_sources/05SINDy.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -352,11 +355,14 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#second-research-project-report">
-   Second Research project report
+  <a class="reference internal nav-link" href="#si-context-and-state-of-the-art">
+   SI: context and state of the art
   </a>
-  <ul class="nav section-nav flex-column">
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#our-approach">
+   Our approach
+  </a>
  </li>
 </ul>
 
@@ -367,7 +373,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>System Identification for unsteady Airfoils</h1>
+                <h1>System Identification Algorithms</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -378,11 +384,14 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#second-research-project-report">
-   Second Research project report
+  <a class="reference internal nav-link" href="#si-context-and-state-of-the-art">
+   SI: context and state of the art
   </a>
-  <ul class="nav section-nav flex-column">
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#our-approach">
+   Our approach
+  </a>
  </li>
 </ul>
 
@@ -394,43 +403,29 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="system-identification-for-unsteady-airfoils">
-<h1>System Identification for unsteady Airfoils<a class="headerlink" href="#system-identification-for-unsteady-airfoils" title="Permalink to this headline">#</a></h1>
-<section id="second-research-project-report">
-<h2>Second Research project report<a class="headerlink" href="#second-research-project-report" title="Permalink to this headline">#</a></h2>
-<p>Secon report for the research project “System Identification for unsteady Airfoils”, carried out in the context of the Master of Science course at ISAE-SUPAERO, Toulouse.</p>
-<p>Authors: Enrico Foglia, Maciej Michałów</p>
-<p>Advisors: Thierry Jardin, Michael Bauerheim, Michele Colombo</p>
-<p>Date: June 2022</p>
-<p><em>This document is the property of the ISAE-SUPAERO and shall not be distributed nor reproduced without
-the formal approval of the advisors.</em></p>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="01Introduction.html">Introduction</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unsteady lift models</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="02TheodorsenModel.html">The Theodorsen Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03WagnerFunction.html">The Wagner function</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04LowReynolds.html">Models for low Reynolds numbers</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">System identification</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="05SINDy.html">System Identification Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06PolynomialChaos.html">Orthogonal basis and Polynomial Chaos</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bibliography</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
-</ul>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="system-identification-algorithms">
+<h1>System Identification Algorithms<a class="headerlink" href="#system-identification-algorithms" title="Permalink to this headline">#</a></h1>
+<section id="si-context-and-state-of-the-art">
+<h2>SI: context and state of the art<a class="headerlink" href="#si-context-and-state-of-the-art" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="our-approach">
+<h2>Our approach<a class="headerlink" href="#our-approach" title="Permalink to this headline">#</a></h2>
+<p>The general approach that will has been used in this work is to try to fit a model from data produced by the codes presented in <span style="color: red;">section</span> and <span style="color: red;">section</span>. In general we assume the inputs to the system to be <span class="math notranslate nohighlight">\(\ddot h\)</span> and <span class="math notranslate nohighlight">\(\ddot \alpha\)</span>, which means that by analytical integration we have access to all the physical states present in the classical definition of the unsteady lift coefficients for sinusoidal inputs presented in <span style="color: red;">section</span>. The input-output response of the system will be then approximated by a regression model over a library of functions <span class="math notranslate nohighlight">\(\Theta(\alpha, \dot \alpha, \ddot \alpha, \dot h, \ddot h)\)</span>, in the form:</p>
+<div class="math notranslate nohighlight">
+\[	C_L = \Theta\xi\]</div>
+<p>Where <span class="math notranslate nohighlight">\(C_L\)</span> is the vector of <span class="math notranslate nohighlight">\(\mathbb R^n\)</span> of the collected temporal data of the output of the symulations, so that <span class="math notranslate nohighlight">\(C_L = [C_L(0),\; C_L(t_1),\;C_L(t_2),\;\dots,\, C_L(t^{n-1})]^T\)</span>, the matrix <span class="math notranslate nohighlight">\(\Theta \in \mathbb R^{n,M}\)</span> contains the time series for <span class="math notranslate nohighlight">\(M\)</span> possible base functions and <span class="math notranslate nohighlight">\(\xi\in \mathbb R^M\)</span> contains the coefficients for all of them. In particular we would hope that <span class="math notranslate nohighlight">\(\xi\)</span> is sparse, i.e. that most of its entries are 0, since this would allow some more theoretical analysis of the results.</p>
+<p>In general the matrix <span class="math notranslate nohighlight">\(\Theta\)</span> can contain as columns any function of the states of the systems. In fact a careful choice of the base fuctions on which the lift coefficient will be projected may help with the accuracy and sparsity of the resulting model, as each term will carry more information about the system. A common library consist in polynomials up to a maximum degree <span class="math notranslate nohighlight">\(d\)</span>. An example of how such a basis could be constructed is:</p>
+<div class="math notranslate nohighlight">
+\[ \Theta = [1,\;\alpha_e,\;\dot \alpha,\;\ddot \alpha,\; \ddot h,\;\alpha_e^2,\;\alpha_e\ddot\alpha,\;\dots,\;\ddot h ^d]\]</div>
+<p>Even though this choice seems like one of the most natural it can in fact present some disadvantages. In particular, in general we cannot assure that it is othogonal. Orthogonal basis are to be preferred since they allow for a simpler generalisation of the results, since new terms added to the model don’t influence already found parameters. A visual example might be useful to understand the importance of such a base.</p>
+<p>Let the vector <span class="math notranslate nohighlight">\(v = [1.5,\; 0.8]^T\)</span> be the alias for the function we are trying to retrieve (see <a class="reference internal" href="#orthogonalbasis"><span class="std std-numref">Fig. 2</span></a>). When projecting to the first canonical basis vector <span class="math notranslate nohighlight">\(e_1 = [1,\; 0]^T\)</span> the result is just the first component of <span class="math notranslate nohighlight">\(v\)</span>. When adding the second canonical base vector <span class="math notranslate nohighlight">\(e_2 = [0,\; 1]^T\)</span> the result obtained is the vector <span class="math notranslate nohighlight">\(v\)</span> as defined before: the addition of a second base vector didn’t modify the first component that we had calculated. If instead of <span class="math notranslate nohighlight">\(e_2\)</span> we use the as the second base vector <span class="math notranslate nohighlight">\(u = [0.5,\; 1]\)</span> the components of <span class="math notranslate nohighlight">\(v\)</span> in this base will be <span class="math notranslate nohighlight">\([1.1,\; 0.8]\)</span>: the addition of a second non orthogonal vector modified the already computed value for the first component.</p>
+<figure class="align-default" id="orthogonalbasis">
+<a class="reference internal image-reference" href="_images/orthogonal_basis.png"><img alt="_images/orthogonal_basis.png" src="_images/orthogonal_basis.png" style="height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Representation of the projection of the vector <span class="math notranslate nohighlight">\(v\)</span> on two different sets of basis vectors, <span class="math notranslate nohighlight">\(\mathcal C = \{e_1,\;e_2\}\)</span> and <span class="math notranslate nohighlight">\(\mathcal B = \{e_1,\; u\}\)</span></span><a class="headerlink" href="#orthogonalbasis" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The fact that newly added parameters don’t influence with already computed ones id of great importance if we set as an objective the interpretability of the results: if any modification of the library changes all the parameters it will be difficult if not impossible to identify those that represent a real physical phenomenon and those that are just a byproduct of the fitting technique used.</p>
 </section>
 </section>
 
@@ -461,10 +456,17 @@ the formal approval of the advisors.</em></p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="01Introduction.html" title="next page">
+    <a class='left-prev' id="prev-link" href="04LowReynolds.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Models for low Reynolds numbers</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="06PolynomialChaos.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction</p>
+        <p class="prev-next-title">Orthogonal basis and Polynomial Chaos</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
