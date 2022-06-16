@@ -95,7 +95,7 @@ $$
 \vdots & \vdots & \ddots & \vdots\\
 \mu_{n-1} & \mu_n & \dots & \mu_{2n-1}\\
 0 & 0 & \dots & 1
-\end{bmatrix}\begin{bmatrix} c_n^0\\c_n^1\\\vdots\\c_n^{n-1}\\c_n^n\end{bmatrix} = \begin{bmatrix} 0\\0\\\vdots\\1\end{bmatrix}
+\end{bmatrix}\begin{bmatrix} c_n^0\\c_n^1\\\vdots\\c_n^{n-1}\\c_n^n\end{bmatrix} = \begin{bmatrix} 0\\0\\\vdots\\0\\1\end{bmatrix}
 $$(eqn:moments-matrix)
 
 This shows that there is no need to integrate any function numerically and that only the knowledge of the first $2n-1$ moments of the distribution of the data is necessary in order to calculate all the coefficients of the expansion up to degree $n$ by inverting the moment matrix $M$.
