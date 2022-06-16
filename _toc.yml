@@ -13,6 +13,7 @@ parts:
   - caption: S. I. Algorithms
     chapters:
     - file: 03SINDy
+    - file: 04PolynomialChaos
   - caption: Bibliography
     chapters:
     - file: bibliography

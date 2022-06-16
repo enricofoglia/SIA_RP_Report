@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Bibliography" href="bibliography.html" />
+    <link rel="next" title="The Theodorsen Model" href="02TheodorsenModel.html" />
     <link rel="prev" title="System Identification for unsteady Airfoils" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -113,12 +113,53 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Introduction
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Thedorsen Model
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="02TheodorsenModel.html">
+   The Theodorsen Model
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  S. I. Algorithms
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03SINDy.html">
+   System Identification Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04PolynomialChaos.html">
+   Orthogonal basis and Polynomial Chaos
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Bibliography
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="bibliography.html">
    Bibliography
@@ -354,9 +395,9 @@ title="Print to PDF"
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
 <section id="scope-of-the-work-and-state-of-the-art">
 <h2>Scope of the work and state of the art<a class="headerlink" href="#scope-of-the-work-and-state-of-the-art" title="Permalink to this headline">#</a></h2>
-<p>The goal of the project here presented is to identify sparse and reliable models for the unsteady lift of an airfoil undergoing a general motion purely from data captured from simulations of increasing complexity.</p>
-<p>Classical analytical models already exist in the framework of potential flow theory. In particular Theodorsen computed a frequency domain function that model a delay and scaling effect of sinusoidal variations of vertical position and angle of attack <span id="id1">[<a class="reference internal" href="bibliography.html#id6" title="Theodore Theodorsen. General theory of aerodynamic instability and the mechanism of flutter. Technical Report, NACA, 1979.">The79</a>]</span>. This model has been computed in the time domain for impulsive chages in angle of attack by Wagner <span id="id2">[<a class="reference internal" href="bibliography.html#id7" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, pages 1–17, 2021.">DB21</a>]</span> generalised by Von Kármán for arbitrary motion <span id="id3">[<a class="reference internal" href="bibliography.html#id2" title="T. Von Kármán and W. R. Sears. Airfoil theory for non-uniform motion. Journal of the aeronautical sciences, 1938.">KS38</a>]</span>. However, both this time-domain approaches involve integration of the complex Theodorsen function or of the distribution of vorticity in the wake, and can be thus impractical to compute in many real time applications. Moreover, their true limit lies in the assumption of potential flow, that disregard completely any effect due to viscosity.</p>
-<p>Nonetheless, improvements on the classical models have been made in recent years, allowing to apply them to wings of finite span <span id="id4">[<a class="reference internal" href="bibliography.html#id13" title="Johan Boutet and Grigorios Dimitriadis. Unsteady lifting line theory using the wagner function for the aerodynamic and aeroelastic modeling of 3d wings. Aerospace, 5(3):92, 2018.">BD18</a>]</span> or viscous flow for low frequecy oscillations <span id="id5">[<a class="reference internal" href="bibliography.html#id15" title="Tianshu Liu, Shizhao Wang, Xing Zhang, and Guowei He. Unsteady thin-airfoil theory revisited: application of a simple lift formula. Aiaa Journal, 53(6):1492–1502, 2015.">LWZH15</a>]</span>. In fact it has been proved by Limacher that the classical separation in added mass and circulatory forces already identified by Theodorsen and Von Kármán is indeed more general and applies beyond potential flow theory <span id="id6">[<a class="reference internal" href="bibliography.html#id3" title="Eric Limacher, Chris Morton, and David Wood. Generalized derivation of the added-mass and circulatory forces for viscous flows. Physical Review Fluids, 3(1):1–25, 2018.">LMW18</a>]</span>. By utilising data from more and more accurate simulations of the phenomenon, we expect to be able to find models that can outperform those proposed up until this point, and for them to be interpretable enough as to allow a physical interpretation of the single terms in the same way classical studies did for inviscid flows. In oreder to do so we have employed a machine learning algorithm developed by prof. Brunton and collegues called System Identification for Non-linear Dynamics (or SINDy) <span id="id7">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton, Joshua L Proctor, and J Nathan Kutz. Discovering governing equations from data by sparse identification of nonlinear dynamical systems. Proceedings of the national academy of sciences, 113(15):3932–3937, 2016.">BPK16</a>]</span>. The attractiveness of this particular algorithm is due to the fact that it has a python implementation <span id="id8">[<a class="reference internal" href="bibliography.html#id16" title="Alan A Kaptanoglu, Brian M de Silva, Urban Fasel, Kadierdan Kaheman, Jared L Callaham, Charles B Delahunt, Kathleen Champion, Jean-Christophe Loiseau, J Nathan Kutz, and Steven L Brunton. Pysindy: a comprehensive python package for robust sparse system identification. arXiv preprint arXiv:2111.08481, 2021.">KdSF+21</a>]</span> and is optimised to retrieve sparse models, i.e. with as little terms as possible. This will help the generalisation of the model and its interpretability.</p>
+<p>The goal of the project here presented is to identify sparse and reliable models for the unsteady lift of an airfoil undergoing a general motion (with a focus on pitching and plunging) in a low Reynolds number flow, using data from data captured from simulations of increasing complexity.</p>
+<p>Classical analytical models already exist, based on unsteady potential flow theory. In particular, Theodorsen derived a frequency domain function that models a phase shift and gain of unsteady lift in response to sinusoidal variations of its vertical position and angle of attack <span id="id1">[<a class="reference internal" href="bibliography.html#id6" title="Theodore Theodorsen. General theory of aerodynamic instability and the mechanism of flutter. Technical Report, NACA, 1979.">The79</a>]</span>. Using the same assumptions, Wagner <span id="id2">[<a class="reference internal" href="bibliography.html#id7" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, pages 1–17, 2021.">DB21</a>]</span> computed the time domain lift response to a step in angle of attack, which was generalised by Von Kármán for arbitrary motion <span id="id3">[<a class="reference internal" href="bibliography.html#id2" title="T. Von Kármán and W. R. Sears. Airfoil theory for non-uniform motion. Journal of the aeronautical sciences, 1938.">KS38</a>]</span>. However, both time-domain approaches involve integration of the complex Theodorsen function or of the distribution of vorticity in the wake, and can be thus impractical to compute in many real time applications. Moreover, their true limit lies in the assumption of potential flow, discarding viscous effects which can be very pronounced in low Reynolds number flows.</p>
+<p>Nonetheless, improvements to the classical models have been developed in recent years, allowing to apply them to wings of finite span <span id="id4">[<a class="reference internal" href="bibliography.html#id13" title="Johan Boutet and Grigorios Dimitriadis. Unsteady lifting line theory using the wagner function for the aerodynamic and aeroelastic modeling of 3d wings. Aerospace, 5(3):92, 2018.">BD18</a>]</span> or viscous flow for low frequecy oscillations <span id="id5">[<a class="reference internal" href="bibliography.html#id15" title="Tianshu Liu, Shizhao Wang, Xing Zhang, and Guowei He. Unsteady thin-airfoil theory revisited: application of a simple lift formula. Aiaa Journal, 53(6):1492–1502, 2015.">LWZH15</a>]</span>. In fact, it has been proved by Limacher that the classical separation in added mass and circulatory forces already identified by Theodorsen and Von Kármán is indeed more general and applies beyond potential flow theory <span id="id6">[<a class="reference internal" href="bibliography.html#id3" title="Eric Limacher, Chris Morton, and David Wood. Generalized derivation of the added-mass and circulatory forces for viscous flows. Physical Review Fluids, 3(1):1–25, 2018.">LMW18</a>]</span>. By utilising data from more and more accurate simulations of the phenomenon, we expect to be able to find models that can outperform those proposed up until this point, and for them to be interpretable enough as to allow a physical interpretation of the single terms in the same way classical studies did for inviscid flows. In oreder to do so we have employed a machine learning algorithm developed by prof. Brunton and collegues called System Identification for Non-linear Dynamics (or SINDy) <span id="id7">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton, Joshua L Proctor, and J Nathan Kutz. Discovering governing equations from data by sparse identification of nonlinear dynamical systems. Proceedings of the national academy of sciences, 113(15):3932–3937, 2016.">BPK16</a>]</span>. The attractiveness of this particular algorithm is due to the fact that it has a python implementation <span id="id8">[<a class="reference internal" href="bibliography.html#id16" title="Alan A Kaptanoglu, Brian M de Silva, Urban Fasel, Kadierdan Kaheman, Jared L Callaham, Charles B Delahunt, Kathleen Champion, Jean-Christophe Loiseau, J Nathan Kutz, and Steven L Brunton. Pysindy: a comprehensive python package for robust sparse system identification. arXiv preprint arXiv:2111.08481, 2021.">KdSF+21</a>]</span> and is optimised to retrieve sparse models, i.e. with as little terms as possible. This will help the generalisation of the model and its interpretability.</p>
 </section>
 <section id="applications">
 <h2>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">#</a></h2>
@@ -402,10 +443,10 @@ title="Print to PDF"
             <p class="prev-next-title">System Identification for unsteady Airfoils</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="bibliography.html" title="next page">
+    <a class='right-next' id="next-link" href="02TheodorsenModel.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Bibliography</p>
+        <p class="prev-next-title">The Theodorsen Model</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
