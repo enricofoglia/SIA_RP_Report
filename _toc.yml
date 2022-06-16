@@ -7,13 +7,15 @@ parts:
   - caption: Introduction
     chapters:
     - file: 01Introduction
-  - caption: Thedorsen Model
+  - caption: Unsteady lift models
     chapters:
     - file: 02TheodorsenModel
-  - caption: S. I. Algorithms
+    - file: 03WagnerFunction
+    - file: 04LowReynolds
+  - caption: System identification
     chapters:
-    - file: 03SINDy
-    - file: 04PolynomialChaos
+    - file: 05SINDy
+    - file: 06PolynomialChaos
   - caption: Bibliography
     chapters:
     - file: bibliography
