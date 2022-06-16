@@ -49,7 +49,7 @@ where $H_\nu^{(2)}(k)$ are Hankel functions, defined by an expression using Bess
 The effect of the Theodorsen function on the vortical lift is of delay and scaling on changes in angle of attack. In particular, it is common to consider the vertical velocity $\dot h$ and $\alpha$ together as an effective angle of attack $\alpha_e$. 
 
 As linear approximations of the Theodorsen function in the time domain already exist in literature {cite}`brunton2013empirical`, we have 
-decided to use them as a first approach to generate the data necessary for the system identification. Such representation allow to construct a linear Multi-Input-Single-Output system (MISO), which has been implemented in a pythpn script presented in <span style="color: red;">section</span>. That data has then been used to extract a first data-driven approximation of the $C(k)$ function in <span style="color: red;">section</span> using the algorithm presented in <span style="color: red;">section</span>.
+decided to use them as a first approach to generate the data necessary for the system identification. Such representation allow to construct a linear Multi-Input-Single-Output system (MISO), which has been implemented in a python script presented in <span style="color: red;">section</span>. That data has then been used to extract a first data-driven approximation of the $C(k)$ function in <span style="color: red;">section</span> using the algorithm presented in <span style="color: red;">section</span>.
 
 ### The Wagner function 
 
@@ -65,9 +65,10 @@ Calling $\phi(t)$ the Wagner function, the analytical computation can be carried
 where $\mathcal{L}^{-1}$ is the inverse Laplace transform, and $C(s)$ is the Theodorsen function. Defining the real and imaginary part of the Theodorsen function as $G_1(k)$ and $G_2(k)$ respectively, it is possible to compute the Wagner function as {cite}`peters2008two`:
 
 :::{math}
+:label: Wagner_analytical
 \begin{eqnarray}
-  \phi(t) &=& \frac{1}{2} + \frac{2}{\pi}\int_0^\infty \frac{1}{k}\left(G_1(k) - \frac{1}{2}\right)\sin(kt)dk :label: small_t\\
-  &=& 1 + \frac{2}{\pi}\int_0^\infty \frac{1}{k}G_2(k)\cos(kt)dk\label{eqn:int_large_t} :label: large_t
+  \phi(t) &=& \frac{1}{2} + \frac{2}{\pi}\int_0^\infty \frac{1}{k}\left(G_1(k) - \frac{1}{2}\right)\sin(kt)dk \\
+  &=& 1 + \frac{2}{\pi}\int_0^\infty \frac{1}{k}G_2(k)\cos(kt)dk\label{eqn:int_large_t} 
 \end{eqnarray}
 :::
 
