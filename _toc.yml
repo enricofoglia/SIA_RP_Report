@@ -10,7 +10,7 @@ parts:
   - caption: Thedorsen Model
     chapters:
     - file: 02TheodorsenModel
-  -caption: S. I. Algorithms
+  - caption: S. I. Algorithms
     chapters:
     - file: 03SINDy
   - caption: Bibliography
