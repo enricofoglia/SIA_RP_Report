@@ -5,7 +5,7 @@ Secon report for the research project "System Identification for unsteady Airfoi
 
 Authors: Enrico Foglia, Maciej Michałów 
 
-Advisors: hierry Jardin, Michael Bauerheim, Michele Colombo
+Advisors: Thierry Jardin, Michael Bauerheim, Michele Colombo
 
 Date: June 2022 
 
