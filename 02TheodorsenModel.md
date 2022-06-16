@@ -9,7 +9,7 @@ myst:
 
 ## Relevant mathematics
 
-As shown in the previous report, Von Kármán arrives at the following form for the usteady lift of an airfoil undergoing a general motion:
+As shown in the previous report, in {cite}`VonKarman1938` Von Kármán arrives at the following form for the usteady lift of an airfoil undergoing a general motion:
 
 :::{math}
 :label: VonKarmanModel
@@ -30,7 +30,7 @@ name: VonKarmanCoordinates
 Coordiante system for the Von Kármán model {eq}`VonKarmanModel`
 ```
 
-In equation {eq}`VonKarmanModel` $\Gamma_0$ is the quas-steady circulation, $\gamma_0(x)$ the vorticity distribution on the surface of the airfoil and $\gamma(\xi)$ the vorticity distribution of the wake.
+In equation {eq}`VonKarmanModel` $\Gamma_0$ is the quasi-steady circulation, $\gamma_0(x)$ the vorticity distribution on the surface of the airfoil and $\gamma(\xi)$ the vorticity distribution of the wake.
 
 In the case of a purely sinusoidal motion with frequency $k$ it is possible to write a simpler formula for the lift coefficient:
 :::{math}
@@ -42,4 +42,26 @@ where $C(k)$ is the Theodorsen function, defined as:
 C(k) = \frac{H_1^{(2)}(k)}{H_1^{(2)}(k) + jH_0^{(2)}(k)}
 :::
 
-where $H_\nu^{(2)}(k)$ are Hankel functions, defined by an expression using Bessel functions, $H_\nu^{(2)}(k) - J_\nu + jY_\nu$. The variables of the system are the angle of attack $\alpha$ and the vertical velocity $\dot h$ with their respective derivatives $\dot \alpha$, $\ddot \alpha$ and $\ddot h$. The pitch rotation centre is called $a$, and $C_1$ and $C_2$ are real coefficients for the added mass ($C_L^{AM}$) and the quasi-steady vortical lift ($C_L^{QS}$) respectively. For the classical model $C_1 = \pi$ and $C_2 = 2\pi$.
+where $H_\nu^{(2)}(k)$ are Hankel functions, defined by an expression using Bessel functions, $H_\nu^{(2)}(k) = J_\nu + jY_\nu$. The variables of the system are the angle of attack $\alpha$ and the vertical velocity $\dot h$ with their respective derivatives $\dot \alpha$, $\ddot \alpha$ and $\ddot h$. The pitch rotation centre is called $a$, and $C_1$ and $C_2$ are real coefficients for the added mass ($C_L^{AM}$) and the quasi-steady vortical lift ($C_L^{QS}$) respectively. For the classical model $C_1 = \pi$ and $C_2 = 2\pi$.
+
+The effect of the Theodorsen function on the vortical lift is of delay and scaling on changes in angle of attack. In particular, it is common to consider the vertical velocity $\dot h$ and $\alpha$ together as an effective angle of attack $\alpha_e$. 
+
+The Wagner function can be seen as the time domain representation of the Theodorsen function. In particular it can be defined as the time-response of an airfoil undergoing sudden change in angle of attack for time $t=0$, i.e. the step response of the system to a change in $\alpha_e$ {cite}`dawson2022improved`.
+
+Calling $\phi(t)$ the Wagner function, the analytical computation can be carried out as:
+:::{math}
+\begin{equation}
+        \phi(t) = \mathcal{L}^{-1}\left(\frac{C(s)}{s}\right)
+\end{equation}
+:::
+where $\mathcal{L}^{-1}$ is the inverse Laplace transform, and $C(s)$ is the Theodorsen function. Defining the real and imaginary part of the Theodorsen function as $G_1(k)$ and $G_2(k)$ respectively, it is possible to compute the Wagner function as {cite}`peters2008two`:
+
+:::{math}
+\begin{eqnarray}
+  \phi(t) &=& \frac{1}{2} + \frac{2}{\pi}\int_0^\infty \frac{1}{k}\left(G_1(k) - \frac{1}{2}\right)\sin(kt)dk:label:{small_t}\\
+  &=& 1 + \frac{2}{\pi}\int_0^\infty \frac{1}{k}G_2(k)\cos(kt)dk\label{eqn:int_large_t}:label:{large_t}
+\end{eqnarray}
+:::
+
+
+
