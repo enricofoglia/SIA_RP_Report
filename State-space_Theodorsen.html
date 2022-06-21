@@ -1,0 +1,1059 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Implementation of the linearised Theodorsen model &#8212; System Identification for unsteady Airfoils</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Wagner function" href="03WagnerFunction.html" />
+    <link rel="prev" title="The Theodorsen Model" href="02TheodorsenModel.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">System Identification for unsteady Airfoils</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    System Identification for unsteady Airfoils
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="00Abstract.html">
+   Abstract
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01Introduction.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Unsteady lift models
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="02TheodorsenModel.html">
+   The Theodorsen Model
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Implementation of the linearised Theodorsen model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03WagnerFunction.html">
+   The Wagner function
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  System identification
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="04Identification.html">
+   System identification algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05IdentificationForUnsteadyLift.html">
+   System identification for unsteady lift
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06PolynomialChaos.html">
+   Orthogonal basis and Polynomial Chaos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07PC_code.html">
+   The code
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Results
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="08WagnerSINDy.html">
+   Identify a dynamical system for the Wagner function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08TheodorsenCLState.html">
+   Theodorsen model replication with lift as a state
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Summary
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="09Summary.html">
+   Summary
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Bibliography
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="bibliography.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/State-space_Theodorsen.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FState-space_Theodorsen.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/State-space_Theodorsen.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#state-space-representation-of-lti-systems">
+   State-space representation of LTI systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-theodorsen-dynamical-model-of-unsteady-lift">
+   The Theodorsen dynamical model of unsteady lift
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unsteady-lift-as-a-dynamical-system">
+     Unsteady lift as a dynamical system
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#approximating-the-theodorsen-function">
+     Approximating the Theodorsen function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-full-lti-system">
+     The full LTI system
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unsteady-lift-time-responses-generated-by-the-model">
+   Unsteady lift time responses generated by the model
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#impulse-in-ddot-h">
+     Impulse in
+     <span class="math notranslate nohighlight">
+      \(\ddot{h}\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sinusoidal-ddot-alpha-input">
+     Sinusoidal
+     <span class="math notranslate nohighlight">
+      \(\ddot{\alpha}\)
+     </span>
+     input
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multi-input-response-to-harmonic-ddot-alpha-and-square-ddot-h-waves">
+     Multi-input response to harmonic
+     <span class="math notranslate nohighlight">
+      \(\ddot{\alpha}\)
+     </span>
+     and square
+     <span class="math notranslate nohighlight">
+      \(\ddot{h}\)
+     </span>
+     waves
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bibliography">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Implementation of the linearised Theodorsen model</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#state-space-representation-of-lti-systems">
+   State-space representation of LTI systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-theodorsen-dynamical-model-of-unsteady-lift">
+   The Theodorsen dynamical model of unsteady lift
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unsteady-lift-as-a-dynamical-system">
+     Unsteady lift as a dynamical system
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#approximating-the-theodorsen-function">
+     Approximating the Theodorsen function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-full-lti-system">
+     The full LTI system
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unsteady-lift-time-responses-generated-by-the-model">
+   Unsteady lift time responses generated by the model
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#impulse-in-ddot-h">
+     Impulse in
+     <span class="math notranslate nohighlight">
+      \(\ddot{h}\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sinusoidal-ddot-alpha-input">
+     Sinusoidal
+     <span class="math notranslate nohighlight">
+      \(\ddot{\alpha}\)
+     </span>
+     input
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multi-input-response-to-harmonic-ddot-alpha-and-square-ddot-h-waves">
+     Multi-input response to harmonic
+     <span class="math notranslate nohighlight">
+      \(\ddot{\alpha}\)
+     </span>
+     and square
+     <span class="math notranslate nohighlight">
+      \(\ddot{h}\)
+     </span>
+     waves
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bibliography">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="implementation-of-the-linearised-theodorsen-model">
+<h1>Implementation of the linearised Theodorsen model<a class="headerlink" href="#implementation-of-the-linearised-theodorsen-model" title="Permalink to this headline">#</a></h1>
+<p>The purpose of this notebook is to showcase and explain a linear time-independent (LTI) state-space representation of Theodorsen’s unsteady lift model, along with a demonstrative implementation using the Python Control Systems Library (<a class="reference external" href="https://python-control.readthedocs.io/en/0.9.1/">https://python-control.readthedocs.io/en/0.9.1/</a>). The LTI representation has been reproduced from <span id="id1">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>. While it is not exact, since the Theodorsen model cannot be represented by an LTI model with a finite set of states <span id="id2">[<a class="reference internal" href="bibliography.html#id7" title="David A Peters. Two-dimensional incompressible unsteady airfoil theory—an overview. Journal of Fluids and Structures, 24(3):295–312, 2008.">Pet08</a>]</span>, it allows computing unsteady lift responses to arbitrary inputs with a good degree of accuracy, as demonstrated in <span id="id3">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">control</span>  <span class="c1"># https://python-control.readthedocs.io/en/0.9.1/</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="state-space-representation-of-lti-systems">
+<h2>State-space representation of LTI systems<a class="headerlink" href="#state-space-representation-of-lti-systems" title="Permalink to this headline">#</a></h2>
+<p>An LTI system with input <span class="math notranslate nohighlight">\(u(t) \in \mathbb{R}^l\)</span> and output <span class="math notranslate nohighlight">\(y(t) \in \mathbb{R}^m\)</span> can be represented using a pair of equations. The first, a linear ODE, models the evolution of the state <span class="math notranslate nohighlight">\(x(t) \in \mathbb{R}^n\)</span> due to its current value and the input <span class="math notranslate nohighlight">\(u(t)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+\dot{x}(t) = Ax(t) + Bu(t)
+\end{equation}\]</div>
+<p>The second equation transforms the input and state of the system into the output:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+y(t) = Cx(t) + Du(t)
+\end{equation}\]</div>
+<p>The matrices have dimensions <span class="math notranslate nohighlight">\(A_{n\times n}\)</span>, <span class="math notranslate nohighlight">\(B_{n\times l}\)</span>, <span class="math notranslate nohighlight">\(C_{m\times n}\)</span> and <span class="math notranslate nohighlight">\(D_{m \times l}\)</span>, and together they completely represent the LTI system. A convenient way to relate their dimensions is by representing the system by a single matrix equation:
+$<span class="math notranslate nohighlight">\(\begin{bmatrix}
+\dot{x}\\y
+\end{bmatrix}=\begin{bmatrix}
+A &amp; B\\ C &amp; D
+\end{bmatrix} \cdot \begin{bmatrix}
+x\\u
+\end{bmatrix}\)</span>$</p>
+<p>It is worth noting that a state-space representation is not unique, and that the number of states can vary.</p>
+</section>
+<section id="the-theodorsen-dynamical-model-of-unsteady-lift">
+<h2>The Theodorsen dynamical model of unsteady lift<a class="headerlink" href="#the-theodorsen-dynamical-model-of-unsteady-lift" title="Permalink to this headline">#</a></h2>
+<section id="unsteady-lift-as-a-dynamical-system">
+<h3>Unsteady lift as a dynamical system<a class="headerlink" href="#unsteady-lift-as-a-dynamical-system" title="Permalink to this headline">#</a></h3>
+<p>In the Theodorsen framework, the airfoil subject to unsteady potential flow is a dynamical system whose inputs are the position perpendicular to the free-stream velocity, <span class="math notranslate nohighlight">\(h\)</span>, and angle of attack, <span class="math notranslate nohighlight">\(\alpha\)</span>, while the output is the lift coefficient, <span class="math notranslate nohighlight">\(C_L\)</span>. Due to certain analytical considerations, the formal inputs are not <span class="math notranslate nohighlight">\(h\)</span> and <span class="math notranslate nohighlight">\(\alpha\)</span> themselves, but their second derivatives, <span class="math notranslate nohighlight">\(\ddot{h}\)</span> and <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span>. However, this is often reasonable, since physically speaking, the movement of the airfoil with respect to the free-stream flow is related to pitching moments (which cause an angular acceleration that translates to <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span> and normal forces (which cause the vertical acceleration <span class="math notranslate nohighlight">\(\ddot{h}\)</span>). The movements caused by <span class="math notranslate nohighlight">\(\ddot{h}\)</span> and <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span> are called plunging and pitching, respectively.</p>
+<p><img alt="unsteady_airfoil.png" src="attachment:unsteady_airfoil.png" /></p>
+<p>The studied airfoil has a half-chord length of <span class="math notranslate nohighlight">\(b\)</span> (i.e. the chord length is <span class="math notranslate nohighlight">\(c=2b\)</span>), and is subject to a free-stream flow with a velocity of <span class="math notranslate nohighlight">\(U_\infty\)</span>. It is able to pitch around an axis located at <span class="math notranslate nohighlight">\(a\)</span> semichords (i.e. fractions of <span class="math notranslate nohighlight">\(b\)</span>) downstream from the middle point of the airfoil, with <span class="math notranslate nohighlight">\(a=-1\)</span> and <span class="math notranslate nohighlight">\(a=1\)</span> being located at the leading and trailing edges, respectively.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Two additional aerodynamical coefficients are present — <span class="math notranslate nohighlight">\(C_1 = \pi\)</span> is the aerodynamic coefficient corresponding to added-mass effect contribution to usteady lift (<span class="math notranslate nohighlight">\(C_L^{AM}\)</span>), while <span class="math notranslate nohighlight">\(C_2 = 2\pi\)</span> is the quasi-static lift slope, i.e. <span class="math notranslate nohighlight">\(\partial C_L/\partial \alpha\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<span class="n">C_2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="approximating-the-theodorsen-function">
+<h3>Approximating the Theodorsen function<a class="headerlink" href="#approximating-the-theodorsen-function" title="Permalink to this headline">#</a></h3>
+<p>The full expression of the Theodorsen function is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+C(k) = \frac{H_1^{(2)}(k)}{H_1^{(2)}(k) + jH_0^{(2)}(k)}
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(H_\nu^{(2)}(k)\)</span> are Hankel functions, defined by an expression using Bessel functions, <span class="math notranslate nohighlight">\(H_\nu^{(2)}(k) - J_\nu + jY_\nu\)</span>. This formula cannot be expressed as a rational function of <span class="math notranslate nohighlight">\(k\)</span>, and consequently it cannot be represented by an LTI model with finite state. However, it is possible to approximate it with an LTI system, taking quasi-steady lift <span class="math notranslate nohighlight">\(C_L^{QS}\)</span> as input and outputting the circulatory lift <span class="math notranslate nohighlight">\(C_L^{circ}\)</span>. This topic is explored in [1]. The approximation obtained there has the form:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation} \dot{\tilde{x}} = \begin{bmatrix}
+-1.158 &amp; -0.3052 &amp; -0.02028 &amp; -2.325\cdot 10^{-4}\\
+1 &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 1 &amp; 0\\
+\end{bmatrix} \tilde{x} + \begin{bmatrix}1\\ 0\\ 0\\ 0 \end{bmatrix}\tilde{u} = \tilde{A}\tilde{x} + \tilde{B}\tilde{u}
+\end{equation}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation} \tilde{y} = \begin{bmatrix}
+0.124 &amp; 0.08667 &amp; 0.008805 &amp; 1.156\cdot 10^{-4}\\
+\end{bmatrix} \tilde{x} + \begin{bmatrix}0.5\end{bmatrix}\tilde{u} = \tilde{C}\tilde{x} + \tilde{D}\tilde{u}
+\end{equation}\end{split}\]</div>
+<p>The value of <span class="math notranslate nohighlight">\(\tilde{D}=0.5\)</span> indicates that half of the quasi-steady lift is reached instantly, while the other half is subject to attenuation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A_theod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">A_theod</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.158</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3052</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.02028</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.325e-4</span><span class="p">])</span>
+<span class="n">A_theod</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">B_theod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+<span class="n">C_theod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.124</span><span class="p">,</span> <span class="mf">0.08667</span><span class="p">,</span> <span class="mf">0.008805</span><span class="p">,</span> <span class="mf">1.156e-4</span><span class="p">])</span>
+<span class="n">D_theod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">sys_theod</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">ss</span><span class="p">(</span><span class="n">A_theod</span><span class="p">,</span> <span class="n">B_theod</span><span class="p">,</span> <span class="n">C_theod</span><span class="p">,</span> <span class="n">D_theod</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The system has a Bode plot consistent with the one in [1]:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">control</span><span class="o">.</span><span class="n">bode_plot</span><span class="p">(</span><span class="n">sys_theod</span><span class="p">,</span> <span class="n">omega_limits</span><span class="o">=</span><span class="p">[</span><span class="mf">1e-2</span><span class="p">,</span> <span class="mf">1e2</span><span class="p">],</span> <span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/State-space_Theodorsen_11_0.png" src="_images/State-space_Theodorsen_11_0.png" />
+</div>
+</div>
+<p>It can be noted that high input frequencies are damped strongly (-6dB), while low frequences are almost unchanged in mangnitude, just slightly shifted in phase, with medium frequencies mildly damped and strongly shifted in phase.</p>
+</section>
+<section id="the-full-lti-system">
+<h3>The full LTI system<a class="headerlink" href="#the-full-lti-system" title="Permalink to this headline">#</a></h3>
+<p>Since the Theodorsen function is the only part of the model that cannot be exactly modeled by a state-space representation, it is possible to construct one for the entire model using the state-space approximation of the Theodorsen function. <span class="math notranslate nohighlight">\(\tilde{A}\)</span>, <span class="math notranslate nohighlight">\(\tilde{B}\)</span>, <span class="math notranslate nohighlight">\(\tilde{C}\)</span>, <span class="math notranslate nohighlight">\(\tilde{D}\)</span>, provided above. The equations for this LTI system are as follows [1]:</p>
+<div class="math notranslate nohighlight">
+\[ \dot{x} = Ax + Bu\]</div>
+<p>where:
+$<span class="math notranslate nohighlight">\(x = \begin{bmatrix}\tilde{x} \\ \dot{h} \\ \alpha \\ \dot{\alpha}\end{bmatrix}\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}u = \begin{bmatrix}\ddot{h} \\ \ddot{\alpha}\end{bmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \begin{bmatrix}\tilde{A} &amp; \tilde{B}C_2 &amp; \tilde{B}C_2 &amp; \tilde{B}C_2(1-2a)/2\\
+0 &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 0 &amp; 1\\
+0 &amp; 0 &amp; 0 &amp; 0\\ \end{bmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}B = \begin{bmatrix}0 &amp; 0\\ 1 &amp; 0\\ 0 &amp; 0\\ 0 &amp; 1\end{bmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[C = \begin{bmatrix}\tilde{C} &amp; \tilde{D}C_2 &amp; \tilde{D}C_2 &amp; C_1 + &amp; \tilde{D}C_2(1-2a)/2\end{bmatrix}\]</div>
+<div class="math notranslate nohighlight">
+\[D = \begin{bmatrix}C_1 &amp; -C_1a\end{bmatrix}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dim_theodorsen</span> <span class="o">=</span> <span class="n">sys_theod</span><span class="o">.</span><span class="n">nstates</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dim_theodorsen</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="n">dim_theodorsen</span><span class="o">+</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">dim_theodorsen</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="n">dim_theodorsen</span><span class="p">]</span> <span class="o">=</span> <span class="n">A_theod</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">dim_theodorsen</span><span class="p">,</span><span class="n">dim_theodorsen</span><span class="p">]</span> <span class="o">=</span> <span class="n">B_theod</span><span class="o">*</span><span class="n">C_2</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">dim_theodorsen</span><span class="p">,</span><span class="n">dim_theodorsen</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">B_theod</span><span class="o">*</span><span class="n">C_2</span>    
+<span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">dim_theodorsen</span><span class="p">,</span><span class="n">dim_theodorsen</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">B_theod</span><span class="o">*</span><span class="n">C_2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">A</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dim_theodorsen</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">B</span><span class="p">[</span><span class="n">dim_theodorsen</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">B</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">C_theod</span><span class="p">,</span> <span class="n">D_theod</span><span class="o">*</span><span class="n">C_2</span><span class="p">,</span> <span class="n">D_theod</span><span class="o">*</span><span class="n">C_2</span><span class="p">,</span>
+               <span class="n">C_1</span> <span class="o">+</span> <span class="n">D_theod</span><span class="o">*</span><span class="n">C_2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">C_1</span><span class="p">,</span> <span class="o">-</span><span class="n">C_1</span><span class="o">*</span><span class="n">a</span><span class="p">])</span>
+
+<span class="n">sys</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">ss</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The system has the 4 states of the approximate Theodorsen function, <span class="math notranslate nohighlight">\(\tilde{x}\)</span> as well as 3 physically interpretable states: <span class="math notranslate nohighlight">\(\dot{h}\)</span>, <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\dot{\alpha}\)</span>. It is worth noting that this system is not fully controllable, since the effect of <span class="math notranslate nohighlight">\(\dot{h}\)</span> on the flow is de facto the same as the effect of <span class="math notranslate nohighlight">\(\dot{h}\)</span> (since plunging at a constant velocity corresponds to a change in apparent angle of attack). The system can be modified to replace both state by the effective angle of attack:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}\alpha_e = \alpha + \dot{h} \end{equation}\]</div>
+<p>However, in this example this modification is not performed.</p>
+<p>It is also possible to split the system into two single-output, single-input (SISO) systems, with <span class="math notranslate nohighlight">\(\ddot{h}\)</span> and <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span> as inputs, respectively:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys_h</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">ss</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sys_alpha</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">ss</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The Bode plots of both SISO system are also consistent with [1]:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">control</span><span class="o">.</span><span class="n">bode_plot</span><span class="p">(</span><span class="n">sys_h</span><span class="p">,</span> <span class="n">omega_limits</span><span class="o">=</span><span class="p">[</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e3</span><span class="p">],</span> <span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/State-space_Theodorsen_18_0.png" src="_images/State-space_Theodorsen_18_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">control</span><span class="o">.</span><span class="n">bode_plot</span><span class="p">(</span><span class="n">sys_alpha</span><span class="p">,</span> <span class="n">omega_limits</span><span class="o">=</span><span class="p">[</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e3</span><span class="p">],</span> <span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/State-space_Theodorsen_19_0.png" src="_images/State-space_Theodorsen_19_0.png" />
+</div>
+</div>
+<p>The same Bode plots in [1] look like the following (the second of the 2 Bode plots above corresponds to pitching with <span class="math notranslate nohighlight">\(x/c = 0.25\)</span>):</p>
+<p><img alt="Theodorsen_bode.png" src="attachment:Theodorsen_bode.png" /></p>
+<p>Note that they are not exactly the same, since our implementation of the Theodorsen model contains an approximation.</p>
+</section>
+</section>
+<section id="unsteady-lift-time-responses-generated-by-the-model">
+<h2>Unsteady lift time responses generated by the model<a class="headerlink" href="#unsteady-lift-time-responses-generated-by-the-model" title="Permalink to this headline">#</a></h2>
+<p>The Python Control Systems Library allows for easy computing of time responses of LTI systems.</p>
+<section id="impulse-in-ddot-h">
+<h3>Impulse in <span class="math notranslate nohighlight">\(\ddot{h}\)</span><a class="headerlink" href="#impulse-in-ddot-h" title="Permalink to this headline">#</a></h3>
+<p>The first example shall be the response to an <span class="math notranslate nohighlight">\(\ddot{h}\)</span> impulse, equivalent to a step change in angle of attack (as discussed before, a change of <span class="math notranslate nohighlight">\(\dot{h}\)</span> is equivalent to a change in effective angle of attack <span class="math notranslate nohighlight">\(\alpha_e\)</span>, therefore an impulse in <span class="math notranslate nohighlight">\(\ddot{h}\)</span>, corresponding to a step in <span class="math notranslate nohighlight">\(\dot{h}\)</span>, is equivalent to a step in <span class="math notranslate nohighlight">\(\alpha_e\)</span>). This is equivalent to the Wagner function, defined as the generalised step response to <span class="math notranslate nohighlight">\(\alpha_e\)</span> of the lift [1,2] (the only difference being the scaling factor of <span class="math notranslate nohighlight">\(C_2 = 2\pi\)</span>). The output is compared to an approximation of the Wagner function obtained by Venkatesan &amp; Friedman [1]:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">impulse_response</span><span class="p">(</span><span class="n">sys_h</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">t</span><span class="p">);</span>
+
+<span class="n">wagner</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.203</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.072</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+                     <span class="o">-</span><span class="mf">0.236</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.261</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.06</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;step response&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C_2</span><span class="o">*</span><span class="n">wagner</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Wagner function $</span><span class="se">\\</span><span class="s1">times 2\pi$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Time response&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$C_L$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">time</span><span class="p">,</span>
+             <span class="mi">100</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">T</span><span class="o">-</span><span class="n">C_2</span><span class="o">*</span><span class="n">wagner</span><span class="p">)</span><span class="o">/</span><span class="n">output</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">Delta C_L$ [%]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Relative error [%]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># disregard the warning, the system works correctly</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>E:\Programy\Anaconda\envs\rp_env\lib\site-packages\control\timeresp.py:1816: UserWarning: System has direct feedthrough: ``D != 0``. The infinite impulse at ``t=0`` does not appear in the output.
+Results may be meaningless!
+  warnings.warn(&quot;System has direct feedthrough: ``D != 0``. The &quot;
+</pre></div>
+</div>
+<img alt="_images/State-space_Theodorsen_22_1.png" src="_images/State-space_Theodorsen_22_1.png" />
+<img alt="_images/State-space_Theodorsen_22_2.png" src="_images/State-space_Theodorsen_22_2.png" />
+</div>
+</div>
+<p>While accurately approximating the Wagner function for different time scales is an active research topic, the simulation above indicates that the LTI Theodorsen model not only replicates a correct step response, but also does so with a quite small relative error (although note that it is being computed with respect to a different approximation, not the true Wagner function).</p>
+</section>
+<section id="sinusoidal-ddot-alpha-input">
+<h3>Sinusoidal <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span> input<a class="headerlink" href="#sinusoidal-ddot-alpha-input" title="Permalink to this headline">#</a></h3>
+<p>Since the Theodorsen model was derived with harmonic motion in mind, it is natural to see the response of the system to a harmonic input:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">amplitude</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">amplitude</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">omega</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">forced_response</span><span class="p">(</span><span class="n">sys_alpha</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">U</span><span class="o">=</span><span class="n">u</span><span class="p">);</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Time response&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$C_L$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/State-space_Theodorsen_26_0.png" src="_images/State-space_Theodorsen_26_0.png" />
+</div>
+</div>
+<p>This result may strike as non-physical, since such high values of lift are not attainable. However, it is not the model exhibiting non-physical behaviour; it is the input that is not realistic. Note that since the input is of the form:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} u(t) = \ddot{\alpha} = A \sin{(\omega t)} \end{equation}\]</div>
+<p>the angle of attack is given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} \alpha(t) = A  \int_0^t \int_0^T \sin{(\omega \tau)} d\tau dT = \frac{A}{\omega} \int_0^t \left[-\cos{(\omega \tau)} \right]^T_0 dT =\end{equation}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{equation} = \frac{A}{\omega} \int_0^t \left(-\cos{(\omega T)} + 1 \right) dT = \frac{A}{\omega} \left(-\int_0^t \cos{(\omega T)} dT + \int_0^t 1 dT \right) =\end{equation}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{equation} = \frac{A}{\omega} \left(-\frac{1}{\omega}\left[\sin{(\omega T)}\right]_0^t + t \right) = \frac{A}{\omega}t - \frac{A}{\omega^2}\sin{(\omega t)} \end{equation}\]</div>
+<p>It can be checked that <span class="math notranslate nohighlight">\(\alpha\)</span>, which is one of the states of the system, indeed evolves this way:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha_analytical</span> <span class="o">=</span> <span class="n">amplitude</span><span class="o">/</span><span class="n">omega</span><span class="o">*</span><span class="n">t</span> <span class="o">-</span> <span class="n">amplitude</span><span class="o">/</span><span class="n">omega</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">omega</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">alpha_analytical</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;analytical&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;simulation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Evolution of $</span><span class="se">\\</span><span class="s1">alpha$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">alpha$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/State-space_Theodorsen_28_0.png" src="_images/State-space_Theodorsen_28_0.png" />
+</div>
+</div>
+<p>What follows is that a realistic <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span> is one whose double integral is bounded by realistic values of <span class="math notranslate nohighlight">\(\alpha\)</span>. A simple way of obtaining this behaviour is changing the phase of the input by <span class="math notranslate nohighlight">\(\pi/2\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">amplitude</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">omega</span><span class="o">*</span><span class="n">t</span><span class="o">+</span><span class="n">phase</span><span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">forced_response</span><span class="p">(</span><span class="n">sys_alpha</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">U</span><span class="o">=</span><span class="n">u</span><span class="p">);</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Time response&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$C_L$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/State-space_Theodorsen_30_0.png" src="_images/State-space_Theodorsen_30_0.png" />
+</div>
+</div>
+<p>The response above is realistic. It can be noted that the unsteady lift is not a function of <span class="math notranslate nohighlight">\(\alpha\)</span>, but rather a hysteresis loop:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">output</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Phase portrait&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">alpha$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$C_L$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/State-space_Theodorsen_32_0.png" src="_images/State-space_Theodorsen_32_0.png" />
+</div>
+</div>
+<p>Another factor that shapes the reponse of the system is the initial state <span class="math notranslate nohighlight">\(x_0\)</span>. A correctly chosen <span class="math notranslate nohighlight">\(x_0\)</span> can also contribute to realistic behaviour of the system. However, this is currently not explored, and the initial values of the state are all assumed to be 0.</p>
+</section>
+<section id="multi-input-response-to-harmonic-ddot-alpha-and-square-ddot-h-waves">
+<h3>Multi-input response to harmonic <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span> and square <span class="math notranslate nohighlight">\(\ddot{h}\)</span> waves<a class="headerlink" href="#multi-input-response-to-harmonic-ddot-alpha-and-square-ddot-h-waves" title="Permalink to this headline">#</a></h3>
+<p>In this final example, it will be demonstrated that the LTI model can generate responses to both input signals (<span class="math notranslate nohighlight">\(\ddot{h}\)</span> and <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span>), and that arbitrary broadband input can be used as well. The previous sinusoidal pitching input will therefore be combined with a square plunging wave of a different frequency:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">phase</span> <span class="o">=</span> <span class="n">T</span><span class="o">/</span><span class="mi">4</span>
+<span class="n">amplitude</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">u_square</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">amplitude</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">((</span><span class="n">ti</span><span class="o">+</span><span class="n">phase</span><span class="p">)</span><span class="o">/</span><span class="n">T</span><span class="p">)</span> <span class="o">%</span>
+                   <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="n">amplitude</span> <span class="k">for</span> <span class="n">ti</span> <span class="ow">in</span> <span class="n">t</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">ddot{</span><span class="se">\\</span><span class="s1">alpha}$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u_square</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">ddot</span><span class="si">{h}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Input signals&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">output</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">forced_response</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">U</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">u_square</span><span class="p">,</span><span class="n">u</span><span class="p">)));</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Time response&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$C_L$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">alpha_e</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">+</span><span class="n">output</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">alpha_e</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Phase portrait&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">alpha_e$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$C_L$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/State-space_Theodorsen_36_0.png" src="_images/State-space_Theodorsen_36_0.png" />
+<img alt="_images/State-space_Theodorsen_36_1.png" src="_images/State-space_Theodorsen_36_1.png" />
+<img alt="_images/State-space_Theodorsen_36_2.png" src="_images/State-space_Theodorsen_36_2.png" />
+</div>
+</div>
+<p>Note that the square signal was chosen to have a periodic integral due to reasons analogous to the choise of phase of <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span>.</p>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>The proposed LTI approximation of the Theodorsen model is able to compute the unsteady lift response to arbitrary input, and does so with decent accuracy (for quantative data, see [1] where it was derived). The only “black box” element of the model is the LTI approximation of the Theodorsen function, which was computed in [1] using balanced truncation.</p>
+<p>The LTI state-space representation of the model offers many advantages, including simple and efficient simulation (due to the numerical properties of linear ODEs) and the possibility of applying system identification tools meant for linear systems. The model of the Theodorsen function can be easily swapped for another one (e.g. one with a smaller dimension).</p>
+<p>The code shown in this notebook is mainly demonstrative; a library for more intensive work with LTI Theodorsen approximations has already been prepared as well.</p>
+</section>
+<section id="bibliography">
+<h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">#</a></h2>
+<p>[1] S. L. Brunton and C. W. Rowley, ‘Empirical state-space representations for Theodorsen’s lift model’, Journal of Fluids and Structures, vol. 38, pp. 174–186, avril 2013, doi: 10.1016/j.jfluidstructs.2012.10.005.</p>
+<p>[2] D. A. Peters, ‘Two-dimensional incompressible unsteady airfoil theory—An overview’, Journal of Fluids and Structures, vol. 24, no. 3, pp. 295–312, Apr. 2008, doi: 10.1016/j.jfluidstructs.2007.09.001.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="02TheodorsenModel.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">The Theodorsen Model</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="03WagnerFunction.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The Wagner function</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Enrico Foglia, Maciej Michałów<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

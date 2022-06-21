@@ -11,7 +11,7 @@ The Theodorsen model is a classical frequency-domain model of unsteady lift, der
 
 1. It is a well established model, often used in research problems related to unsteady lift <span style="color: red;">citation</span>.
 2. It is formulated in a very physically meaningful way, with different terms directly related to specific flow phenomena.
-3. It can be used to generate reliable unsteady lift data for high Reynolds number flows.
+3. It can be used to generate reliable unsteady lift data for high Reynolds number flows much more efficiently that CFD simulations.
 4. It can be used as a test problem for the system identification methodology developed for the project.
 
 ## Formulation
@@ -39,7 +39,16 @@ Coordinate system used in the Von Kármán model {eq}`VonKarmanModel` (and also 
 
 In equation {eq}`VonKarmanModel` $\Gamma_0$ is the quasi-steady circulation, $\gamma_0(x)$ the vorticity distribution on the surface of the airfoil and $\gamma(\xi)$ the vorticity distribution of the wake.
 
-The Theodorsen model applies this framework to a thin airfoil of chord $c$ (and half-chord $b = c/2$) in a potential flow of free-stream velocity $U_\infty$ undergoing a pitching (change of angle of attack) and plunging (normal to t) motion. For purely sinusoidal motion with nondimensionalised frequency $k = \omega b / U_\infty$, the resulting lift can be formulated as <span style="color: red;">citation</span>:
+```{figure} images/unsteady_airfoil.png
+---
+width: 400px
+name: unsteady_airfoil
+---
+Visualisation of the basic elements of the unsteady airfoil problem.
+```
+
+The Theodorsen model applies this framework to a thin airfoil of chord $c$ (and half-chord $b = c/2$) in a potential flow of free-stream velocity $U_\infty$ undergoing a pitching (change of angle of attack) and plunging (normal to t) motion, as shown in {numref}`unsteady_airfoil`. For purely sinusoidal motion with nondimensionalised frequency $k = \omega b / U_\infty$, the resulting lift can be formulated as <span style="color: red;">citation</span>:
+
 :::{math}
 	C_L = C_1 \left(\ddot{h}+\dot{\alpha}-a\ddot{\alpha} \right) + C_2 \left(\alpha + \dot{h} + \dot{\alpha}\left(\frac{1}{2}-a \right) \right)C(k)
 :::
@@ -65,7 +74,29 @@ where $H_\nu^{(2)}(k)$ are Hankel functions, defined by an expression using Bess
 
 ## The model as a dynamical system
 
-The effect of the Theodorsen function on the vortical lift is of delay and scaling on changes in angle of attack. In particular, it is common to consider the vertical velocity $\dot h$ and $\alpha$ together as an effective angle of attack $\alpha_e$. 
+The Theodorsen model can be interpreted as a dynamical system, accepting $\ddot \alpha$ and $\ddot h$ as input and outputting $C_L$, with an internal state evolving in response to the input and itself. As explained before, 3 subsystems can be distinguished, as visualised in {numref}`Theodorsen_diagram`:
+
+1. The added-mass lift, accepting $\ddot \alpha$ and $\ddot h$ as input and outputting $C_L^{AM}$.
+2. The quasi-static lift, accepting $\ddot \alpha$ and $\ddot h$ as input and outputting $C_L^{QS}$.
+3. The Thedorsen function, accepting $C_L^{QS}$ as input and outputting the attenuated circulatory lift $C_L^{circ}$.
+
+```{figure} images/Theodorsen_diagram.png
+---
+width: 500px
+name: Theodorsen_diagram
+---
+Diagram of the subsystems of the dynamical system defined by the Theodorsen model.
+```
+
+The input was defined using the second derivatives of $\alpha$ and $h$, because a dynamical system that need to internally differentiate its input has undesireable properties, both analytically and numerically. The choice of second derivatives is also often useful in practical applications, since physically speaking, the movement of the airfoil with respect to the free-stream flow is related to pitching moments (which cause an angular acceleration that translates to $\ddot{\alpha}$) and normal forces (which cause the vertical acceleration $\ddot{h}$).
+
+```{figure} images/Theodorsen_bode.png
+---
+width: 600px
+name: Theodorsen_bode
+---
+Bode plot of the Theodorsen model wit respect to both $\ddot h$ and $\ddot \alpha$ inputs, the latter depending also on the pitching center location (copied from {cite}`brunton2013empirical`).
+```
 
 ## Summary
 
