@@ -50,8 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -187,7 +187,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="08TheodorsenCLState.html">
-   Theodorsen model replication with lift as a state
+   Identification of the Theodorsen model by treating
+   <span class="math notranslate nohighlight">
+    \(C_L\)
+   </span>
+   as a state
   </a>
  </li>
 </ul>
@@ -473,7 +477,7 @@ title="Print to PDF"
 <h1>Identify the Theodorsen unsteady lift<a class="headerlink" href="#identify-the-theodorsen-unsteady-lift" title="Permalink to this headline">#</a></h1>
 <section id="data-generation">
 <h2>Data generation<a class="headerlink" href="#data-generation" title="Permalink to this headline">#</a></h2>
-<p>As for the previous case the data is generated through a python script. Since the objective is to identify the Theodorsen function through its input-output response the classical model for a monochromatic oscillation cannot be used, since a wide spectrum input has to be prefered. The data-generation code uses then a linear approximation of the Theodorsen function obtained by balanced truncation in <span id="id1">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>.</p>
+<p>As for the previous case the data is generated through a python script. Since the objective is to identify the Theodorsen function through its input-output response the classical model for a monochromatic oscillation cannot be used, since a wide spectrum input has to be prefered. The data-generation code uses then a linear approximation of the Theodorsen function obtained by balanced truncation in <span id="id1">[<a class="reference internal" href="bibliography.html#id14" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>.</p>
 <p><span style="color: red;">Here you might fill in with a very short overview of your code. If you want we might add a more complete explanation in an appendix, but I’d leave this part quite lean.</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -585,7 +589,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(alpha_e)&#39; = -660.352 1 + 59162.207 alpha_e + 48045.584 alpha_dot + -1962491.461 alpha_e^2 + -3113917.876 alpha_e alpha_dot + -1689038.225 alpha_dot^2 + 28561846.844 alpha_e^3 + 66266555.475 alpha_e^2 alpha_dot + 74037652.992 alpha_e alpha_dot^2 + 39147322.934 alpha_dot^3 + -153896536.143 alpha_e^4 + -463194810.577 alpha_e^3 alpha_dot + -806273611.871 alpha_e^2 alpha_dot^2 + -925999968.654 alpha_e alpha_dot^3 + -428478705.107 alpha_dot^4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(alpha_e)&#39; = -46.939 1 + 6087.006 alpha_e + 8104.365 alpha_dot + -282134.969 alpha_e^2 + -726908.877 alpha_e alpha_dot + -491338.856 alpha_dot^2 + 5520952.494 alpha_e^3 + 21169993.492 alpha_e^2 alpha_dot + 26936307.644 alpha_e alpha_dot^2 + 12996169.257 alpha_dot^3 + -38662562.218 alpha_e^4 + -200244152.607 alpha_e^3 alpha_dot + -347489180.380 alpha_e^2 alpha_dot^2 + -330210721.712 alpha_e alpha_dot^3 + -136246454.438 alpha_dot^4
 </pre></div>
 </div>
 </div>
@@ -644,11 +648,11 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------- Orthogonal  model --------
 
-(alpha_e)&#39; = -11.612 f0() + 15.258 f1(alpha_e,alpha_dot) + -2.218 f2(alpha_e,alpha_dot) + -13.123 f3(alpha_e,alpha_dot) + -17.947 f4(alpha_e,alpha_dot) + -11.677 f5(alpha_e,alpha_dot) + 5.910 f6(alpha_e,alpha_dot) + 6.284 f7(alpha_e,alpha_dot) + -2.816 f8(alpha_e,alpha_dot) + 2.228 f9(alpha_e,alpha_dot) + -1.446 f10(alpha_e,alpha_dot) + -4.201 f11(alpha_e,alpha_dot) + -5.469 f12(alpha_e,alpha_dot) + -3.550 f13(alpha_e,alpha_dot) + -1.997 f14(alpha_e,alpha_dot)
+(alpha_e)&#39; = -1.618 f0() + -0.439 f1(alpha_e,alpha_dot) + 0.880 f2(alpha_e,alpha_dot) + -2.724 f3(alpha_e,alpha_dot) + -4.088 f4(alpha_e,alpha_dot) + -2.935 f5(alpha_e,alpha_dot) + -0.522 f6(alpha_e,alpha_dot) + -1.378 f7(alpha_e,alpha_dot) + 0.116 f8(alpha_e,alpha_dot) + -0.986 f9(alpha_e,alpha_dot) + -0.779 f10(alpha_e,alpha_dot) + -2.274 f11(alpha_e,alpha_dot) + -2.708 f12(alpha_e,alpha_dot) + -1.743 f13(alpha_e,alpha_dot) + -0.413 f14(alpha_e,alpha_dot)
 
 -------- Orthonormal model --------
 
-(alpha_e)&#39; = -11.612 f0() + 15.258 f1(alpha_e,alpha_dot) + -2.218 f2(alpha_e,alpha_dot) + -13.123 f3(alpha_e,alpha_dot) + -17.947 f4(alpha_e,alpha_dot) + -11.677 f5(alpha_e,alpha_dot) + 5.910 f6(alpha_e,alpha_dot) + 6.284 f7(alpha_e,alpha_dot) + -2.816 f8(alpha_e,alpha_dot) + 2.228 f9(alpha_e,alpha_dot) + -1.446 f10(alpha_e,alpha_dot) + -4.201 f11(alpha_e,alpha_dot) + -5.469 f12(alpha_e,alpha_dot) + -3.550 f13(alpha_e,alpha_dot) + -1.997 f14(alpha_e,alpha_dot)
+(alpha_e)&#39; = -1.618 f0() + -0.439 f1(alpha_e,alpha_dot) + 0.880 f2(alpha_e,alpha_dot) + -2.724 f3(alpha_e,alpha_dot) + -4.088 f4(alpha_e,alpha_dot) + -2.935 f5(alpha_e,alpha_dot) + -0.522 f6(alpha_e,alpha_dot) + -1.378 f7(alpha_e,alpha_dot) + 0.116 f8(alpha_e,alpha_dot) + -0.986 f9(alpha_e,alpha_dot) + -0.779 f10(alpha_e,alpha_dot) + -2.274 f11(alpha_e,alpha_dot) + -2.708 f12(alpha_e,alpha_dot) + -1.743 f13(alpha_e,alpha_dot) + -0.413 f14(alpha_e,alpha_dot)
 </pre></div>
 </div>
 </div>

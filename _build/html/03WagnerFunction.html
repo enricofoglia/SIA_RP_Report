@@ -50,12 +50,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="System identification algorithms" href="04Identification.html" />
-    <link rel="prev" title="The Theodorsen Model" href="02TheodorsenModel.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -189,7 +188,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="08TheodorsenCLState.html">
-   Theodorsen model replication with lift as a state
+   Identification of the Theodorsen model by treating
+   <span class="math notranslate nohighlight">
+    \(C_L\)
+   </span>
+   as a state
   </a>
  </li>
 </ul>
@@ -397,7 +400,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="the-wagner-function">
 <h1>The Wagner function<a class="headerlink" href="#the-wagner-function" title="Permalink to this headline">#</a></h1>
-<p>The Wagner function can be seen as the time domain representation of the Theodorsen function. In particular it can be defined as the time-response of an airfoil undergoing a sudden change in angle of attack for time <span class="math notranslate nohighlight">\(t=0\)</span>, i.e. the step response of the system to a change in <span class="math notranslate nohighlight">\(\alpha_e\)</span> <span id="id1">[<a class="reference internal" href="bibliography.html#id26" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span>.</p>
+<p>The Wagner function can be seen as the time domain representation of the Theodorsen function. In particular it can be defined as the time-response of an airfoil undergoing a sudden change in angle of attack for time <span class="math notranslate nohighlight">\(t=0\)</span>, i.e. the step response of the system to a change in <span class="math notranslate nohighlight">\(\alpha_e\)</span> <span id="id1">[<a class="reference internal" href="bibliography.html#id28" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span>.</p>
 <p>Calling <span class="math notranslate nohighlight">\(\phi(t)\)</span> the Wagner function, the analytical computation can be carried out as:</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}
@@ -410,7 +413,7 @@ title="Print to PDF"
   &amp;=&amp; 1 + \frac{2}{\pi}\int_0^\infty \frac{1}{k}G_2(k)\cos(kt)dk\label{eqn:int_large_t} 
 \end{eqnarray}\end{split}\]</div>
 <p>The first equation has better numerical properties when integrated for small time steps, while the second is more stable for large ones.</p>
-<p>The computation of the Wagner function in this fashion is rather cumbersome, as it requires to integrate numerically the Theodorsen function. In particular for large times the trigonometric terms in the above equations make the integrals slowly convergent and require a very fine discretization of the domain, making the computational time quite elevated. As a first step in our project we ahave then decided to test the selected system identification algorithm, presented in <span style="color: red;">section</span>, to reproduce the Wagner function, in an attempt to replicate the study conducted in <span id="id3">[<a class="reference internal" href="bibliography.html#id26" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span> and gain confidence with the numerical methods involved. The results are presented in <span style="color: red;">section</span>.</p>
+<p>The computation of the Wagner function in this fashion is rather cumbersome, as it requires to integrate numerically the Theodorsen function. In particular for large times the trigonometric terms in the above equations make the integrals slowly convergent and require a very fine discretization of the domain, making the computational time quite elevated. As a first step in our project we ahave then decided to test the selected system identification algorithm, presented in <span style="color: red;">section</span>, to reproduce the Wagner function, in an attempt to replicate the study conducted in <span id="id3">[<a class="reference internal" href="bibliography.html#id28" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span> and gain confidence with the numerical methods involved. The results are presented in <span style="color: red;">section</span>.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -440,13 +443,6 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="02TheodorsenModel.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">The Theodorsen Model</p>
-        </div>
-    </a>
     <a class='right-next' id="next-link" href="04Identification.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>

@@ -50,14 +50,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-<<<<<<< HEAD
-=======
-    <link rel="next" title="The Wagner function" href="03WagnerFunction.html" />
->>>>>>> 150efce15b05efb4389a897f87f333d367cb1194
     <link rel="prev" title="Introduction" href="01Introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -192,7 +188,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="08TheodorsenCLState.html">
-   Theodorsen model replication with lift as a state
+   Identification of the Theodorsen model by treating
+   <span class="math notranslate nohighlight">
+    \(C_L\)
+   </span>
+   as a state
   </a>
  </li>
 </ul>
@@ -489,11 +489,7 @@ title="Print to PDF"
 <p><span class="caption-number">Fig. 2 </span><span class="caption-text">Visualisation of the basic elements of the unsteady airfoil problem.</span><a class="headerlink" href="#unsteady-airfoil" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The Theodorsen model applies this framework to a thin airfoil of chord <span class="math notranslate nohighlight">\(c\)</span> (and half-chord <span class="math notranslate nohighlight">\(b = c/2\)</span>) in a potential flow of free-stream velocity <span class="math notranslate nohighlight">\(U_\infty\)</span> undergoing a pitching (change of angle of attack) and plunging (normal to t) motion, as shown in <a class="reference internal" href="#unsteady-airfoil"><span class="std std-numref">Fig. 2</span></a>. The lift can be nondimensionalised using the notion of the lift coefficient:</p>
-<div class="math notranslate nohighlight">
-\[	C_L = \frac{2 L}{\rho U_\infty^2 c}\]</div>
-<p>Note that in the Von Kármán framework, the lift is expressed with respect to unit span (since the model is 2D), therefore the lift is divided only by the chord <span class="math notranslate nohighlight">\(c\)</span> instead of the reference area.</p>
-<p>For purely sinusoidal motion with nondimensionalised frequency <span class="math notranslate nohighlight">\(k = \omega b / U_\infty\)</span>, the resulting lift can be formulated as <span style="color: red;">citation</span>:</p>
+<p>The Theodorsen model applies this framework to a thin airfoil of chord <span class="math notranslate nohighlight">\(c\)</span> (and half-chord <span class="math notranslate nohighlight">\(b = c/2\)</span>) in a potential flow of free-stream velocity <span class="math notranslate nohighlight">\(U_\infty\)</span> undergoing a pitching (change of angle of attack) and plunging (normal to t) motion, as shown in <a class="reference internal" href="#unsteady-airfoil"><span class="std std-numref">Fig. 2</span></a>. For purely sinusoidal motion with nondimensionalised frequency <span class="math notranslate nohighlight">\(k = \omega b / U_\infty\)</span>, the resulting lift can be formulated as <span style="color: red;">citation</span>:</p>
 <div class="math notranslate nohighlight">
 \[	C_L = C_1 \left(\ddot{h}+\dot{\alpha}-a\ddot{\alpha} \right) + C_2 \left(\alpha + \dot{h} + \dot{\alpha}\left(\frac{1}{2}-a \right) \right)C(k)\]</div>
 <p>where:</p>
@@ -524,20 +520,20 @@ title="Print to PDF"
 <figure class="align-default" id="theodorsen-diagram">
 <a class="reference internal image-reference" href="_images/Theodorsen_diagram.png"><img alt="_images/Theodorsen_diagram.png" src="_images/Theodorsen_diagram.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Diagram of the subsystems of the dynamical system defined by the Theodorsen model (modified from <span id="id2">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>).</span><a class="headerlink" href="#theodorsen-diagram" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Diagram of the subsystems of the dynamical system defined by the Theodorsen model (modified from <span id="id2">[<a class="reference internal" href="bibliography.html#id14" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>).</span><a class="headerlink" href="#theodorsen-diagram" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The input was defined using the second derivatives of <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(h\)</span>, because a dynamical system that need to internally differentiate its input has undesireable properties, both analytically and numerically. The choice of second derivatives is also often useful in practical applications, since physically speaking, the movement of the airfoil with respect to the free-stream flow is related to pitching moments (which cause an angular acceleration that translates to <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span>) and normal forces (which cause the vertical acceleration <span class="math notranslate nohighlight">\(\ddot{h}\)</span>).</p>
 <figure class="align-default" id="theodorsen-bode">
 <a class="reference internal image-reference" href="_images/Theodorsen_bode.png"><img alt="_images/Theodorsen_bode.png" src="_images/Theodorsen_bode.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Bode plot of the Theodorsen model wit respect to both <span class="math notranslate nohighlight">\(\ddot h\)</span> and <span class="math notranslate nohighlight">\(\ddot \alpha\)</span> inputs, the latter depending also on the pitching center location (copied from <span id="id3">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>).</span><a class="headerlink" href="#theodorsen-bode" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Bode plot of the Theodorsen model wit respect to both <span class="math notranslate nohighlight">\(\ddot h\)</span> and <span class="math notranslate nohighlight">\(\ddot \alpha\)</span> inputs, the latter depending also on the pitching center location (copied from <span id="id3">[<a class="reference internal" href="bibliography.html#id14" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>).</span><a class="headerlink" href="#theodorsen-bode" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
-<p>As linear approximations of the Theodorsen function in the time domain already exist in literature <span id="id4">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>, we have
+<p>As linear approximations of the Theodorsen function in the time domain already exist in literature <span id="id4">[<a class="reference internal" href="bibliography.html#id14" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>, we have
 decided to use them as a first approach to generate the data necessary for the system identification. Such representation allow to construct a linear Multi-Input-Single-Output system (MISO), which has been implemented in a python script presented in <span style="color: red;">section</span>. That data has then been used to extract a first data-driven approximation of the <span class="math notranslate nohighlight">\(C(k)\)</span> function in <span style="color: red;">section</span> using the algorithm presented in <span style="color: red;">section</span>.</p>
 </section>
 </section>
@@ -576,16 +572,6 @@ decided to use them as a first approach to generate the data necessary for the s
             <p class="prev-next-title">Introduction</p>
         </div>
     </a>
-<<<<<<< HEAD
-=======
-    <a class='right-next' id="next-link" href="03WagnerFunction.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The Wagner function</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
->>>>>>> 150efce15b05efb4389a897f87f333d367cb1194
 </div>
             </footer>
         </div>

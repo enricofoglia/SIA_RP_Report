@@ -50,8 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="The code" href="07PC_code.html" />
@@ -189,7 +189,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="08TheodorsenCLState.html">
-   Theodorsen model replication with lift as a state
+   Identification of the Theodorsen model by treating
+   <span class="math notranslate nohighlight">
+    \(C_L\)
+   </span>
+   as a state
   </a>
  </li>
 </ul>
@@ -469,7 +473,7 @@ title="Print to PDF"
 </section>
 <section id="how-to-compute-the-coefficients">
 <h2>How to compute the coefficients<a class="headerlink" href="#how-to-compute-the-coefficients" title="Permalink to this headline">#</a></h2>
-<p>Following <span id="id2">[<a class="reference internal" href="bibliography.html#id10" title="Sergey Oladyshkin and Wolfgang Nowak. Data-driven uncertainty quantification using the arbitrary polynomial chaos expansion. Reliability Engineering &amp; System Safety, 106:179–190, 2012.">ON12</a>]</span> it can be noted that the way the conditions are set for the constructions of the polynomials leads to a way of determining them all in one time as the solution of a linear system of equations.</p>
+<p>Following <span id="id2">[<a class="reference internal" href="bibliography.html#id11" title="Sergey Oladyshkin and Wolfgang Nowak. Data-driven uncertainty quantification using the arbitrary polynomial chaos expansion. Reliability Engineering &amp; System Safety, 106:179–190, 2012.">ON12</a>]</span> it can be noted that the way the conditions are set for the constructions of the polynomials leads to a way of determining them all in one time as the solution of a linear system of equations.</p>
 <p>The conditions to uniquely determine a polynomial are:</p>
 <ul class="simple">
 <li><p>The leading term must be 1.</p></li>
@@ -539,7 +543,7 @@ The condition of orthogonality, defined as:</p>
 <div class="math notranslate nohighlight" id="equation-norm-polynomial">
 <span class="eqno">(6)<a class="headerlink" href="#equation-norm-polynomial" title="Permalink to this equation">#</a></span>\[\| \pi_i\|_ w^2 = \int_{\mathcal{X}} \pi_i^2(x)w(x)dx \]</div>
 <p>Thus, from <a class="reference internal" href="#equation-norm-polynomial">(6)</a>, for calculating the norm of <span class="math notranslate nohighlight">\(\pi_i\)</span> it is necessary to know the moments up to <span class="math notranslate nohighlight">\(\mu_{2i}\)</span>. Thus in the orthonormal expansion of degree <span class="math notranslate nohighlight">\(d\)</span> we need to compute the moments up to <span class="math notranslate nohighlight">\(\mu_{2d}\)</span></p>
-<p>A comment is due to the invertibility of the matrix of the moments. As stated in <span id="id3">[<a class="reference internal" href="bibliography.html#id10" title="Sergey Oladyshkin and Wolfgang Nowak. Data-driven uncertainty quantification using the arbitrary polynomial chaos expansion. Reliability Engineering &amp; System Safety, 106:179–190, 2012.">ON12</a>]</span> if <span class="math notranslate nohighlight">\(\mbox{rank}(M) = k\)</span> then <span class="math notranslate nohighlight">\(\mbox{det}(M) = 0\)</span> if and only if the cardinality of <span class="math notranslate nohighlight">\(\mathcal X\)</span> is <span class="math notranslate nohighlight">\(\leq k\)</span>. This, as it will be shown in <span style="color: red;">section</span>, limits the form that the input to the system may take, but assures that the numerical method can be carried out without problems if this condition is respected, which is the case for most real case scenarios.</p>
+<p>A comment is due to the invertibility of the matrix of the moments. As stated in <span id="id3">[<a class="reference internal" href="bibliography.html#id11" title="Sergey Oladyshkin and Wolfgang Nowak. Data-driven uncertainty quantification using the arbitrary polynomial chaos expansion. Reliability Engineering &amp; System Safety, 106:179–190, 2012.">ON12</a>]</span> if <span class="math notranslate nohighlight">\(\mbox{rank}(M) = k\)</span> then <span class="math notranslate nohighlight">\(\mbox{det}(M) = 0\)</span> if and only if the cardinality of <span class="math notranslate nohighlight">\(\mathcal X\)</span> is <span class="math notranslate nohighlight">\(\leq k\)</span>. This, as it will be shown in <span style="color: red;">section</span>, limits the form that the input to the system may take, but assures that the numerical method can be carried out without problems if this condition is respected, which is the case for most real case scenarios.</p>
 </section>
 <section id="multivariate-polynomial-chaos">
 <h2>Multivariate Polynomial Chaos<a class="headerlink" href="#multivariate-polynomial-chaos" title="Permalink to this headline">#</a></h2>
