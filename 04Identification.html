@@ -519,19 +519,25 @@ title="Print to PDF"
 </section>
 <section id="input-signals">
 <h2>Input signals<a class="headerlink" href="#input-signals" title="Permalink to this headline">#</a></h2>
-<p>For an accurate identification of a dynamic model, the training data should contain input signals with a wide frequency spectrum, to make sure that all of the system dynamics are present in the data. It is also useful to have signals representing a typical physical scenario, to verify whether the identified model behaves in an intuitive way. The following points described input signals which have been identified as useful for the identification of the Theodorsen model (and, by extension, the low Reynolds number models to be developed later).</p>
+<p>For an accurate identification of a dynamic model, the training data should contain input signals with a wide frequency spectrum, to make sure that all of the system dynamics are present in the data. It is also useful to have signals representing a typical physical scenario, to verify whether the identified model behaves in an intuitive way. The following points described input signals which have been found useful for the identification of the Theodorsen model (and, by extension, the low Reynolds number models to be developed later).</p>
 <section id="square-wave">
 <h3>Square wave<a class="headerlink" href="#square-wave" title="Permalink to this headline">#</a></h3>
-<p>A square wave signal periodically switches between a high and low state with a given half-period <span class="math notranslate nohighlight">\(T\)</span>. Its spectrum has significant peaks at the harmonics of its principal frequency. However, it is a quite useful signal because of its simplicity, enabling to observe the system’s response to steps and periodicity in the inputs at the same time.</p>
+<p>A square wave signal periodically switches between a high and low state with a given half-period <span class="math notranslate nohighlight">\(T\)</span>. Its spectrum has significant peaks at the harmonics of its principal frequency, given by the equation <span class="math notranslate nohighlight">\(f_n = 1/2T + n/T [Hz], n=0,1,2,...\)</span>. However, it is a quite useful signal because of its simplicity, enabling to observe the system’s response to steps and periodicity in the inputs at the same time.</p>
 <figure class="align-default" id="signal-square-wave">
 <a class="reference internal image-reference" href="_images/signal_square_wave.png"><img alt="_images/signal_square_wave.png" src="_images/signal_square_wave.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Square wave signal with half-period <span class="math notranslate nohighlight">\(T=1\)</span> and amplitude of 1. The spectrum has very pronounced peaks at frequencies <span class="math notranslate nohighlight">\(f_n = 1/2T + i/T\)</span> [Hz].</span><a class="headerlink" href="#signal-square-wave" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Square wave signal with half-period <span class="math notranslate nohighlight">\(T=1\)</span> and amplitude of 1. The spectrum has very pronounced peaks at frequencies <span class="math notranslate nohighlight">\(f_n = 1/2T + n/T [Hz], n=0,1,2,...\)</span>.</span><a class="headerlink" href="#signal-square-wave" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="chirp">
 <h3>Chirp<a class="headerlink" href="#chirp" title="Permalink to this headline">#</a></h3>
+<p>A linear chirp is a sine wave whose frequency changes linearly with time from an initial value <span class="math notranslate nohighlight">\(\omega_0\)</span> to a final <span class="math notranslate nohighlight">\(\omega_f\)</span> over a time <span class="math notranslate nohighlight">\(T\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[	\omega(t) = \frac{\omega_f - \omega_0}{T}\]</div>
+<div class="math notranslate nohighlight">
+\[	u(t) = A \cdot \sin{(\omega(t) + \phi)}\]</div>
+<p>This structures ensures that every frequency in the range <span class="math notranslate nohighlight">\(f \in (\omega_f/2\pi, \omega_0/2\pi) [Hz]\)</span> is excited in a uniform way, as shown in <a class="reference internal" href="#signal-chirp"><span class="std std-numref">Fig. 3</span></a>. Another advantage of the signal is its continuity and smoothness.</p>
 <figure class="align-default" id="signal-chirp">
 <a class="reference internal image-reference" href="_images/signal_chirp.png"><img alt="_images/signal_chirp.png" src="_images/signal_chirp.png" style="width: 600px;" /></a>
 <figcaption>
@@ -541,25 +547,28 @@ title="Print to PDF"
 </section>
 <section id="pseudo-random-binary-signal-prbs">
 <h3>Pseudo-Random Binary Signal (PRBS)<a class="headerlink" href="#pseudo-random-binary-signal-prbs" title="Permalink to this headline">#</a></h3>
+<p>A pseudo-random binary signal (PRBS) works like a state wave, swithing between a high and low state, except that the switching is random in nature. In the present implementation, after every base time step <span class="math notranslate nohighlight">\(\Delta t\)</span> (higher or equal to the sampling step), the signal switches states with a probability of 0.5 based on a pseudo-random binary sequence generated by a linear-feedback shift register (LFSR). The randomness of the swithching behaviour ensures a broad spectrum without significant peaks, up to the frequency related to the base time step <span class="math notranslate nohighlight">\(\Delta t\)</span>, when the spectrum starts to diminish. The singal and its spectrum is visualised in <a class="reference internal" href="#signal-prbs"><span class="std std-numref">Fig. 4</span></a></p>
 <figure class="align-default" id="signal-prbs">
 <a class="reference internal image-reference" href="_images/signal_prbs.png"><img alt="_images/signal_prbs.png" src="_images/signal_prbs.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Pseudo-random binary signal with a base time step of 0.2. Note that the spectrum begins diminishing around the maximum switching frequency <span class="math notranslate nohighlight">\(1/0.2=5 [Hz]\)</span>.</span><a class="headerlink" href="#signal-prbs" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Pseudo-random binary signal with a base time step of <span class="math notranslate nohighlight">\(\Delta t = 0.2\)</span>. Note that the spectrum begins diminishing around the maximum switching frequency <span class="math notranslate nohighlight">\(f=1/\Delta t [Hz]\)</span>. The signal can have better spectral properties for lower base steps <span class="math notranslate nohighlight">\(\Delta t\)</span>, but this would make this visualisation less clear.</span><a class="headerlink" href="#signal-prbs" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="white-noise">
 <h3>White noise<a class="headerlink" href="#white-noise" title="Permalink to this headline">#</a></h3>
+<p>White noise, by definition, has a flat spectrum, and therefore constitutes a very useful signal for system identification. For the project, it has been generated by sampling a normal distribution of a given mean and standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
 <figure class="align-default" id="signal-white">
 <a class="reference internal image-reference" href="_images/signal_white.png"><img alt="_images/signal_white.png" src="_images/signal_white.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">White noise with a mean of 0 and standard deviation of 1, sampled in <span class="math notranslate nohighlight">\(N=4000\)</span> uniform points.</span><a class="headerlink" href="#signal-white" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">White noise with a mean of 0 and standard deviation of 1, sampled in <span class="math notranslate nohighlight">\(N=4000\)</span> uniform points over a timespan of <span class="math notranslate nohighlight">\(20 [s]\)</span>.</span><a class="headerlink" href="#signal-white" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Since the only limit to the frequency content is the sampling time, the signal can exhibit very erratic behaviour. If this poses a problem to the identification method or simulation model, the frequency can be removed by a moving average filtration. Given an integer averaging radius <span class="math notranslate nohighlight">\(n\)</span>, every point of the signal is transformed into the average of itself and its <span class="math notranslate nohighlight">\(n\)</span> neighbours from both sides, therefore limiting the frequency content above the frequency <span class="math notranslate nohighlight">\(f = 1/(2 n \Delta t)\)</span>.</p>
 <figure class="align-default" id="signal-white-averaged">
 <a class="reference internal image-reference" href="_images/signal_white_averaged.png"><img alt="_images/signal_white_averaged.png" src="_images/signal_white_averaged.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">White noise with a mean of 0 and standard deviation of 1, sampled every <span class="math notranslate nohighlight">\(\Delta t = 0.005 [s]\)</span> and filtered by a moving average of radius <span class="math notranslate nohighlight">\(n=5\)</span>. Note that The spectrum begins diminishing at the frequency <span class="math notranslate nohighlight">\(f = 1/(2 n \Delta t)\)</span></span><a class="headerlink" href="#signal-white-averaged" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">White noise with a mean of 0 and standard deviation of 1, sampled every <span class="math notranslate nohighlight">\(\Delta t = 0.005 [s]\)</span> and filtered by a moving average of radius <span class="math notranslate nohighlight">\(n=5\)</span>. Note that The spectrum begins diminishing at the frequency <span class="math notranslate nohighlight">\(f = 1/(2 n \Delta t)\)</span>.</span><a class="headerlink" href="#signal-white-averaged" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
