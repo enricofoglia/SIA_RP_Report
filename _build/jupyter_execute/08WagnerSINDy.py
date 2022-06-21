@@ -12,12 +12,12 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 # ## Data generation
 # 
 # As a first step we generate data for the analytical form of the Wagner function. As seen in <span style="color: red;">section</span> this can be done by integrating the Theodorsen function in two different ways, depending on the time step we want to compute:
-# $$
+# ```{math}
 # \begin{eqnarray}
 #   \phi(t) &=& \frac{1}{2} + \frac{2}{\pi}\int_0^\infty \frac{1}{k}\left(G_1(k) - \frac{1}{2}\right)\sin(kt)dk \\
 #   &=& 1 + \frac{2}{\pi}\int_0^\infty \frac{1}{k}G_2(k)\cos(kt)dk\label{eqn:int_large_t} 
 # \end{eqnarray}
-# $$
+# ```
 # 
 # Where $G_1$ and $G_2$ are the real and imaginary part of the Thodorsen function. 
 
@@ -158,9 +158,9 @@ x = np.array([x]).T
 
 
 # The fact that generating a clean dataset is so time consuming is a statement to the need of a precise but easily computed model for the Wagner function. As stated in {cite}`dawson2022improved`, this can be done by fitting a simple nonlinear ODE in the polynomial form:
-# $$
+# ```{math}
 # \dot L(t) = \sum_{i=0}^r\xi_iL^i(t)
-# $$
+# ```
 # 
 # where $\xi_r$ is the coefficient of the term of order $r$. Once this type of model is correctly identified it can be simulated forward in time as much as needed, or used as part of a closed or open loop controller. In order to do so we have tried to replicate the results proposed in {cite}`dawson2022improved` for $r = 1,\dots,8$ 
 
