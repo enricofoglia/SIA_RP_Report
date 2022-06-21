@@ -50,11 +50,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Theodorsen model replication with lift as a state" href="08TheodorsenCLState.html" />
+    <link rel="next" title="Identification of the Theodorsen model by treating \(C_L\) as a state" href="08TheodorsenCLState.html" />
     <link rel="prev" title="The code" href="07PC_code.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -189,7 +189,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="08TheodorsenCLState.html">
-   Theodorsen model replication with lift as a state
+   Identification of the Theodorsen model by treating
+   <span class="math notranslate nohighlight">
+    \(C_L\)
+   </span>
+   as a state
   </a>
  </li>
 </ul>
@@ -619,10 +623,10 @@ title="Print to PDF"
 <img alt="_images/08WagnerSINDy_4_1.png" src="_images/08WagnerSINDy_4_1.png" />
 </div>
 </div>
-<p>The fact that generating a clean dataset is so time consuming is a statement to the need of a precise but easily computed model for the Wagner function. As stated in <span id="id1">[<a class="reference internal" href="bibliography.html#id26" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span>, this can be done by fitting a simple nonlinear ODE in the polynomial form:</p>
+<p>The fact that generating a clean dataset is so time consuming is a statement to the need of a precise but easily computed model for the Wagner function. As stated in <span id="id1">[<a class="reference internal" href="bibliography.html#id28" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span>, this can be done by fitting a simple nonlinear ODE in the polynomial form:</p>
 <div class="math notranslate nohighlight">
 \[\dot L(t) = \sum_{i=0}^r\xi_iL^i(t)\]</div>
-<p>where <span class="math notranslate nohighlight">\(\xi_r\)</span> is the coefficient of the term of order <span class="math notranslate nohighlight">\(r\)</span>. Once this type of model is correctly identified it can be simulated forward in time as much as needed, or used as part of a closed or open loop controller. In order to do so we have tried to replicate the results proposed in <span id="id2">[<a class="reference internal" href="bibliography.html#id26" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span> for <span class="math notranslate nohighlight">\(r = 1,\dots,8\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(\xi_r\)</span> is the coefficient of the term of order <span class="math notranslate nohighlight">\(r\)</span>. Once this type of model is correctly identified it can be simulated forward in time as much as needed, or used as part of a closed or open loop controller. In order to do so we have tried to replicate the results proposed in <span id="id2">[<a class="reference internal" href="bibliography.html#id28" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span> for <span class="math notranslate nohighlight">\(r = 1,\dots,8\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pysindy</span> <span class="k">as</span> <span class="nn">ps</span>
@@ -716,13 +720,13 @@ title="Print to PDF"
 <img alt="_images/08WagnerSINDy_6_10.png" src="_images/08WagnerSINDy_6_10.png" />
 </div>
 </div>
-<p>As in <span id="id3">[<a class="reference internal" href="bibliography.html#id26" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span> <span class="math notranslate nohighlight">\(\xi_0\)</span> and <span class="math notranslate nohighlight">\(\xi_1\)</span> are always zero. The results for <span class="math notranslate nohighlight">\(r=7\)</span> and <span class="math notranslate nohighlight">\(r=8\)</span> are quite far from of the others, and in fact perform worse than the <span class="math notranslate nohighlight">\(r=6\)</span> case. Possible explanations for this include:</p>
+<p>As in <span id="id3">[<a class="reference internal" href="bibliography.html#id28" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span> <span class="math notranslate nohighlight">\(\xi_0\)</span> and <span class="math notranslate nohighlight">\(\xi_1\)</span> are always zero. The results for <span class="math notranslate nohighlight">\(r=7\)</span> and <span class="math notranslate nohighlight">\(r=8\)</span> are quite far from of the others, and in fact perform worse than the <span class="math notranslate nohighlight">\(r=6\)</span> case. Possible explanations for this include:</p>
 <ul class="simple">
 <li><p>The residual errors not corrected by the correction algorithm</p></li>
 <li><p>An attempt of the algorithm to minimise the error at the beginning, with repercussions of the accuracy for greater times</p></li>
 <li><p>A not long enough time window</p></li>
 </ul>
-<p>The results, even though somewhat different from those presented in <span id="id4">[<a class="reference internal" href="bibliography.html#id26" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span>, are nonetheless satisfying. In particular for <span class="math notranslate nohighlight">\(r=6\)</span> the relative error goes down as much as <span class="math notranslate nohighlight">\(10^{-3}\)</span>, which is remarkable.</p>
+<p>The results, even though somewhat different from those presented in <span id="id4">[<a class="reference internal" href="bibliography.html#id28" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span>, are nonetheless satisfying. In particular for <span class="math notranslate nohighlight">\(r=6\)</span> the relative error goes down as much as <span class="math notranslate nohighlight">\(10^{-3}\)</span>, which is remarkable.</p>
 <p>The results show that the SINDy algorithm, even if quite robust, necessitates of very clean and complete data to work properly, especially in terms of repeatability of the results.</p>
 <p>We can try to fit the data using orthogonal polynomials. To do so it is sufficient to generate the data library using the dedicated script and pass it to the algorithm.</p>
 <div class="cell docutils container">
@@ -890,7 +894,7 @@ f8: (-0.010x0^3 + 0.100x0^4 + -0.501x0^5 + 1.345x0^6 + -1.835x0^7 + 1.000x0^8)
     <a class='right-next' id="next-link" href="08TheodorsenCLState.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Theodorsen model replication with lift as a state</p>
+        <p class="prev-next-title">Identification of the Theodorsen model by treating <span class="math notranslate nohighlight">\(C_L\)</span> as a state</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
