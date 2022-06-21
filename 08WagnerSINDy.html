@@ -472,13 +472,12 @@ title="Print to PDF"
 <h1>Identify a dynamical system for the Wagner function<a class="headerlink" href="#identify-a-dynamical-system-for-the-wagner-function" title="Permalink to this headline">#</a></h1>
 <section id="data-generation">
 <h2>Data generation<a class="headerlink" href="#data-generation" title="Permalink to this headline">#</a></h2>
-<p>As a first step we generate data for the analytical form of the Wagner function. As seen in <span style="color: red;">section</span> this can be done by integrating the Theodorsen function in two different ways, depending on the time step we want to compute:
-$<span class="math notranslate nohighlight">\(
-\begin{eqnarray}
+<p>As a first step we generate data for the analytical form of the Wagner function. As seen in <span style="color: red;">section</span> this can be done by integrating the Theodorsen function in two different ways, depending on the time step we want to compute:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
   \phi(t) &amp;=&amp; \frac{1}{2} + \frac{2}{\pi}\int_0^\infty \frac{1}{k}\left(G_1(k) - \frac{1}{2}\right)\sin(kt)dk \\
   &amp;=&amp; 1 + \frac{2}{\pi}\int_0^\infty \frac{1}{k}G_2(k)\cos(kt)dk\label{eqn:int_large_t} 
-\end{eqnarray}
-\)</span>$</p>
+\end{eqnarray}\end{split}\]</div>
 <p>Where <span class="math notranslate nohighlight">\(G_1\)</span> and <span class="math notranslate nohighlight">\(G_2\)</span> are the real and imaginary part of the Thodorsen function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -620,10 +619,9 @@ $<span class="math notranslate nohighlight">\(
 <img alt="_images/08WagnerSINDy_4_1.png" src="_images/08WagnerSINDy_4_1.png" />
 </div>
 </div>
-<p>The fact that generating a clean dataset is so time consuming is a statement to the need of a precise but easily computed model for the Wagner function. As stated in <span id="id1">[<a class="reference internal" href="bibliography.html#id26" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span>, this can be done by fitting a simple nonlinear ODE in the polynomial form:
-$<span class="math notranslate nohighlight">\(
-\dot L(t) = \sum_{i=0}^r\xi_iL^i(t)
-\)</span>$</p>
+<p>The fact that generating a clean dataset is so time consuming is a statement to the need of a precise but easily computed model for the Wagner function. As stated in <span id="id1">[<a class="reference internal" href="bibliography.html#id26" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span>, this can be done by fitting a simple nonlinear ODE in the polynomial form:</p>
+<div class="math notranslate nohighlight">
+\[\dot L(t) = \sum_{i=0}^r\xi_iL^i(t)\]</div>
 <p>where <span class="math notranslate nohighlight">\(\xi_r\)</span> is the coefficient of the term of order <span class="math notranslate nohighlight">\(r\)</span>. Once this type of model is correctly identified it can be simulated forward in time as much as needed, or used as part of a closed or open loop controller. In order to do so we have tried to replicate the results proposed in <span id="id2">[<a class="reference internal" href="bibliography.html#id26" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span> for <span class="math notranslate nohighlight">\(r = 1,\dots,8\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -693,7 +691,9 @@ $<span class="math notranslate nohighlight">\(
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.525 phi^2
-(phi)&#39; = -0.680 phi^2 + 0.396 phi^3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.680 phi^2 + 0.396 phi^3
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.868 phi^2 + 1.575 phi^3 + -1.684 phi^4
@@ -711,9 +711,9 @@ $<span class="math notranslate nohighlight">\(
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -1.049 phi^2 + 4.226 phi^3 + -15.028 phi^4 + 26.150 phi^5 + -68.977 phi^7 + 69.306 phi^8
 </pre></div>
 </div>
-<img alt="_images/08WagnerSINDy_6_7.png" src="_images/08WagnerSINDy_6_7.png" />
 <img alt="_images/08WagnerSINDy_6_8.png" src="_images/08WagnerSINDy_6_8.png" />
 <img alt="_images/08WagnerSINDy_6_9.png" src="_images/08WagnerSINDy_6_9.png" />
+<img alt="_images/08WagnerSINDy_6_10.png" src="_images/08WagnerSINDy_6_10.png" />
 </div>
 </div>
 <p>As in <span id="id3">[<a class="reference internal" href="bibliography.html#id26" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span> <span class="math notranslate nohighlight">\(\xi_0\)</span> and <span class="math notranslate nohighlight">\(\xi_1\)</span> are always zero. The results for <span class="math notranslate nohighlight">\(r=7\)</span> and <span class="math notranslate nohighlight">\(r=8\)</span> are quite far from of the others, and in fact perform worse than the <span class="math notranslate nohighlight">\(r=6\)</span> case. Possible explanations for this include:</p>
