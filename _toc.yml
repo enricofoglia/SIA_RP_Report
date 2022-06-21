@@ -16,6 +16,7 @@ parts:
     chapters:
     - file: 05SINDy
     - file: 06PolynomialChaos
+    - file: 07PC_code
   - caption: Bibliography
     chapters:
     - file: bibliography
