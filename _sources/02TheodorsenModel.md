@@ -85,14 +85,14 @@ The Theodorsen model can be interpreted as a dynamical system, accepting $\ddot 
 width: 500px
 name: Theodorsen_diagram
 ---
-Diagram of the subsystems of the dynamical system defined by the Theodorsen model.
+Diagram of the subsystems of the dynamical system defined by the Theodorsen model (modified from {cite}`brunton2013empirical`).
 ```
 
 The input was defined using the second derivatives of $\alpha$ and $h$, because a dynamical system that need to internally differentiate its input has undesireable properties, both analytically and numerically. The choice of second derivatives is also often useful in practical applications, since physically speaking, the movement of the airfoil with respect to the free-stream flow is related to pitching moments (which cause an angular acceleration that translates to $\ddot{\alpha}$) and normal forces (which cause the vertical acceleration $\ddot{h}$).
 
 ```{figure} images/Theodorsen_bode.png
 ---
-width: 600px
+width: 500px
 name: Theodorsen_bode
 ---
 Bode plot of the Theodorsen model wit respect to both $\ddot h$ and $\ddot \alpha$ inputs, the latter depending also on the pitching center location (copied from {cite}`brunton2013empirical`).
