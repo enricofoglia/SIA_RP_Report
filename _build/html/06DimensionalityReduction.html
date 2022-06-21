@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>System Identification for unsteady Airfoils &#8212; System Identification for unsteady Airfoils</title>
+    <title>Dimensionality reduction for unsteady lift &#8212; System Identification for unsteady Airfoils</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="00Abstract.html" />
+    <link rel="next" title="&lt;no title&gt;" href="07TheodorsenRegression.html" />
+    <link rel="prev" title="Orthogonal basis and Polynomial Chaos" href="05PolynomialChaos.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -106,8 +107,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     System Identification for unsteady Airfoils
                 </a>
             </li>
@@ -146,7 +147,7 @@ const thebe_selector_output = ".output, .cell_output"
   System identification
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="04SINDy.html">
    System Identification Algorithms
@@ -157,8 +158,8 @@ const thebe_selector_output = ".output, .cell_output"
    Orthogonal basis and Polynomial Chaos
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06DimensionalityReduction.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Dimensionality reduction for unsteady lift
   </a>
  </li>
@@ -288,7 +289,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F06DimensionalityReduction.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -316,7 +317,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/intro.md"
+        <a href="_sources/06DimensionalityReduction.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -353,64 +354,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#second-research-project-report">
-   Second Research project report
-  </a>
-  <ul class="nav section-nav flex-column">
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>System Identification for unsteady Airfoils</h1>
+                <h1>Dimensionality reduction for unsteady lift</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#second-research-project-report">
-   Second Research project report
-  </a>
-  <ul class="nav section-nav flex-column">
-  </ul>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -418,56 +378,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="system-identification-for-unsteady-airfoils">
-<h1>System Identification for unsteady Airfoils<a class="headerlink" href="#system-identification-for-unsteady-airfoils" title="Permalink to this headline">#</a></h1>
-<section id="second-research-project-report">
-<h2>Second Research project report<a class="headerlink" href="#second-research-project-report" title="Permalink to this headline">#</a></h2>
-<p>Secon report for the research project “System Identification for unsteady Airfoils”, carried out in the context of the Master of Science course at ISAE-SUPAERO, Toulouse.</p>
-<p>Authors: Enrico Foglia, Maciej Michałów</p>
-<p>Advisors: Thierry Jardin, Michael Bauerheim, Michele Colombo</p>
-<p>Date: June 2022</p>
-<p><em>This document is the property of the ISAE-SUPAERO and shall not be distributed nor reproduced without
-the formal approval of the advisors.</em></p>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="01Introduction.html">Introduction</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unsteady lift models</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="02TheodorsenModel.html">The Theodorsen Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03WagnerFunction.html">The Wagner function</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">System identification</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="04SINDy.html">System Identification Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05PolynomialChaos.html">Orthogonal basis and Polynomial Chaos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06DimensionalityReduction.html">Dimensionality reduction for unsteady lift</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Results</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="08TheodorsenCLState.html">Theodorsen model replication with lift as a state</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="09Summary.html">Summary</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bibliography</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
-</ul>
-</div>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="dimensionality-reduction-for-unsteady-lift">
+<h1>Dimensionality reduction for unsteady lift<a class="headerlink" href="#dimensionality-reduction-for-unsteady-lift" title="Permalink to this headline">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -497,7 +409,14 @@ the formal approval of the advisors.</em></p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="00Abstract.html" title="next page">
+    <a class='left-prev' id="prev-link" href="05PolynomialChaos.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Orthogonal basis and Polynomial Chaos</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="07TheodorsenRegression.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">&lt;no title&gt;</p>

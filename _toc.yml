@@ -6,16 +6,24 @@ root: intro
 parts:
   - caption: Introduction
     chapters:
+    - file: 00Abstract
     - file: 01Introduction
   - caption: Unsteady lift models
     chapters:
     - file: 02TheodorsenModel
     - file: 03WagnerFunction
-    - file: 04LowReynolds
   - caption: System identification
     chapters:
-    - file: 05SINDy
-    - file: 06PolynomialChaos
+    - file: 04SINDy
+    - file: 05PolynomialChaos
+    - file: 06DimensionalityReduction
+  - caption: Results
+    chapters:
+    - file: 07TheodorsenRegression
+    - file: 08TheodorsenCLState
+  - caption: Summary
+    chapters:
+    - file: 09Summary
   - caption: Bibliography
     chapters:
     - file: bibliography
