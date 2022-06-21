@@ -50,8 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="The Wagner function" href="03WagnerFunction.html" />
@@ -143,11 +143,6 @@ const thebe_selector_output = ".output, .cell_output"
    The Wagner function
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04LowReynolds.html">
-   Models for low Reynolds numbers
-  </a>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -156,13 +151,42 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="05SINDy.html">
+  <a class="reference internal" href="04SINDy.html">
    System Identification Algorithms
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="06PolynomialChaos.html">
+  <a class="reference internal" href="05PolynomialChaos.html">
    Orthogonal basis and Polynomial Chaos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06DimensionalityReduction.html">
+   Dimensionality reduction for unsteady lift
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Results
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="08TheodorsenCLState.html">
+   Theodorsen model replication with lift as a state
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Summary
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="09Summary.html">
+   Summary
   </a>
  </li>
 </ul>
@@ -355,16 +379,19 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#relevant-mathematics">
-   Relevant mathematics
+  <a class="reference internal nav-link" href="#formulation">
+   Formulation
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#theodorsen">
-     Theodorsen
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-model-as-a-dynamical-system">
+   The model as a dynamical system
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
  </li>
 </ul>
 
@@ -386,16 +413,19 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#relevant-mathematics">
-   Relevant mathematics
+  <a class="reference internal nav-link" href="#formulation">
+   Formulation
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#theodorsen">
-     Theodorsen
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-model-as-a-dynamical-system">
+   The model as a dynamical system
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
  </li>
 </ul>
 
@@ -409,10 +439,15 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="the-theodorsen-model">
 <h1>The Theodorsen Model<a class="headerlink" href="#the-theodorsen-model" title="Permalink to this headline">#</a></h1>
-<section id="relevant-mathematics">
-<h2>Relevant mathematics<a class="headerlink" href="#relevant-mathematics" title="Permalink to this headline">#</a></h2>
-<section id="theodorsen">
-<h3>Theodorsen<a class="headerlink" href="#theodorsen" title="Permalink to this headline">#</a></h3>
+<p>The Theodorsen model is a classical frequency-domain model of unsteady lift, derived analytically using unsteady potential flow theory. Because of this assumption, it is not expected to be accurate for low Reynolds numbers flows. Nevertheless, it is highly important to the project, because:</p>
+<ol class="simple">
+<li><p>It is a well established model, often used in research problems related to unsteady lift <span style="color: red;">citation</span>.</p></li>
+<li><p>It is formulated in a very physically meaningful way, with different terms directly related to specific flow phenomena.</p></li>
+<li><p>It can be used to generate reliable unsteady lift data for high Reynolds number flows.</p></li>
+<li><p>It can be used as a test problem for the system identification methodology developed for the project.</p></li>
+</ol>
+<section id="formulation">
+<h2>Formulation<a class="headerlink" href="#formulation" title="Permalink to this headline">#</a></h2>
 <p>As shown in the previous report, in <span id="id1">[<a class="reference internal" href="bibliography.html#id2" title="T. Von Kármán and W. R. Sears. Airfoil theory for non-uniform motion. Journal of the aeronautical sciences, 1938.">KS38</a>]</span> Von Kármán arrives at the following form for the usteady lift of an airfoil undergoing a general motion:</p>
 <div class="math notranslate nohighlight" id="equation-vonkarmanmodel">
 <span class="eqno">(1)<a class="headerlink" href="#equation-vonkarmanmodel" title="Permalink to this equation">#</a></span>\[ L = -\rho\frac{d}{dt}\int_{-1}^1\gamma_0(x)xdx + \rho U \Gamma_0 + \rho U\int_1^{\infty}\frac{\gamma(\xi)d\xi}{\sqrt{\xi^2-1}} \]</div>
@@ -422,25 +457,42 @@ title="Print to PDF"
 <li><p><span class="math notranslate nohighlight">\(L_0 = \rho U \Gamma_0\)</span> is the quasi-steady lift.</p></li>
 <li><p><span class="math notranslate nohighlight">\(L_2 = \rho U\int_1^{\infty}\gamma(\xi)d\xi/\sqrt{\xi^2-1}\)</span> is the contribution of the wake to the overall lift.</p></li>
 </ul>
-<p>The coordiante system used in the formula is shown in <a class="reference internal" href="#vonkarmancoordinates"><span class="std std-numref">Fig. 1</span></a></p>
+<p>The coordinate system used in the formula is shown in <a class="reference internal" href="#vonkarmancoordinates"><span class="std std-numref">Fig. 1</span></a></p>
 <figure class="align-default" id="vonkarmancoordinates">
 <a class="reference internal image-reference" href="_images/VonKarmanCoordinates.png"><img alt="_images/VonKarmanCoordinates.png" src="_images/VonKarmanCoordinates.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Coordiante system for the Von Kármán model <a class="reference internal" href="#equation-vonkarmanmodel">(1)</a></span><a class="headerlink" href="#vonkarmancoordinates" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Coordinate system used in the Von Kármán model <a class="reference internal" href="#equation-vonkarmanmodel">(1)</a> (and also in the Theodorsen model <span style="color: red;">citation</span>).</span><a class="headerlink" href="#vonkarmancoordinates" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In equation <a class="reference internal" href="#equation-vonkarmanmodel">(1)</a> <span class="math notranslate nohighlight">\(\Gamma_0\)</span> is the quasi-steady circulation, <span class="math notranslate nohighlight">\(\gamma_0(x)\)</span> the vorticity distribution on the surface of the airfoil and <span class="math notranslate nohighlight">\(\gamma(\xi)\)</span> the vorticity distribution of the wake.</p>
-<p>In the case of a purely sinusoidal motion with frequency <span class="math notranslate nohighlight">\(k\)</span> it is possible to write a simpler formula for the lift coefficient:</p>
+<p>The Theodorsen model applies this framework to a thin airfoil of chord <span class="math notranslate nohighlight">\(c\)</span> (and half-chord <span class="math notranslate nohighlight">\(b = c/2\)</span>) in a potential flow of free-stream velocity <span class="math notranslate nohighlight">\(U_\infty\)</span> undergoing a pitching (change of angle of attack) and plunging (normal to t) motion. For purely sinusoidal motion with nondimensionalised frequency <span class="math notranslate nohighlight">\(k = \omega b / U_\infty\)</span>, the resulting lift can be formulated as <span style="color: red;">citation</span>:</p>
 <div class="math notranslate nohighlight">
-\[	C_L = C_1 \left(\ddot{h}+\dot{\alpha}-a\ddot{\alpha} \right) + C_2 \left(\alpha + \dot{h} + \dot{\alpha}\left(\frac{1}{2}-a \right) \right)C(k) = C_L^{AM} + C_L^{QS}C(k)\]</div>
-<p>where <span class="math notranslate nohighlight">\(C(k)\)</span> is the Theodorsen function, defined as:</p>
+\[	C_L = C_1 \left(\ddot{h}+\dot{\alpha}-a\ddot{\alpha} \right) + C_2 \left(\alpha + \dot{h} + \dot{\alpha}\left(\frac{1}{2}-a \right) \right)C(k)\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> is the angle of attack of the airfoil (along with its derivatives <span class="math notranslate nohighlight">\(\dot \alpha\)</span> and <span class="math notranslate nohighlight">\(\ddot \alpha\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\dot h\)</span> is the vertical (normal to the free-stream flow) velocity of the airfoil (with its derivative <span class="math notranslate nohighlight">\(\ddot h\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(a\)</span> is the pitch rotation centre, i.e. the point around which the pitching movement is performed, expresed in the frame shown in <a class="reference internal" href="#vonkarmancoordinates"><span class="std std-numref">Fig. 1</span></a></p></li>
+<li><p><span class="math notranslate nohighlight">\(C_1\)</span> is a coefficient related to added-mass effects, equal to <span class="math notranslate nohighlight">\(\pi\)</span> for thin airfoil theory</p></li>
+<li><p><span class="math notranslate nohighlight">\(C_2\)</span> is a coefficient related to quasi-steady lift, equal to <span class="math notranslate nohighlight">\(2\pi\)</span> for thin airfoil theory</p></li>
+<li><p><span class="math notranslate nohighlight">\(C(k)\)</span> is the frequency-domain Theodorsen function</p></li>
+</ul>
+<p>In the expression for <span class="math notranslate nohighlight">\(C_L\)</span>, two distinct terms can be identified:</p>
+<div class="math notranslate nohighlight">
+\[	C_L = C_L^{AM} + C_L^{QS}C(k)\]</div>
+<p>where <span class="math notranslate nohighlight">\(C_L^{AM}\)</span> is the added-mass lift, corresponding to inertial forces due to air being displaced by the airfoil’s movement, while <span class="math notranslate nohighlight">\(C_L^{QS}\)</span> is the quasi-steady lift, corresponding to a steady-state flow condition around the airfoil. Contrary to the added-mass effects, which are instant, the quasi-steady lift experiences an attenuation and phase shift due to unsteady flow effects, which can be related to the vorticity of the wake behind the airfoil. The Theodorsen function was derived to model this exact phenomenon. It is analytically formulated as:</p>
 <div class="math notranslate nohighlight">
 \[C(k) = \frac{H_1^{(2)}(k)}{H_1^{(2)}(k) + jH_0^{(2)}(k)}\]</div>
-<p>where <span class="math notranslate nohighlight">\(H_\nu^{(2)}(k)\)</span> are Hankel functions, defined by an expression using Bessel functions, <span class="math notranslate nohighlight">\(H_\nu^{(2)}(k) = J_\nu + jY_\nu\)</span>. The variables of the system are the angle of attack <span class="math notranslate nohighlight">\(\alpha\)</span> and the vertical velocity <span class="math notranslate nohighlight">\(\dot h\)</span> with their respective derivatives <span class="math notranslate nohighlight">\(\dot \alpha\)</span>, <span class="math notranslate nohighlight">\(\ddot \alpha\)</span> and <span class="math notranslate nohighlight">\(\ddot h\)</span>. The pitch rotation centre is called <span class="math notranslate nohighlight">\(a\)</span>, and <span class="math notranslate nohighlight">\(C_1\)</span> and <span class="math notranslate nohighlight">\(C_2\)</span> are real coefficients for the added mass (<span class="math notranslate nohighlight">\(C_L^{AM}\)</span>) and the quasi-steady vortical lift (<span class="math notranslate nohighlight">\(C_L^{QS}\)</span>) respectively. For the classical model <span class="math notranslate nohighlight">\(C_1 = \pi\)</span> and <span class="math notranslate nohighlight">\(C_2 = 2\pi\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(H_\nu^{(2)}(k)\)</span> are Hankel functions, defined by an expression using Bessel functions, <span class="math notranslate nohighlight">\(H_\nu^{(2)}(k) = J_\nu + jY_\nu\)</span>. Moreover, the Theodorsen fuction can be generalised to a Laplace-domain transfer function of the nondimensionalised Laplace variable <span class="math notranslate nohighlight">\(\overline{s} = sb/U_\infty\)</span>  <span style="color: red;">citation</span>. Thanks to this, the Theodorsen model can be used to compute unsteady lift responses to arbitrary pitching and plunging motion <span style="color: red;">citation</span>.</p>
+</section>
+<section id="the-model-as-a-dynamical-system">
+<h2>The model as a dynamical system<a class="headerlink" href="#the-model-as-a-dynamical-system" title="Permalink to this headline">#</a></h2>
 <p>The effect of the Theodorsen function on the vortical lift is of delay and scaling on changes in angle of attack. In particular, it is common to consider the vertical velocity <span class="math notranslate nohighlight">\(\dot h\)</span> and <span class="math notranslate nohighlight">\(\alpha\)</span> together as an effective angle of attack <span class="math notranslate nohighlight">\(\alpha_e\)</span>.</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>As linear approximations of the Theodorsen function in the time domain already exist in literature <span id="id2">[<a class="reference internal" href="bibliography.html#id25" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>, we have
 decided to use them as a first approach to generate the data necessary for the system identification. Such representation allow to construct a linear Multi-Input-Single-Output system (MISO), which has been implemented in a python script presented in <span style="color: red;">section</span>. That data has then been used to extract a first data-driven approximation of the <span class="math notranslate nohighlight">\(C(k)\)</span> function in <span style="color: red;">section</span> using the algorithm presented in <span style="color: red;">section</span>.</p>
-</section>
 </section>
 </section>
 

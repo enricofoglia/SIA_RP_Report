@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Theodorsen model replication by regression" href="07TheodorsenRegression.html" />
-    <link rel="prev" title="System identification for unsteady lift" href="05IdentificationForUnsteadyLift.html" />
+    <link rel="next" title="Dimensionality reduction for unsteady lift" href="06DimensionalityReduction.html" />
+    <link rel="prev" title="System Identification Algorithms" href="04SINDy.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -122,11 +122,6 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="00Abstract.html">
-   Abstract
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="01Introduction.html">
    Introduction
   </a>
@@ -156,18 +151,18 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="04Identification.html">
-   System identification algorithms
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05IdentificationForUnsteadyLift.html">
-   System identification for unsteady lift
+  <a class="reference internal" href="04SINDy.html">
+   System Identification Algorithms
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Orthogonal basis and Polynomial Chaos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06DimensionalityReduction.html">
+   Dimensionality reduction for unsteady lift
   </a>
  </li>
 </ul>
@@ -177,11 +172,6 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="07TheodorsenRegression.html">
-   Theodorsen model replication by regression
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="08TheodorsenCLState.html">
    Theodorsen model replication with lift as a state
@@ -301,7 +291,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F06PolynomialChaos.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F05PolynomialChaos.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -329,7 +319,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/06PolynomialChaos.md"
+        <a href="_sources/05PolynomialChaos.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -457,14 +447,14 @@ title="Print to PDF"
 <p>Thus it is possible to define the notion of “orthogonality” between functions in the same way as we would for vectors: two functions <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> are orthogonal if and only if their inner product is 0, or:</p>
 <div class="math notranslate nohighlight">
 \[ \langle f(x), g(x)\rangle_w = \int_{\mathcal X}f(x)g(x)w(x)dx = 0\]</div>
-<p>As stated in <span id="id1">[<a class="reference internal" href="bibliography.html#id6" title="Florian Augustin, A Gilg, M Paffrath, P Rentrop, and U Wever. Polynomial chaos for the approximation of uncertainties: chances and limits. European Journal of Applied Mathematics, 19(2):149–190, 2008.">AGP+08</a>]</span>, if a function <span class="math notranslate nohighlight">\(f(x)\)</span> has finite variance (<span class="math notranslate nohighlight">\(\langle f(x), f(x)\rangle_w &lt; \infty\)</span>) then we “expand” it in a series of orthogonal polynomials of <span class="math notranslate nohighlight">\(x\)</span> as:</p>
+<p>As stated in <span id="id1">[<a class="reference internal" href="bibliography.html#id27" title="Florian Augustin, A Gilg, M Paffrath, P Rentrop, and U Wever. Polynomial chaos for the approximation of uncertainties: chances and limits. European Journal of Applied Mathematics, 19(2):149–190, 2008.">AGP+08</a>]</span>, if a function <span class="math notranslate nohighlight">\(f(x)\)</span> has finite variance (<span class="math notranslate nohighlight">\(\langle f(x), f(x)\rangle_w &lt; \infty\)</span>) then we “expand” it in a series of orthogonal polynomials of <span class="math notranslate nohighlight">\(x\)</span> as:</p>
 <div class="math notranslate nohighlight">
 \[	f(x) = \sum_{i=0}^{\infty} \beta_i\Phi_i(x)\]</div>
 <p>where <span class="math notranslate nohighlight">\(\beta_i\)</span> are real coefficients and <span class="math notranslate nohighlight">\({\Phi_i(x)}_ {i\in\mathbb N}\)</span> is the basis of orthogonal polynomials of <span class="math notranslate nohighlight">\(x\)</span>. Such an expansion can be truncated to an order <span class="math notranslate nohighlight">\(d\)</span>, thus obtaining an approximation of the function <span class="math notranslate nohighlight">\(f(x)\)</span> in a set of orthogonal polynomials in a similar fashion as what is commonly done with Fourier series.</p>
 </section>
 <section id="how-to-compute-the-coefficients">
 <h2>How to compute the coefficients<a class="headerlink" href="#how-to-compute-the-coefficients" title="Permalink to this headline">#</a></h2>
-<p>Following <span id="id2">[<a class="reference internal" href="bibliography.html#id10" title="Sergey Oladyshkin and Wolfgang Nowak. Data-driven uncertainty quantification using the arbitrary polynomial chaos expansion. Reliability Engineering &amp; System Safety, 106:179–190, 2012.">ON12</a>]</span> it can be noted that the way the conditions are set for the constructions of the polynomials leads to a way of determining them all in one time as the solution of a linear system of equations.</p>
+<p>Following <span id="id2">[<a class="reference internal" href="bibliography.html#id26" title="Sergey Oladyshkin and Wolfgang Nowak. Data-driven uncertainty quantification using the arbitrary polynomial chaos expansion. Reliability Engineering &amp; System Safety, 106:179–190, 2012.">ON12</a>]</span> it can be noted that the way the conditions are set for the constructions of the polynomials leads to a way of determining them all in one time as the solution of a linear system of equations.</p>
 <p>The conditions to uniquely determine a polynomial are:</p>
 <ul class="simple">
 <li><p>The leading term must be 1.</p></li>
@@ -534,7 +524,7 @@ The condition of orthogonality, defined as:</p>
 <div class="math notranslate nohighlight" id="equation-norm-polynomial">
 <span class="eqno">(6)<a class="headerlink" href="#equation-norm-polynomial" title="Permalink to this equation">#</a></span>\[\| \pi_i\|_ w^2 = \int_{\mathcal{X}} \pi_i^2(x)w(x)dx \]</div>
 <p>Thus, from <a class="reference internal" href="#equation-norm-polynomial">(6)</a>, for calculating the norm of <span class="math notranslate nohighlight">\(\pi_i\)</span> it is necessary to know the moments up to <span class="math notranslate nohighlight">\(\mu_{2i}\)</span>. Thus in the orthonormal expansion of degree <span class="math notranslate nohighlight">\(d\)</span> we need to compute the moments up to <span class="math notranslate nohighlight">\(\mu_{2d}\)</span></p>
-<p>A comment is due to the invertibility of the matrix of the moments. As stated in <span id="id3">[<a class="reference internal" href="bibliography.html#id10" title="Sergey Oladyshkin and Wolfgang Nowak. Data-driven uncertainty quantification using the arbitrary polynomial chaos expansion. Reliability Engineering &amp; System Safety, 106:179–190, 2012.">ON12</a>]</span> if <span class="math notranslate nohighlight">\(\mbox{rank}(M) = k\)</span> then <span class="math notranslate nohighlight">\(\mbox{det}(M) = 0\)</span> if and only if the cardinality of <span class="math notranslate nohighlight">\(\mathcal X\)</span> is <span class="math notranslate nohighlight">\(\leq k\)</span>. This, as it will be shown in <span style="color: red;">section</span>, limits the form that the input to the system may take, but assures that the numerical method can be carried out without problems if this condition is respected, which is the case for most real case scenarios.</p>
+<p>A comment is due to the invertibility of the matrix of the moments. As stated in <span id="id3">[<a class="reference internal" href="bibliography.html#id26" title="Sergey Oladyshkin and Wolfgang Nowak. Data-driven uncertainty quantification using the arbitrary polynomial chaos expansion. Reliability Engineering &amp; System Safety, 106:179–190, 2012.">ON12</a>]</span> if <span class="math notranslate nohighlight">\(\mbox{rank}(M) = k\)</span> then <span class="math notranslate nohighlight">\(\mbox{det}(M) = 0\)</span> if and only if the cardinality of <span class="math notranslate nohighlight">\(\mathcal X\)</span> is <span class="math notranslate nohighlight">\(\leq k\)</span>. This, as it will be shown in <span style="color: red;">section</span>, limits the form that the input to the system may take, but assures that the numerical method can be carried out without problems if this condition is respected, which is the case for most real case scenarios.</p>
 </section>
 <section id="multivariate-polynomial-chaos">
 <h2>Multivariate Polynomial Chaos<a class="headerlink" href="#multivariate-polynomial-chaos" title="Permalink to this headline">#</a></h2>
@@ -592,17 +582,17 @@ The condition of orthogonality, defined as:</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="05IdentificationForUnsteadyLift.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="04SINDy.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">System identification for unsteady lift</p>
+            <p class="prev-next-title">System Identification Algorithms</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="07TheodorsenRegression.html" title="next page">
+    <a class='right-next' id="next-link" href="06DimensionalityReduction.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Theodorsen model replication by regression</p>
+        <p class="prev-next-title">Dimensionality reduction for unsteady lift</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
