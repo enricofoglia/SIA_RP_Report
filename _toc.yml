@@ -20,7 +20,7 @@ parts:
     - file: 07PC_code
   - caption: Results
     chapters:
-    - file: 07TheodorsenRegression
+    - file: 08WagnerSINDy
     - file: 08TheodorsenCLState
   - caption: Summary
     chapters:
