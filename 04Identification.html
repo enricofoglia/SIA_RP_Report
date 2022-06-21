@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Bibliography &#8212; System Identification for unsteady Airfoils</title>
+    <title>System identification algorithms &#8212; System Identification for unsteady Airfoils</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Summary" href="09Summary.html" />
+    <link rel="next" title="System identification for unsteady lift" href="05IdentificationForUnsteadyLift.html" />
+    <link rel="prev" title="The Wagner function" href="03WagnerFunction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,6 +120,11 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="00Abstract.html">
+   Abstract
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="01Introduction.html">
    Introduction
   </a>
@@ -146,20 +152,20 @@ const thebe_selector_output = ".output, .cell_output"
   System identification
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="04SINDy.html">
-   System Identification Algorithms
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   System identification algorithms
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="05PolynomialChaos.html">
+  <a class="reference internal" href="05IdentificationForUnsteadyLift.html">
+   System identification for unsteady lift
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06PolynomialChaos.html">
    Orthogonal basis and Polynomial Chaos
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06DimensionalityReduction.html">
-   Dimensionality reduction for unsteady lift
   </a>
  </li>
 </ul>
@@ -169,6 +175,11 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="07TheodorsenRegression.html">
+   Theodorsen model replication by regression
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="08TheodorsenCLState.html">
    Theodorsen model replication with lift as a state
@@ -192,9 +203,9 @@ const thebe_selector_output = ".output, .cell_output"
   Bibliography
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="bibliography.html">
    Bibliography
   </a>
  </li>
@@ -288,7 +299,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fbibliography.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F04Identification.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -316,7 +327,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/bibliography.md"
+        <a href="_sources/04Identification.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -353,23 +364,80 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-considerations">
+   General considerations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sindy">
+   SINDy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dimensionality-reduction">
+   Dimensionality reduction
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Bibliography</h1>
+                <h1>System identification algorithms</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-considerations">
+   General considerations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sindy">
+   SINDy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dimensionality-reduction">
+   Dimensionality reduction
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -377,87 +445,17 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="bibliography">
-<h1>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">#</a></h1>
-<div class="docutils container" id="id1">
-<dl class="citation">
-<dt class="label" id="id13"><span class="brackets">Ari15</span></dt>
-<dd><p>Renzo Arina. <em>Fondamenti di aerodinamica</em>. Levrotto &amp; Bella, 2015.</p>
-</dd>
-<dt class="label" id="id6"><span class="brackets">AGP+08</span></dt>
-<dd><p>Florian Augustin, A Gilg, M Paffrath, P Rentrop, and U Wever. Polynomial chaos for the approximation of uncertainties: chances and limits. <em>European Journal of Applied Mathematics</em>, 19(2):149–190, 2008.</p>
-</dd>
-<dt class="label" id="id17"><span class="brackets">BRC+18</span></dt>
-<dd><p>Milind A Bakhle, Tondapu S Reddy, Rula Coroneos, James B Min, Andrew J Provenza, Kirsten P Duffy, George L Stefko, and Gregory Heinlein. Aeromechanics analysis of a distortion-tolerant fan with boundary layer ingestion. In <em>2018 AIAA Aerospace Sciences Meeting</em>, 1891. 2018.</p>
-</dd>
-<dt class="label" id="id20"><span class="brackets">BD18</span></dt>
-<dd><p>Johan Boutet and Grigorios Dimitriadis. Unsteady lifting line theory using the wagner function for the aerodynamic and aeroelastic modeling of 3d wings. <em>Aerospace</em>, 5(3):92, 2018.</p>
-</dd>
-<dt class="label" id="id21"><span class="brackets">BK19</span></dt>
-<dd><p>Steven L Brunton and J Nathan Kutz. <em>Data-driven science and engineering: Machine learning, dynamical systems, and control</em>. Cambridge University Press, 2019.</p>
-</dd>
-<dt class="label" id="id15"><span class="brackets">BPK16</span></dt>
-<dd><p>Steven L Brunton, Joshua L Proctor, and J Nathan Kutz. Discovering governing equations from data by sparse identification of nonlinear dynamical systems. <em>Proceedings of the national academy of sciences</em>, 113(15):3932–3937, 2016.</p>
-</dd>
-<dt class="label" id="id12"><span class="brackets">BR13</span></dt>
-<dd><p>Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. <em>Journal of Fluids and Structures</em>, 38:174–186, 2013.</p>
-</dd>
-<dt class="label" id="id23"><span class="brackets">Chi21</span></dt>
-<dd><p>Gianfranco Chiocchia. <em>Aéronautique-Aéroélasticité-Phénomèmes physiques, modélisation mathématique-Applications</em>. Editions Ellipses, 2021.</p>
-</dd>
-<dt class="label" id="id22"><span class="brackets">DB21</span></dt>
-<dd><p>Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. <em>AIAA Journal</em>, pages 1–17, 2021.</p>
-</dd>
-<dt class="label" id="id26"><span class="brackets">DB22</span></dt>
-<dd><p>Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. <em>AIAA Journal</em>, 60(3):1691–1707, 2022.</p>
-</dd>
-<dt class="label" id="id11"><span class="brackets">Joh13</span></dt>
-<dd><p>Wayne Johnson. <em>Rotorcraft aeromechanics</em>. Volume 36. Cambridge University Press, 2013.</p>
-</dd>
-<dt class="label" id="id24"><span class="brackets">KdSF+21</span></dt>
-<dd><p>Alan A Kaptanoglu, Brian M de Silva, Urban Fasel, Kadierdan Kaheman, Jared L Callaham, Charles B Delahunt, Kathleen Champion, Jean-Christophe Loiseau, J Nathan Kutz, and Steven L Brunton. Pysindy: a comprehensive python package for robust sparse system identification. <em>arXiv preprint arXiv:2111.08481</em>, 2021.</p>
-</dd>
-<dt class="label" id="id25"><span class="brackets">KZ21</span></dt>
-<dd><p>Jiaqing Kou and Weiwei Zhang. Data-driven modeling for unsteady aerodynamics and aeroelasticity. <em>Progress in Aerospace Sciences</em>, 125:100725, 2021.</p>
-</dd>
-<dt class="label" id="id2"><span class="brackets">KS38</span></dt>
-<dd><p>T. Von Kármán and W. R. Sears. Airfoil theory for non-uniform motion. <em>Journal of the aeronautical sciences</em>, 1938.</p>
-</dd>
-<dt class="label" id="id4"><span class="brackets">Lig86</span></dt>
-<dd><p>J. Lighthill. <em>An informal introduction to theoretical fluid mechanics.</em> Oxford University Press, New York, NY, 1986.</p>
-</dd>
-<dt class="label" id="id19"><span class="brackets">LMW18</span></dt>
-<dd><p>Eric Limacher, Chris Morton, and David Wood. Generalized derivation of the added-mass and circulatory forces for viscous flows. <em>Physical Review Fluids</em>, 3(1):1–25, 2018.</p>
-</dd>
-<dt class="label" id="id14"><span class="brackets">LWZH15</span></dt>
-<dd><p>Tianshu Liu, Shizhao Wang, Xing Zhang, and Guowei He. Unsteady thin-airfoil theory revisited: application of a simple lift formula. <em>Aiaa Journal</em>, 53(6):1492–1502, 2015.</p>
-</dd>
-<dt class="label" id="id5"><span class="brackets">Noc97</span></dt>
-<dd><p>F. Noca. <em>On the evaluation of time-dependent fluid-dynamic forces on bluff bodies</em>. PhD thesis, California Institute of Technology, 1997.</p>
-</dd>
-<dt class="label" id="id10"><span class="brackets">ON12</span></dt>
-<dd><p>Sergey Oladyshkin and Wolfgang Nowak. Data-driven uncertainty quantification using the arbitrary polynomial chaos expansion. <em>Reliability Engineering &amp; System Safety</em>, 106:179–190, 2012.</p>
-</dd>
-<dt class="label" id="id7"><span class="brackets">Pet08</span></dt>
-<dd><p>David A Peters. Two-dimensional incompressible unsteady airfoil theory—an overview. <em>Journal of Fluids and Structures</em>, 24(3):295–312, 2008.</p>
-</dd>
-<dt class="label" id="id16"><span class="brackets">RD17</span></dt>
-<dd><p>Clarence W Rowley and Scott TM Dawson. Model reduction for flow analysis and control. <em>Annual Review of Fluid Mechanics</em>, 49:387–417, 2017.</p>
-</dd>
-<dt class="label" id="id8"><span class="brackets">RIB+09</span></dt>
-<dd><p>Clarence W Rowley, Mezić Igor, Shervin Bagheri, Philipp Schlatter, and Dan S Henningson. Spectral analysis of nonlinear flows. <em>Journal of fluid mechanics</em>, 641:115–127, 2009.</p>
-</dd>
-<dt class="label" id="id3"><span class="brackets">The79</span></dt>
-<dd><p>Theodore Theodorsen. General theory of aerodynamic instability and the mechanism of flutter. Technical Report, NACA, 1979.</p>
-</dd>
-<dt class="label" id="id18"><span class="brackets">UDHG18</span></dt>
-<dd><p>Alejandra Uranga, Mark Drela, David K Hall, and Edward M Greitzer. Analysis of the aerodynamic benefit from boundary layer ingestion for transport aircraft. <em>AIAA journal</em>, 56(11):4271–4281, 2018.</p>
-</dd>
-<dt class="label" id="id9"><span class="brackets">Vol11</span></dt>
-<dd><p>Stefan Volkwein. Model reduction using proper orthogonal decomposition. <em>Lecture Notes, Institute of Mathematics and Scientific Computing, University of Graz. see http://www.uni-graz.at/imawww/volkwein/\\POD.pdf</em>, 2011.</p>
-</dd>
-</dl>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="system-identification-algorithms">
+<h1>System identification algorithms<a class="headerlink" href="#system-identification-algorithms" title="Permalink to this headline">#</a></h1>
+<section id="general-considerations">
+<h2>General considerations<a class="headerlink" href="#general-considerations" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="sindy">
+<h2>SINDy<a class="headerlink" href="#sindy" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="dimensionality-reduction">
+<h2>Dimensionality reduction<a class="headerlink" href="#dimensionality-reduction" title="Permalink to this headline">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -487,12 +485,19 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="09Summary.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="03WagnerFunction.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Summary</p>
+            <p class="prev-next-title">The Wagner function</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="05IdentificationForUnsteadyLift.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">System identification for unsteady lift</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
