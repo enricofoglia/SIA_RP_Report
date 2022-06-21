@@ -47,7 +47,15 @@ name: unsteady_airfoil
 Visualisation of the basic elements of the unsteady airfoil problem.
 ```
 
-The Theodorsen model applies this framework to a thin airfoil of chord $c$ (and half-chord $b = c/2$) in a potential flow of free-stream velocity $U_\infty$ undergoing a pitching (change of angle of attack) and plunging (normal to t) motion, as shown in {numref}`unsteady_airfoil`. For purely sinusoidal motion with nondimensionalised frequency $k = \omega b / U_\infty$, the resulting lift can be formulated as <span style="color: red;">citation</span>:
+The Theodorsen model applies this framework to a thin airfoil of chord $c$ (and half-chord $b = c/2$) in a potential flow of free-stream velocity $U_\infty$ undergoing a pitching (change of angle of attack) and plunging (normal to t) motion, as shown in {numref}`unsteady_airfoil`. The lift can be nondimensionalised using the notion of the lift coefficient:
+
+:::{math}
+	C_L = \frac{2 L}{\rho U_\infty^2 c}
+:::
+
+Note that in the Von Kármán framework, the lift is expressed with respect to unit span (since the model is 2D), therefore the lift is divided only by the chord $c$ instead of the reference area.
+
+ For purely sinusoidal motion with nondimensionalised frequency $k = \omega b / U_\infty$, the resulting lift can be formulated as <span style="color: red;">citation</span>:
 
 :::{math}
 	C_L = C_1 \left(\ddot{h}+\dot{\alpha}-a\ddot{\alpha} \right) + C_2 \left(\alpha + \dot{h} + \dot{\alpha}\left(\frac{1}{2}-a \right) \right)C(k)

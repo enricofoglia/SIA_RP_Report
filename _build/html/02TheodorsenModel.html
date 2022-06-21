@@ -54,7 +54,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Implementation of the linearised Theodorsen model" href="State-space_Theodorsen.html" />
     <link rel="prev" title="Introduction" href="01Introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -141,11 +140,6 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    The Theodorsen Model
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="State-space_Theodorsen.html">
-   Implementation of the linearised Theodorsen model
   </a>
  </li>
  <li class="toctree-l1">
@@ -491,7 +485,11 @@ title="Print to PDF"
 <p><span class="caption-number">Fig. 2 </span><span class="caption-text">Visualisation of the basic elements of the unsteady airfoil problem.</span><a class="headerlink" href="#unsteady-airfoil" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The Theodorsen model applies this framework to a thin airfoil of chord <span class="math notranslate nohighlight">\(c\)</span> (and half-chord <span class="math notranslate nohighlight">\(b = c/2\)</span>) in a potential flow of free-stream velocity <span class="math notranslate nohighlight">\(U_\infty\)</span> undergoing a pitching (change of angle of attack) and plunging (normal to t) motion, as shown in <a class="reference internal" href="#unsteady-airfoil"><span class="std std-numref">Fig. 2</span></a>. For purely sinusoidal motion with nondimensionalised frequency <span class="math notranslate nohighlight">\(k = \omega b / U_\infty\)</span>, the resulting lift can be formulated as <span style="color: red;">citation</span>:</p>
+<p>The Theodorsen model applies this framework to a thin airfoil of chord <span class="math notranslate nohighlight">\(c\)</span> (and half-chord <span class="math notranslate nohighlight">\(b = c/2\)</span>) in a potential flow of free-stream velocity <span class="math notranslate nohighlight">\(U_\infty\)</span> undergoing a pitching (change of angle of attack) and plunging (normal to t) motion, as shown in <a class="reference internal" href="#unsteady-airfoil"><span class="std std-numref">Fig. 2</span></a>. The lift can be nondimensionalised using the notion of the lift coefficient:</p>
+<div class="math notranslate nohighlight">
+\[	C_L = \frac{2 L}{\rho U_\infty^2 c}\]</div>
+<p>Note that in the Von Kármán framework, the lift is expressed with respect to unit span (since the model is 2D), therefore the lift is divided only by the chord <span class="math notranslate nohighlight">\(c\)</span> instead of the reference area.</p>
+<p>For purely sinusoidal motion with nondimensionalised frequency <span class="math notranslate nohighlight">\(k = \omega b / U_\infty\)</span>, the resulting lift can be formulated as <span style="color: red;">citation</span>:</p>
 <div class="math notranslate nohighlight">
 \[	C_L = C_1 \left(\ddot{h}+\dot{\alpha}-a\ddot{\alpha} \right) + C_2 \left(\alpha + \dot{h} + \dot{\alpha}\left(\frac{1}{2}-a \right) \right)C(k)\]</div>
 <p>where:</p>
@@ -573,13 +571,6 @@ decided to use them as a first approach to generate the data necessary for the s
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Introduction</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="State-space_Theodorsen.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Implementation of the linearised Theodorsen model</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
