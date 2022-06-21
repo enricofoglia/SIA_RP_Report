@@ -1,8 +1,6 @@
-# System Identification Algorithms
+# System identification for unsteady lift
 
-## SI: context and state of the art
-
-
+## Literature considerations
 
 ## Our approach
 
