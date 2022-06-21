@@ -110,7 +110,9 @@ control.bode_plot(sys_theod, omega_limits=[1e-2, 1e2], dB=True);
 # Since the Theodorsen function is the only part of the model that cannot be exactly modeled by a state-space representation, it is possible to construct one for the entire model using the state-space approximation of the Theodorsen function. $\tilde{A}$, $\tilde{B}$, $\tilde{C}$, $\tilde{D}$, provided above. The equations for this LTI system are as follows {cite}`brunton2013empirical`:
 # 
 # $$ \dot{x} = Ax + Bu$$
+# 
 # where:
+# 
 # $$x = \begin{bmatrix}\tilde{x} \\ \dot{h} \\ \alpha \\ \dot{\alpha}\end{bmatrix}$$
 # 
 # $$u = \begin{bmatrix}\ddot{h} \\ \ddot{\alpha}\end{bmatrix}$$

@@ -50,8 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -697,8 +697,9 @@ C(k) = \frac{H_1^{(2)}(k)}{H_1^{(2)}(k) + jH_0^{(2)}(k)}
 <p>Since the Theodorsen function is the only part of the model that cannot be exactly modeled by a state-space representation, it is possible to construct one for the entire model using the state-space approximation of the Theodorsen function. <span class="math notranslate nohighlight">\(\tilde{A}\)</span>, <span class="math notranslate nohighlight">\(\tilde{B}\)</span>, <span class="math notranslate nohighlight">\(\tilde{C}\)</span>, <span class="math notranslate nohighlight">\(\tilde{D}\)</span>, provided above. The equations for this LTI system are as follows <span id="id5">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>:</p>
 <div class="math notranslate nohighlight">
 \[ \dot{x} = Ax + Bu\]</div>
-<p>where:
-$<span class="math notranslate nohighlight">\(x = \begin{bmatrix}\tilde{x} \\ \dot{h} \\ \alpha \\ \dot{\alpha}\end{bmatrix}\)</span>$</p>
+<p>where:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x = \begin{bmatrix}\tilde{x} \\ \dot{h} \\ \alpha \\ \dot{\alpha}\end{bmatrix}\end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}u = \begin{bmatrix}\ddot{h} \\ \ddot{\alpha}\end{bmatrix}\end{split}\]</div>
 <div class="math notranslate nohighlight">
@@ -805,7 +806,7 @@ $<span class="math notranslate nohighlight">\(x = \begin{bmatrix}\tilde{x} \\ \d
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>E:\Programy\Anaconda\envs\rp_env\lib\site-packages\control\timeresp.py:1816: UserWarning: System has direct feedthrough: ``D != 0``. The infinite impulse at ``t=0`` does not appear in the output.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/control/timeresp.py:1798: UserWarning: System has direct feedthrough: ``D != 0``. The infinite impulse at ``t=0`` does not appear in the output.
 Results may be meaningless!
   warnings.warn(&quot;System has direct feedthrough: ``D != 0``. The &quot;
 </pre></div>
