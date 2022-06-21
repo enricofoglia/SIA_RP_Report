@@ -249,41 +249,39 @@ class PolynomialChaos():
 # In[5]:
 
 
-
-         
 def GenerateLibraryList(
-     expansionDegree,
-     coefficients,
-     AlphaMatrix,
-     intercept = True
-     ):
- '''
- Given the Alpha matrix and the coefficient tensor conputes a list of functions
- ready to be transformed into a SINDy library.
- '''
- M , numberOfInputs = AlphaMatrix.shape # M = total number of terms in the expansion
- x = []
- for i in range(numberOfInputs): x.append(sym.symbols(f'x{i}')) # list of symbolic variables
- 
- LibraryList = []
- if intercept:
-     LibraryList.append(lambda *x: 1)
- 
- for i in range(1, M): # order
-     index = AlphaMatrix[i,:]
-     MultivariatePolynomial = 1
-     for j in range(numberOfInputs): # variable
-         coeff = coefficients[:, index[j], j] 
-         coeff = np.flip(coeff) # The MultivariatePolynomials function gives the coefficients from 0 to max_deg, while Poly starts from max_deg and goes to 0
-         Polynomial1D = sym.Poly(coeff, x[j])
-         MultivariatePolynomial = MultivariatePolynomial * Polynomial1D # multivaried polynomial object
-         MultivariatePolynomial = MultivariatePolynomial.as_expr() 
-         
-     LibraryList.append(sym.lambdify(x, MultivariatePolynomial, 'numpy'))
+        expansionDegree,
+        coefficients,
+        AlphaMatrix,
+        intercept = True
+        ):
+    '''
+    Given the Alpha matrix and the coefficient tensor conputes a list of functions
+    ready to be transformed into a SINDy library.
+    '''
+    M , numberOfInputs = AlphaMatrix.shape # M = total number of terms in the expansion
+    x = []
+    for i in range(numberOfInputs): x.append(sym.symbols(f'x{i}')) # list of symbolic variables
+    
+    LibraryList = []
+    if intercept:
+        LibraryList.append(lambda *x: 1)
+    
+    for i in range(1, M): # order
+        index = AlphaMatrix[i,:]
+        MultivariatePolynomial = 1
+        for j in range(numberOfInputs): # variable
+            coeff = coefficients[:, index[j], j] 
+            coeff = np.flip(coeff) # The MultivariatePolynomials function gives the coefficients from 0 to max_deg, while Poly starts from max_deg and goes to 0
+            Polynomial1D = sym.Poly(coeff, x[j])
+            MultivariatePolynomial = MultivariatePolynomial * Polynomial1D # multivaried polynomial object
+            MultivariatePolynomial = MultivariatePolynomial.as_expr() 
+            
+        LibraryList.append(sym.lambdify(x, MultivariatePolynomial, 'numpy'))
+        
+    return LibraryList
+        
      
- return LibraryList
-     
-  
 
 
 # As an example, the coefficients for the Legendre polynomials are calculated from an evely distributed $x$ over $\mathcal X \in [-1,1]$.
