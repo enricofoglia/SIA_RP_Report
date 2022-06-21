@@ -532,6 +532,12 @@ title="Print to PDF"
 </section>
 <section id="chirp">
 <h3>Chirp<a class="headerlink" href="#chirp" title="Permalink to this headline">#</a></h3>
+<p>A linear chirp is a sine wave whose frequency changes linearly with time from an initial value <span class="math notranslate nohighlight">\(\omega_0\)</span> to a final <span class="math notranslate nohighlight">\(\omega_f\)</span> over a time <span class="math notranslate nohighlight">\(T\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[	\omega(t) = \frac{\omega_f - \omega_0}{T}\]</div>
+<div class="math notranslate nohighlight">
+\[	u(t) = A \cdot \sin{(\omega(t) + \phi)}\]</div>
+<p>This structures ensures that every frequency in the range <span class="math notranslate nohighlight">\(f \in (\omega_f/2\pi, \omega_0/2\pi) [Hz]\)</span> is excited in a uniform way, as shown in <a class="reference internal" href="#signal-chirp"><span class="std std-numref">Fig. 3</span></a>. Another advantage of the signal is its continuity and smoothness.</p>
 <figure class="align-default" id="signal-chirp">
 <a class="reference internal image-reference" href="_images/signal_chirp.png"><img alt="_images/signal_chirp.png" src="_images/signal_chirp.png" style="width: 600px;" /></a>
 <figcaption>

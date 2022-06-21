@@ -24,6 +24,18 @@ Square wave signal with half-period $T=1$ and amplitude of 1. The spectrum has v
 
 ### Chirp
 
+A linear chirp is a sine wave whose frequency changes linearly with time from an initial value $\omega_0$ to a final $\omega_f$ over a time $T$:
+
+:::{math}
+	\omega(t) = \frac{\omega_f - \omega_0}{T}
+:::
+
+:::{math}
+	u(t) = A \cdot \sin{(\omega(t) + \phi)}
+:::
+
+This structures ensures that every frequency in the range $f \in (\omega_f/2\pi, \omega_0/2\pi) [Hz]$ is excited in a uniform way, as shown in {numref}`signal_chirp`. Another advantage of the signal is its continuity and smoothness.
+
 ```{figure} images/signal_chirp.png
 ---
 width: 600px
