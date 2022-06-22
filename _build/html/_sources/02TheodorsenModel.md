@@ -34,7 +34,7 @@ The coordinate system used in the formula is shown in {numref}`VonKarmanCoordina
 height: 200px
 name: VonKarmanCoordinates
 ---
-Coordinate system used in the Von Kármán model {eq}`VonKarmanModel` (and also in the Theodorsen model <span style="color: red;">citation</span>).
+Coordinate system used in the Von Kármán model {eq}`VonKarmanModel` (and also in the Theodorsen model {cite}`brunton2013empirical`).
 ```
 
 In equation {eq}`VonKarmanModel` $\Gamma_0$ is the quasi-steady circulation, $\gamma_0(x)$ the vorticity distribution on the surface of the airfoil and $\gamma(\xi)$ the vorticity distribution of the wake.
