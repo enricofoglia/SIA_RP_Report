@@ -54,6 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Wagner function" href="03WagnerFunction.html" />
+    <link rel="prev" title="The Theodorsen Model" href="02TheodorsenModel.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -135,10 +137,15 @@ const thebe_selector_output = ".output, .cell_output"
   Unsteady lift models
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="02TheodorsenModel.html">
    The Theodorsen Model
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Implementation of the linearised Theodorsen model
   </a>
  </li>
  <li class="toctree-l1">
@@ -170,7 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07PC_code.html">
-   The code
+   Implementation of the orthogonal polynomial basis
   </a>
  </li>
 </ul>
@@ -714,7 +721,7 @@ C(k) = \frac{H_1^{(2)}(k)}{H_1^{(2)}(k) + jH_0^{(2)}(k)}
 <div class="math notranslate nohighlight">
 \[\begin{split}B = \begin{bmatrix}0 &amp; 0\\ 1 &amp; 0\\ 0 &amp; 0\\ 0 &amp; 1\end{bmatrix}\end{split}\]</div>
 <div class="math notranslate nohighlight">
-\[C = \begin{bmatrix}\tilde{C} &amp; \tilde{D}C_2 &amp; \tilde{D}C_2 &amp; C_1 + &amp; \tilde{D}C_2(1-2a)/2\end{bmatrix}\]</div>
+\[C = \begin{bmatrix}\tilde{C} &amp; \tilde{D}C_2 &amp; \tilde{D}C_2 &amp; C_1 + \tilde{D}C_2(1-2a)/2\end{bmatrix}\]</div>
 <div class="math notranslate nohighlight">
 \[D = \begin{bmatrix}C_1 &amp; -C_1a\end{bmatrix}\]</div>
 <div class="cell docutils container">
@@ -810,7 +817,7 @@ C(k) = \frac{H_1^{(2)}(k)}{H_1^{(2)}(k) + jH_0^{(2)}(k)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/control/timeresp.py:1798: UserWarning: System has direct feedthrough: ``D != 0``. The infinite impulse at ``t=0`` does not appear in the output.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>E:\Programy\Anaconda\envs\rp_env\lib\site-packages\control\timeresp.py:1816: UserWarning: System has direct feedthrough: ``D != 0``. The infinite impulse at ``t=0`` does not appear in the output.
 Results may be meaningless!
   warnings.warn(&quot;System has direct feedthrough: ``D != 0``. The &quot;
 </pre></div>
@@ -964,7 +971,14 @@ Results may be meaningless!
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>The proposed LTI approximation of the Theodorsen model is able to compute the unsteady lift response to arbitrary input, and does so with decent accuracy (for quantative data, see <span id="id10">[<a class="reference internal" href="bibliography.html#id14" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span> where it was derived). The only “black box” element of the model is the LTI approximation of the Theodorsen function, which was computed in <span id="id11">[<a class="reference internal" href="bibliography.html#id14" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span> using balanced truncation.</p>
 <p>The LTI state-space representation of the model offers many advantages, including simple and efficient simulation (due to the numerical properties of linear ODEs) and the possibility of applying system identification tools meant for linear systems. The model of the Theodorsen function can be easily swapped for another one (e.g. one with a smaller dimension).</p>
-<p>The code shown in this notebook is purely demonstrative; a library for more intensive work with LTI Theodorsen approximations has already been prepared as well.</p>
+<p>The code shown in this notebook is purely demonstrative; a library for more intensive work with LTI Theodorsen approximations has already been prepared as well, and is used in different sections of this report:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Theodorsen_control</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -995,6 +1009,20 @@ Results may be meaningless!
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="02TheodorsenModel.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">The Theodorsen Model</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="03WagnerFunction.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The Wagner function</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

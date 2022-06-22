@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Identification of the Theodorsen model by treating \(C_L\) as a state" href="08TheodorsenCLState.html" />
-    <link rel="prev" title="The code" href="07PC_code.html" />
+    <link rel="prev" title="Implementation of the orthogonal polynomial basis" href="07PC_code.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -144,6 +144,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="025StateSpaceTheodorsen.html">
+   Implementation of the linearised Theodorsen model
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="03WagnerFunction.html">
    The Wagner function
   </a>
@@ -172,7 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07PC_code.html">
-   The code
+   Implementation of the orthogonal polynomial basis
   </a>
  </li>
 </ul>
@@ -690,34 +695,28 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/pysindy/optimizers/stlsq.py:183: UserWarning: Sparsity parameter is too big (0.1) and eliminated all coefficients
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>E:\Programy\Anaconda\envs\rp_env\lib\site-packages\pysindy\optimizers\stlsq.py:183: UserWarning: Sparsity parameter is too big (0.1) and eliminated all coefficients
   warnings.warn(
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.525 phi^2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.680 phi^2 + 0.396 phi^3
+(phi)&#39; = -0.680 phi^2 + 0.396 phi^3
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.868 phi^2 + 1.575 phi^3 + -1.684 phi^4
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.981 phi^2 + 2.844 phi^3 + -5.902 phi^4 + 4.306 phi^5
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -1.006 phi^2 + 3.280 phi^3 + -8.389 phi^4 + 10.019 phi^5 + -4.581 phi^6
+(phi)&#39; = -1.006 phi^2 + 3.280 phi^3 + -8.389 phi^4 + 10.019 phi^5 + -4.581 phi^6
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -1.059 phi^2 + 4.598 phi^3 + -19.680 phi^4 + 53.369 phi^5 + -81.240 phi^6 + 50.870 phi^7
+(phi)&#39; = -1.049 phi^2 + 4.226 phi^3 + -15.028 phi^4 + 26.150 phi^5 + -68.977 phi^7 + 69.306 phi^8
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -1.049 phi^2 + 4.226 phi^3 + -15.028 phi^4 + 26.150 phi^5 + -68.977 phi^7 + 69.306 phi^8
-</pre></div>
-</div>
-<img alt="_images/08WagnerSINDy_6_8.png" src="_images/08WagnerSINDy_6_8.png" />
-<img alt="_images/08WagnerSINDy_6_9.png" src="_images/08WagnerSINDy_6_9.png" />
-<img alt="_images/08WagnerSINDy_6_10.png" src="_images/08WagnerSINDy_6_10.png" />
+<img alt="_images/08WagnerSINDy_6_5.png" src="_images/08WagnerSINDy_6_5.png" />
+<img alt="_images/08WagnerSINDy_6_6.png" src="_images/08WagnerSINDy_6_6.png" />
+<img alt="_images/08WagnerSINDy_6_7.png" src="_images/08WagnerSINDy_6_7.png" />
 </div>
 </div>
 <p>As in <span id="id3">[<a class="reference internal" href="bibliography.html#id28" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span> <span class="math notranslate nohighlight">\(\xi_0\)</span> and <span class="math notranslate nohighlight">\(\xi_1\)</span> are always zero. The results for <span class="math notranslate nohighlight">\(r=7\)</span> and <span class="math notranslate nohighlight">\(r=8\)</span> are quite far from of the others, and in fact perform worse than the <span class="math notranslate nohighlight">\(r=6\)</span> case. Possible explanations for this include:</p>
@@ -806,18 +805,14 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.002 f0() + -0.165 f1(phi) + -0.436 f2(phi)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.002 f0() + -0.165 f1(phi) + -0.436 f2(phi) + 0.143 f3(phi)
+(phi)&#39; = -0.002 f0() + -0.165 f1(phi) + -0.436 f2(phi) + 0.143 f3(phi)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.002 f0() + -0.165 f1(phi) + -0.436 f2(phi) + 0.143 f3(phi) + -1.187 f4(phi)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.002 f0() + -0.158 f1(phi) + -0.436 f2(phi) + 0.143 f3(phi) + -1.187 f4(phi) + 3.639 f5(phi)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.002 f0() + -0.158 f1(phi) + -0.436 f2(phi) + 0.143 f3(phi) + -1.187 f4(phi) + 3.639 f5(phi) + -1.746 f6(phi)
+(phi)&#39; = -0.002 f0() + -0.158 f1(phi) + -0.436 f2(phi) + 0.143 f3(phi) + -1.187 f4(phi) + 3.639 f5(phi) + -1.746 f6(phi)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.003 f0() + -0.204 f1(phi) + -0.598 f2(phi) + 0.143 f3(phi) + -1.187 f4(phi) + 3.639 f5(phi) + -1.746 f6(phi) + 64.473 f7(phi)
@@ -826,9 +821,9 @@ title="Print to PDF"
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.002 f0() + -0.176 f1(phi) + -0.501 f2(phi) + 0.143 f3(phi) + -1.187 f4(phi) + 3.639 f5(phi) + -1.746 f6(phi) + 64.473 f7(phi) + 197.176 f8(phi)
 </pre></div>
 </div>
+<img alt="_images/08WagnerSINDy_8_5.png" src="_images/08WagnerSINDy_8_5.png" />
+<img alt="_images/08WagnerSINDy_8_6.png" src="_images/08WagnerSINDy_8_6.png" />
 <img alt="_images/08WagnerSINDy_8_7.png" src="_images/08WagnerSINDy_8_7.png" />
-<img alt="_images/08WagnerSINDy_8_8.png" src="_images/08WagnerSINDy_8_8.png" />
-<img alt="_images/08WagnerSINDy_8_9.png" src="_images/08WagnerSINDy_8_9.png" />
 </div>
 </div>
 <p>We can observe that the results are not particularly better. In particular, if any thresholding is applied when fitting the model the result quality decreases drastically, which prevents us from using the sparsity promoting capability of SINDy to the fullest. This results in the appearence of zeroth and first order terms, even though these are cancelled out when higher order terms appear.</p>
@@ -888,7 +883,7 @@ f8: (-0.010x0^3 + 0.100x0^4 + -0.501x0^5 + 1.345x0^6 + -1.835x0^7 + 1.000x0^8)
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">The code</p>
+            <p class="prev-next-title">Implementation of the orthogonal polynomial basis</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="08TheodorsenCLState.html" title="next page">

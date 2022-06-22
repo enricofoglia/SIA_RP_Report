@@ -343,4 +343,10 @@ plt.show()
 # 
 # The LTI state-space representation of the model offers many advantages, including simple and efficient simulation (due to the numerical properties of linear ODEs) and the possibility of applying system identification tools meant for linear systems. The model of the Theodorsen function can be easily swapped for another one (e.g. one with a smaller dimension).
 # 
-# The code shown in this notebook is purely demonstrative; a library for more intensive work with LTI Theodorsen approximations has already been prepared as well.
+# The code shown in this notebook is purely demonstrative; a library for more intensive work with LTI Theodorsen approximations has already been prepared as well, and is used in different sections of this report:
+
+# In[16]:
+
+
+import Theodorsen_control
+
