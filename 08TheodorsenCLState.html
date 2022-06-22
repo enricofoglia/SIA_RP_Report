@@ -144,6 +144,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="025StateSpaceTheodorsen.html">
+   Implementation of the linearised Theodorsen model
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="03WagnerFunction.html">
    The Wagner function
   </a>
@@ -172,7 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07PC_code.html">
-   The code
+   Implementation of the orthogonal polynomial basis
   </a>
  </li>
 </ul>
@@ -609,7 +614,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="identification-of-the-theodorsen-model-by-treating-c-l-as-a-state">
 <h1>Identification of the Theodorsen model by treating <span class="math notranslate nohighlight">\(C_L\)</span> as a state<a class="headerlink" href="#identification-of-the-theodorsen-model-by-treating-c-l-as-a-state" title="Permalink to this headline">#</a></h1>
-<p>The goal of the following 2-step numerical experiment was to replicate the behaviour of the Theodorsen model by using SINDy on trajectory datasets comprising of the inputs <span class="math notranslate nohighlight">\(u = [\ddot \alpha, \ddot h]\)</span> and a state vector expanded to include the lift coefficient <span class="math notranslate nohighlight">\(C_L\)</span>. The goal was to overcome the fact that SINDy estimates the full-state output model of the system (i.e. the <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> matrices in the case of an LTI system), without regarding how the states contribute to the final output (i.e. not estimating the <span class="math notranslate nohighlight">\(C\)</span> and <span class="math notranslate nohighlight">\(D\)</span> matrices in case of an LTI system). This limitation is not fundamental, since having estimated the states, the <span class="math notranslate nohighlight">\(x \rightarrow y\)</span> relationship can be estimated by a second step, but simplyfying the process into one regression step was an interesting alternative.</p>
+<p>The goal of the following 2-step numerical experiment was to replicate the behaviour of the Theodorsen model by using SINDy on trajectory datasets comprising of the inputs <span class="math notranslate nohighlight">\(u = [\ddot \alpha, \ddot h]\)</span> and a state vector expanded to include the lift coefficient <span class="math notranslate nohighlight">\(C_L\)</span>. The goal was to overcome the fact that SINDy estimates the full-state output model of the system (i.e. the <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> matrices in the case of an LTI system), without regarding how the states contribute to the final output (i.e. not estimating the <span class="math notranslate nohighlight">\(C\)</span> and <span class="math notranslate nohighlight">\(D\)</span> matrices in case of an LTI system). This limitation is not fundamental, since having estimated the states, the <span class="math notranslate nohighlight">\(x \rightarrow y\)</span> relationship can be estimated by a second regression step, but simplyfying the process into one regression step was an interesting alternative.</p>
 <section id="derivation-of-the-extended-theodorsen-model-with-c-l-as-a-state">
 <h2>Derivation of the extended Theodorsen model with <span class="math notranslate nohighlight">\(C_L\)</span> as a state<a class="headerlink" href="#derivation-of-the-extended-theodorsen-model-with-c-l-as-a-state" title="Permalink to this headline">#</a></h2>
 <p>Given an LTI approximation to the Theodorsen model of the form:</p>
@@ -828,7 +833,7 @@ title="Print to PDF"
 </section>
 <section id="training">
 <h3>Training<a class="headerlink" href="#training" title="Permalink to this headline">#</a></h3>
-<p>The SINDy identification is set up and trained on the dataset shown above. For additional insights, two models are trained: one using a polynomial base of order 1, while the second one — of order 2.</p>
+<p>The SINDy identification is set up and trained on the dataset shown above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span>
@@ -1007,7 +1012,7 @@ title="Print to PDF"
 <img alt="_images/08TheodorsenCLState_27_0.png" src="_images/08TheodorsenCLState_27_0.png" />
 </div>
 </div>
-<p>It can be seen that all the states of the system are replicated correctly (if this is not the case, restart the code — sometimes the randomness of the training data leads to higher error than usual), and the validation <span class="math notranslate nohighlight">\(C_L\)</span> has a very small root mean square error (RMSE). This demonstrates that adding <span class="math notranslate nohighlight">\(C_L^x\)</span> as a state is a viable modification of the identification problem.</p>
+<p>It can be seen that all the states of the system are replicated correctly, and the validation <span class="math notranslate nohighlight">\(C_L\)</span> has a very small root mean square error (RMSE). This demonstrates that adding <span class="math notranslate nohighlight">\(C_L^x\)</span> as a state is a viable modification of the identification problem.</p>
 </section>
 </section>
 <section id="identification-of-an-approximated-theodorsen-model-without-the-tilde-x-states">
@@ -1064,6 +1069,7 @@ title="Print to PDF"
 </section>
 <section id="id5">
 <h3>Training<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<p>For additional insights, two models are trained: one using a polynomial base of order 1, while the second one — of order 2.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SYSTEM IDENTIFCATION</span>
@@ -1212,7 +1218,7 @@ Identified model (order 2):
 <img alt="_images/08TheodorsenCLState_41_0.png" src="_images/08TheodorsenCLState_41_0.png" />
 </div>
 </div>
-<p>It can be seen that all the states of the system are replicated correctly (if this is not the case, restart the code — sometimes the randomness of the training data leads to higher error than usual), and the validation <span class="math notranslate nohighlight">\(C_L\)</span> has a very small root mean square error (RMSE). In fact, the RMSE is very comparable to the previous case, where <span class="math notranslate nohighlight">\(\tilde{x}\)</span> was part of the training data. It is also important to note that the 1st and 2nd order models have almost equivalent performance, with the 1st order performing even slightly better in predicting <span class="math notranslate nohighlight">\(\alpha\)</span>. This suggest that the attenuating influence of the Thedorsen function states <span class="math notranslate nohighlight">\(\tilde{x}\)</span> can’t be expressed as quadratic nonlinearities of the <span class="math notranslate nohighlight">\(x'\)</span> states, and that the linear dynamics of <span class="math notranslate nohighlight">\(x'\)</span> are the dominating effect in the data. The second statement might raise doubts whether the wake effects are captured by the identified model at all. This is verified by comparing the data with a simplified Theodorsen model that does not take the attenuating effects of the wake into account, i.e. assuming that the Theodorsen function <span class="math notranslate nohighlight">\(C(k)\)</span> is constant for all <span class="math notranslate nohighlight">\(k\)</span>. The 3 values of interest: <span class="math notranslate nohighlight">\(C(k)=1\)</span> (the low-frequency limit of the function), <span class="math notranslate nohighlight">\(C(k) = 0.25\)</span> (the high-frequency limit) and <span class="math notranslate nohighlight">\(C(k) = 0.7\)</span> (the intermediate value, corresponding to frequencies of the order of <span class="math notranslate nohighlight">\(0.5 [rad/s]\)</span>):</p>
+<p>It can be seen that all the states of the system are replicated correctly, and the validation <span class="math notranslate nohighlight">\(C_L\)</span> still has a small root mean square error (RMSE), although about an order of magnitude larger than the previous case, where <span class="math notranslate nohighlight">\(\tilde{x}\)</span> was part of the training data. It is also important to note that the 1st and 2nd order models have almost equivalent performance, with the 1st order performing even slightly better in predicting <span class="math notranslate nohighlight">\(\alpha\)</span>. This suggest that the attenuating influence of the Thedorsen function states <span class="math notranslate nohighlight">\(\tilde{x}\)</span> can’t be expressed as quadratic nonlinearities of the <span class="math notranslate nohighlight">\(x'\)</span> states (or at least that such relationships are not straightforward to identify), and that the linear dynamics of <span class="math notranslate nohighlight">\(x'\)</span> are the dominating effect in the data. The second statement might raise doubts whether the wake effects are captured by the identified model at all. This is verified by comparing the data with a simplified Theodorsen model that simplifies the attenuating effects of the wake into a constang gain and no phase shift, i.e. assuming that the Theodorsen function <span class="math notranslate nohighlight">\(C(k)\)</span> is constant for all <span class="math notranslate nohighlight">\(k\)</span>. The 3 values of interest: <span class="math notranslate nohighlight">\(C(k)=1\)</span> (the low-frequency limit of the function), <span class="math notranslate nohighlight">\(C(k) = 0.25\)</span> (the high-frequency limit) and <span class="math notranslate nohighlight">\(C(k) = 0.7\)</span> (the intermediate value, corresponding to frequencies of the order of <span class="math notranslate nohighlight">\(0.5 [rad/s]\)</span>):</p>
 <div class="math notranslate nohighlight">
 \[C_L^{(C(k)=1} = C_1 (\ddot{h} + \dot{\alpha} + a\ddot{\alpha}) + C_2(\alpha + \dot{h} + \dot{\alpha}(1/2-a))C(k)\]</div>
 <div class="cell docutils container">
@@ -1279,7 +1285,7 @@ Identified model (order 2):
 </section>
 <section id="conclusions">
 <h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">#</a></h2>
-<p>It has been shown that adding <span class="math notranslate nohighlight">\(C_L^x = C_L - Du\)</span> to the state vector of the training data is a viable strategy for identification of the unsteady lift dynamical <a class="reference external" href="http://system.It">system.It</a> was also discovered that using only <span class="math notranslate nohighlight">\(x' = [\dot{h}, \alpha, \dot{\alpha}, C_L^x\)</span> as states can still yield a model of acceptable performance, and that it seems that the attenuation effects of the Theodorsen function on the lift can be at least partially modeled by a linear system with only <span class="math notranslate nohighlight">\(x'\)</span> as states. The latter fact, combined with more in-depth analysis, can help with the choice of states for the low Reynolds number unsteady lift models seeked in the future.</p>
+<p>It has been shown that adding <span class="math notranslate nohighlight">\(C_L^x = C_L - Du\)</span> to the state vector of the training data is a viable strategy for identification of the unsteady lift dynamical <a class="reference external" href="http://system.It">system.It</a> was also discovered that using only <span class="math notranslate nohighlight">\(x' = [\dot{h}, \alpha, \dot{\alpha}, C_L^x]\)</span> as states can still yield a model of acceptable performance, and that it seems that the attenuation effects of the Theodorsen function on the lift can be at least partially modeled by a linear system with only <span class="math notranslate nohighlight">\(x'\)</span> as states. The latter fact, combined with more in-depth analysis, can help with the choice of states for the low Reynolds number unsteady lift models seeked in the future.</p>
 </section>
 </section>
 
