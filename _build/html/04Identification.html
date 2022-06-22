@@ -144,6 +144,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="025StateSpaceTheodorsen.html">
+   Implementation of the linearised Theodorsen model
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="03WagnerFunction.html">
    The Wagner function
   </a>
@@ -172,7 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07PC_code.html">
-   The code
+   Implementation of the orthogonal polynomial basis
   </a>
  </li>
 </ul>
@@ -401,15 +406,32 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#general-considerations">
    General considerations
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#black-box-methods">
+     Black box methods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretable-model-discovery">
+     Interpretable model discovery
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reduced-order-modeling">
+     Reduced order modeling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#balanced-models">
+     Balanced models
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#sindy">
    SINDy
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dimensionality-reduction">
-   Dimensionality reduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -462,15 +484,32 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#general-considerations">
    General considerations
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#black-box-methods">
+     Black box methods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretable-model-discovery">
+     Interpretable model discovery
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reduced-order-modeling">
+     Reduced order modeling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#balanced-models">
+     Balanced models
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#sindy">
    SINDy
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dimensionality-reduction">
-   Dimensionality reduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -514,16 +553,36 @@ title="Print to PDF"
 <h1>System identification algorithms<a class="headerlink" href="#system-identification-algorithms" title="Permalink to this headline">#</a></h1>
 <section id="general-considerations">
 <h2>General considerations<a class="headerlink" href="#general-considerations" title="Permalink to this headline">#</a></h2>
+<p>The central idea of system identification is creating a model of a dynamic system by observing its behaviour. Such a model can have many engineering applications, principally the simulation of the system, controller synthesis and gaining insight into its dynamics. These needs also appear in other sciences — dynamical models of various phenomena, both physical, biological and social, can be used to predict and understand how they change over time.</p>
+<section id="black-box-methods">
+<h3>Black box methods<a class="headerlink" href="#black-box-methods" title="Permalink to this headline">#</a></h3>
+<p>For some practical application, like controller synthesis, the accuracy and robustness of the model is usually more important than interpretability. The internal dynamics do not really matter; the system is treated like a “black box” accepting certain inputs and producing corresponding outputs. These problems give rise to black box system identification methods, which strive to reproduce the I/O characteristics of the system without any consideration to the internal structure of the model or its interpretability. This limits generalisability, but is very efficient for single-case applications. There are a few popular black box identification methods (usually formulated for linear discrete-time systems), such as subspace-based methods <span id="id1">[<a class="reference internal" href="bibliography.html#id6" title="T. McKelvey, H. Akcay, and L. Ljung. Subspace-based multivariable system identification from frequency response data. IEEE Transactions on Automatic Control, 41(7):960–979, July 1996. doi:10.1109/9.508900.">MAL96</a>]</span> used in the MATLAB System Identification Toolbox. However, because the goal of the presented project is to find interpretable models, black box system identification is not of significant interest.</p>
+</section>
+<section id="interpretable-model-discovery">
+<h3>Interpretable model discovery<a class="headerlink" href="#interpretable-model-discovery" title="Permalink to this headline">#</a></h3>
+<p>For more general and scientific purposes, the interpretability of the identified models is of higher importance. This tends to lead to a focus on identifying the underlying physical dynamic processes. In these cases, the general form of the model (or at least of its elements) can be derived from first principles, e.g. Newton’s laws of mechanics for mechanical systems. The models tend to consist of (or at least contain) terms of known form, but with uncertain parameters. This class of problems leads to the domain of grey box system identification, where prior insight into the dynamics of the system is leveraged to identify more interpretable (and often better) models. If some of the terms of the model can’t be established theoretically a priori, data-driven methods can help to identify them. One of such methods is symbolic regression <span id="id2">[<a class="reference internal" href="bibliography.html#id11" title="Michael Schmidt and Hod Lipson. Distilling Free-Form Natural Laws from Experimental Data. Science, 324(5923):81–85, April 2009. doi:10.1126/science.1165893.">SL09</a>]</span> <span id="id3">[<a class="reference internal" href="bibliography.html#id8" title="Josh Bongard and Hod Lipson. Automated reverse engineering of nonlinear dynamical systems. Proceedings of the National Academy of Sciences, 104(24):9943–9948, June 2007. doi:10.1073/pnas.0609476104.">BL07</a>]</span>, which fits symbolic equations to observation data using genetic programming methods. However, symbolic regression tends to be computationally expensive and does not scale well for larger systems <span id="id4">[<a class="reference internal" href="bibliography.html#id21" title="Steven L Brunton, Joshua L Proctor, and J Nathan Kutz. Discovering governing equations from data by sparse identification of nonlinear dynamical systems. Proceedings of the national academy of sciences, 113(15):3932–3937, 2016.">BPK16</a>]</span>. Our project utilises a new, simpler method of nonlinear model discovery, called Sparse Identification of Nonlinear Dynamics (SINDy) <span id="id5">[<a class="reference internal" href="bibliography.html#id21" title="Steven L Brunton, Joshua L Proctor, and J Nathan Kutz. Discovering governing equations from data by sparse identification of nonlinear dynamical systems. Proceedings of the national academy of sciences, 113(15):3932–3937, 2016.">BPK16</a>]</span>, described briefly in the following subsection.</p>
+</section>
+<section id="reduced-order-modeling">
+<h3>Reduced order modeling<a class="headerlink" href="#reduced-order-modeling" title="Permalink to this headline">#</a></h3>
+<p>Another challenge in data-driven model discovery is the high dimensionality of the problems involved. In a fluid flow problem, for example, the state of the system, e.g. defined as the velocity field for potential flow, is infite, since the field is continuous in space. Even if it is discretised, the state can consist of thousands or millions of parameters. The modelling of a system this big is possible (since this is exactly what CFD simulations do), but also very costly in terms of time and computational power. However, even in high-dimensional physical systems, there are usually global, low order patterns playing a significant role in their dynamics. For instance, a low Reynolds number flow over a cylinder or airfoil is significantly marked by a periodic von Karman vortex street. To approximate the global pattern of the flow, it is not necessary to exactly know the state of the velocity field —  simply knowing the current positions of the vortices can be enough. This procedure of finding low-order strucutres that dominate (e.g. carry a significant part of the system’s mechanical energy) the dynamics of the system, and subsequent creation of lower-order methods approximating it, is called reduced order modeling (ROM) <span id="id6">[<a class="reference internal" href="bibliography.html#id27" title="Steven L Brunton and J Nathan Kutz. Data-driven science and engineering: Machine learning, dynamical systems, and control. Cambridge University Press, 2019.">BK19</a>]</span>. One of the main ROM algorithms is the proper orthogonal decomposition, which uses a singular value decomposition to find global patterns in the evolution of the system and sort them by their significance, which allows to discard terms (i.e. combinations of states) of little importance to the overall dynamics <span id="id7">[<a class="reference internal" href="bibliography.html#id27" title="Steven L Brunton and J Nathan Kutz. Data-driven science and engineering: Machine learning, dynamical systems, and control. Cambridge University Press, 2019.">BK19</a>]</span>. Therefore, ROMs allow to approximate the behaviour of complex systems by using a smaller number of states, therefore significantly reducing the computational cost.</p>
+</section>
+<section id="balanced-models">
+<h3>Balanced models<a class="headerlink" href="#balanced-models" title="Permalink to this headline">#</a></h3>
+<p>In control applications it is neither possible nor necessary to know and/or control the full state of such a system, even approximated, but rather some local or global property (which can be defined as an output of the system), like pressure at a certain point of interest or the total lift acting on an object. Models designed for such applications should strive not only to reduce the number of states, like in reduced-order modelling. Since the goal of a controller is to control the output, the model it employs should prioritise the ability to affect the output using the available inputs. This amounts to seeking models with states with two prominent properties from control theory:</p>
+<ol class="simple">
+<li><p>Observability, i.e. having a measureable influence on the input of the system: if a state does not affect the output in any way, it is useless from the control perspective.</p></li>
+<li><p>Controllability, i.e. the ability to be influenced by the input: if a state cannot be controlled, from the control perspective it is not only useless, but even detrimental if it is observable at the same time, since it constitutes a perturbance in the output that cannot be directly countered.
+Reduced order models that use states which balance observability and controllability are called balanced models <span id="id8">[<a class="reference internal" href="bibliography.html#id27" title="Steven L Brunton and J Nathan Kutz. Data-driven science and engineering: Machine learning, dynamical systems, and control. Cambridge University Press, 2019.">BK19</a>]</span>. The balanced truncation method has been used in <span id="id9">[<a class="reference internal" href="bibliography.html#id18" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span> to find an accurate and balanced linear model of the Theodorsen function, which is being used in this project.</p></li>
+</ol>
+</section>
 </section>
 <section id="sindy">
 <h2>SINDy<a class="headerlink" href="#sindy" title="Permalink to this headline">#</a></h2>
-</section>
-<section id="dimensionality-reduction">
-<h2>Dimensionality reduction<a class="headerlink" href="#dimensionality-reduction" title="Permalink to this headline">#</a></h2>
+<p><span id="id10">[<a class="reference internal" href="bibliography.html#id21" title="Steven L Brunton, Joshua L Proctor, and J Nathan Kutz. Discovering governing equations from data by sparse identification of nonlinear dynamical systems. Proceedings of the national academy of sciences, 113(15):3932–3937, 2016.">BPK16</a>]</span></p>
 </section>
 <section id="input-signals">
 <h2>Input signals<a class="headerlink" href="#input-signals" title="Permalink to this headline">#</a></h2>
-<p>For an accurate identification of a dynamic model, the training data should contain input signals with a wide frequency spectrum, to make sure that all of the system dynamics are present in the data. It is also useful to have signals representing a typical physical scenario, to verify whether the identified model behaves in an intuitive way. The following points described input signals which have been found useful for the identification of the Theodorsen model (and, by extension, the low Reynolds number models to be developed later).</p>
+<p>For an accurate identification of a dynamic model, the training data should contain input signals with a wide frequency spectrum, to make sure that all of the system dynamics are present in the data. It is also useful to have signals representing a typical physical scenario, to verify whether the identified model behaves in an intuitive way. The following points describe input signals which have been found useful for the identification of the Theodorsen model (and, by extension, the low Reynolds number models to be developed later).</p>
 <section id="square-wave">
 <h3>Square wave<a class="headerlink" href="#square-wave" title="Permalink to this headline">#</a></h3>
 <p>A square wave signal periodically switches between a high and low state with a given half-period <span class="math notranslate nohighlight">\(T\)</span>. Its spectrum has significant peaks at the harmonics of its principal frequency, given by the equation <span class="math notranslate nohighlight">\(f_n = 1/2T + n/T [Hz], n=0,1,2,...\)</span>. However, it is a quite useful signal because of its simplicity, enabling to observe the system’s response to steps and periodicity in the inputs at the same time.</p>
@@ -551,7 +610,7 @@ title="Print to PDF"
 </section>
 <section id="pseudo-random-binary-signal-prbs">
 <h3>Pseudo-Random Binary Signal (PRBS)<a class="headerlink" href="#pseudo-random-binary-signal-prbs" title="Permalink to this headline">#</a></h3>
-<p>A pseudo-random binary signal (PRBS) works like a state wave, swithing between a high and low state, except that the switching is random in nature. In the present implementation, after every base time step <span class="math notranslate nohighlight">\(\Delta t\)</span> (higher or equal to the sampling step), the signal switches states with a probability of 0.5 based on a pseudo-random binary sequence generated by a linear-feedback shift register (LFSR). The randomness of the swithching behaviour ensures a broad spectrum without significant peaks, up to the frequency related to the base time step <span class="math notranslate nohighlight">\(\Delta t\)</span>, when the spectrum starts to diminish. The singal and its spectrum is visualised in <a class="reference internal" href="#signal-prbs"><span class="std std-numref">Fig. 7</span></a></p>
+<p>A pseudo-random binary signal (PRBS) works like a square wave, swithing between a high and low state, except that the switching is random in nature. In the present implementation, after every base time step <span class="math notranslate nohighlight">\(\Delta t\)</span> (higher or equal to the sampling step), the signal switches states with a probability of 0.5 based on a pseudo-random binary sequence generated by a linear-feedback shift register (LFSR). The randomness of the swithching behaviour ensures a broad spectrum without significant peaks, up to the frequency related to the base time step <span class="math notranslate nohighlight">\(\Delta t\)</span>, when the spectrum starts to diminish. The singal and its spectrum is visualised in <a class="reference internal" href="#signal-prbs"><span class="std std-numref">Fig. 7</span></a></p>
 <figure class="align-default" id="signal-prbs">
 <a class="reference internal image-reference" href="_images/signal_prbs.png"><img alt="_images/signal_prbs.png" src="_images/signal_prbs.png" style="width: 600px;" /></a>
 <figcaption>
@@ -568,7 +627,7 @@ title="Print to PDF"
 <p><span class="caption-number">Fig. 8 </span><span class="caption-text">White noise with a mean of 0 and standard deviation of 1, sampled in <span class="math notranslate nohighlight">\(N=4000\)</span> uniform points over a timespan of <span class="math notranslate nohighlight">\(20 [s]\)</span>.</span><a class="headerlink" href="#signal-white" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Since the only limit to the frequency content is the sampling time, the signal can exhibit very erratic behaviour. If this poses a problem to the identification method or simulation model, the frequency can be removed by a moving average filtration. Given an integer averaging radius <span class="math notranslate nohighlight">\(n\)</span>, every point of the signal is transformed into the average of itself and its <span class="math notranslate nohighlight">\(n\)</span> neighbours from both sides, therefore limiting the frequency content above the frequency <span class="math notranslate nohighlight">\(f = 1/(2 n \Delta t)\)</span>.</p>
+<p>Since the only limit to the frequency content is the sampling time, the signal can exhibit very erratic behaviour. If this poses a problem to the identification method or simulation model, the frequency spectrum can be reduced using a moving average filtration. Given an integer averaging radius <span class="math notranslate nohighlight">\(n\)</span>, every point of the signal is transformed into the average of itself and its <span class="math notranslate nohighlight">\(n\)</span> neighbours from both sides, therefore limiting the frequency content above the frequency <span class="math notranslate nohighlight">\(f = 1/(2 n \Delta t)\)</span>.</p>
 <figure class="align-default" id="signal-white-averaged">
 <a class="reference internal image-reference" href="_images/signal_white_averaged.png"><img alt="_images/signal_white_averaged.png" src="_images/signal_white_averaged.png" style="width: 600px;" /></a>
 <figcaption>
