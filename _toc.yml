@@ -11,7 +11,7 @@ parts:
   - caption: Unsteady lift models
     chapters:
     - file: 02TheodorsenModel
-    - file: 025StateSpaceTheodorsen.ipynb
+    - file: 025StateSpaceTheodorsen
     - file: 03WagnerFunction
   - caption: System identification
     chapters:
