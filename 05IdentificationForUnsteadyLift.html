@@ -144,6 +144,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="025StateSpaceTheodorsen.html">
+   Implementation of the linearised Theodorsen model
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="03WagnerFunction.html">
    The Wagner function
   </a>
@@ -172,7 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07PC_code.html">
-   The code
+   Implementation of the orthogonal polynomial basis
   </a>
  </li>
 </ul>
@@ -450,6 +455,8 @@ title="Print to PDF"
 <h1>System identification for unsteady lift<a class="headerlink" href="#system-identification-for-unsteady-lift" title="Permalink to this headline">#</a></h1>
 <section id="literature-considerations">
 <h2>Literature considerations<a class="headerlink" href="#literature-considerations" title="Permalink to this headline">#</a></h2>
+<p>This subsection highlights and discusses some works with elements highly relevant to our project.</p>
+<p>In <span id="id1">[<a class="reference internal" href="bibliography.html#id18" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span> a an approximate state-space representation of the Theodorsen has been obtained by combining the already linear terms of the model with a balanced linear model of the Theodorsen function, as shown in <span style="color: red;">section</span>. It was computed by evaluating the Theodorsen function at 1200 logarithmically spaced reduced frequencies, and fitted to a state-space model of order 11 using black box frequency domain methods implemented in the MATLAB <em>fitfrd</em> function. Finally, balanced truncation <span id="id2">[<a class="reference internal" href="bibliography.html#id27" title="Steven L Brunton and J Nathan Kutz. Data-driven science and engineering: Machine learning, dynamical systems, and control. Cambridge University Press, 2019.">BK19</a>]</span> was used to reduce the order of the model to 4 (models of higher order did not present significantly lower error).</p>
 </section>
 <section id="our-approach">
 <h2>Our approach<a class="headerlink" href="#our-approach" title="Permalink to this headline">#</a></h2>
