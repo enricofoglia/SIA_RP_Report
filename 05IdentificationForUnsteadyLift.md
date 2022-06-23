@@ -2,6 +2,10 @@
 
 ## Literature considerations
 
+This subsection highlights and discusses some works with elements highly relevant to our project.
+
+In {cite}`brunton2013empirical` a an approximate state-space representation of the Theodorsen has been obtained by combining the already linear terms of the model with a balanced linear model of the Theodorsen function, as shown in <span style="color: red;">section</span>. It was computed by evaluating the Theodorsen function at 1200 logarithmically spaced reduced frequencies, and fitted to a state-space model of order 11 using black box frequency domain methods implemented in the MATLAB _fitfrd_ function. Finally, balanced truncation {cite}`brunton2019data` was used to reduce the order of the model to 4 (models of higher order did not present significantly lower error).
+
 ## Our approach
 
 The general approach that will has been used in this work is to try to fit a model from data produced by the codes presented in <span style="color: red;">section</span> and <span style="color: red;">section</span>. In general we assume the inputs to the system to be $\ddot h$ and $\ddot \alpha$, which means that by analytical integration we have access to all the physical states present in the classical definition of the unsteady lift coefficients for sinusoidal inputs presented in <span style="color: red;">section</span>. The input-output response of the system will be then approximated by a regression model over a library of functions $\Theta(\alpha, \dot \alpha, \ddot \alpha, \dot h, \ddot h)$, in the form:
