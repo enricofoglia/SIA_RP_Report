@@ -1,6 +1,6 @@
 # The Wagner function 
 
-The Wagner function can be seen as the time domain representation of the Theodorsen function. In particular it can be defined as the time-response of an airfoil undergoing a sudden change in angle of attack for time $t=0$, i.e. the step response of the system to a change in $\alpha_e$ {cite}`dawson2022improved`.
+The Wagner function can be seen as the time domain representation of the Theodorsen function. In particular, it can be defined as the lift time response of an airfoil undergoing a sudden change in angle of attack for time $t=0$, i.e. the step response of the system to a change in $\alpha_e$ {cite}`dawson2022improved`.
 
 Calling $\phi(t)$ the Wagner function, the analytical computation can be carried out as:
 :::{math}
@@ -19,6 +19,10 @@ where $\mathcal{L}^{-1}$ is the inverse Laplace transform, and $C(s)$ is the The
 \end{eqnarray}
 :::
 
-The first equation has better numerical properties when integrated for small time steps, while the second is more stable for large ones.
+The first equation has better numerical properties when integrated for small time steps, while the second is more stable for large ones {cite}`dawson2022improved`.
 
-The computation of the Wagner function in this fashion is rather cumbersome, as it requires to integrate numerically the Theodorsen function. In particular for large times the trigonometric terms in the above equations make the integrals slowly convergent and require a very fine discretization of the domain, making the computational time quite elevated. As a first step in our project we ahave then decided to test the selected system identification algorithm, presented in <span style="color: red;">section</span>, to reproduce the Wagner function, in an attempt to replicate the study conducted in {cite}`dawson2022improved` and gain confidence with the numerical methods involved. The results are presented in <span style="color: red;">section</span>.
+The computation of the Wagner function in this fashion is rather cumbersome, as it requires to integrate numerically the Theodorsen function. In particular for large times the trigonometric terms in the above equations make the integrals slowly convergent and require a very fine discretization of the domain, leading to a long computation time. Many analytical approximations to the function exist {cite}`brunton2013empirical`, but usually their accuracy is limited to a certain time scale {cite}`dawson2022improved`.
+
+As a first step in the project, the SINDy algorith presented in <span style="color: red;">section</span> has been used to identify a dynamical system generating the Wagner function, in an attempt to replicate the study conducted in {cite}`dawson2022improved` and gain confidence in the numerical methods involved. The results are presented in <span style="color: red;">section</span>.
+
+The Wagner function, even in an approximated form, can be the base of useful unsteady lift model, since the response to arbitrary input can be computed from it using a convolution integral. However, models based on this framework have the 2 main drawbacks of not being easy to use for many control synthesis problems (state-space representation are often more useful in this regard) and not being easy to parametrise, since the entire dynamics of unsteady lift are compressed into a single function {cite}`brunton_reduced-order_2013`.

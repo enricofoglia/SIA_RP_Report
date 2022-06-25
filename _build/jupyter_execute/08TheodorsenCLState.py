@@ -518,7 +518,7 @@ plt.show()
 # 
 # $$C_L^{(C(k)=1} = C_1 (\ddot{h} + \dot{\alpha} + a\ddot{\alpha}) + C_2(\alpha + \dot{h} + \dot{\alpha}(1/2-a))C(k)$$
 
-# In[26]:
+# In[28]:
 
 
 C_L_AMQS_1 = (airfoil.C_1*(data.h_ddot + data.alpha_dot - airfoil.a*data.alpha_ddot) +
@@ -549,7 +549,7 @@ plt.tick_params('x', labelbottom=False)
 
 # A comparison is made between the error of the simplified models with various values of $C(k)$, the model identified using $x'$ and the model identified previously using 'x':
 
-# In[27]:
+# In[29]:
 
 
 plt.plot(data.t[:-1], C_L_AMQS_1[:-1]-data.C_L[:-1], 'c-', label='$C_L$ if $C(k)=1$')

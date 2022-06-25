@@ -7,11 +7,11 @@
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
-# # Identify a dynamical system for the Wagner function
+# # Identification of a dynamical system for the Wagner function
 # 
 # ## Data generation
 # 
-# As a first step we generate data for the analytical form of the Wagner function. As seen in <span style="color: red;">section</span> this can be done by integrating the Theodorsen function in two different ways, depending on the time step we want to compute:
+# As a first step, data for the analytical form of the Wagner function is generated. As seen in <span style="color: red;">section</span>, this can be done by integrating the Theodorsen function in two different ways, depending on the time step we want to compute:
 # ```{math}
 # \begin{eqnarray}
 #   \phi(t) &=& \frac{1}{2} + \frac{2}{\pi}\int_0^\infty \frac{1}{k}\left(G_1(k) - \frac{1}{2}\right)\sin(kt)dk \\
@@ -235,7 +235,7 @@ plt.show()
 # 
 # The results show that the SINDy algorithm, even if quite robust, necessitates of very clean and complete data to work properly, especially in terms of repeatability of the results.
 # 
-# We can try to fit the data using orthogonal polynomials. To do so it is sufficient to generate the data library using the dedicated script and pass it to the algorithm. 
+# It can be tried to fit the data using orthogonal polynomials. To do so it is sufficient to generate the data library using the dedicated script and pass it to the algorithm. 
 
 # In[5]:
 
@@ -312,20 +312,14 @@ ax3.legend(['r = 2','r = 3','r = 4','r = 5','r = 6','r = 7','r = 8'], loc = 'low
 plt.show()
 
 
-# We can observe that the results are not particularly better. In particular, if any thresholding is applied when fitting the model the result quality decreases drastically, which prevents us from using the sparsity promoting capability of SINDy to the fullest. This results in the appearence of zeroth and first order terms, even though these are cancelled out when higher order terms appear.
+# It can be observed that the results are not particularly better. In particular, if any thresholding is applied when fitting the model the result quality decreases drastically, which prevents us from using the sparsity promoting capability of SINDy to the fullest. This results in the appearence of zeroth and first order terms, even though these are cancelled out when higher order terms appear.
 # 
-# However, as we coulf expect, new terms are added without drastically modifying the previuos ones, which is a statement about the orthogonalisation procedure.
+# However, as one could expect, new terms are added without drastically modifying the previuos ones, which confirms the key property of the orthogonalisation procedure.
 # 
-# Here below we report the form of the orthogonal polynomials for this dataset.
+# Below are reported the the orthogonal polynomials for this dataset.
 
 # In[6]:
 
 
 aPC_Wagner.printFeatureNames()
-
-
-# In[ ]:
-
-
-
 

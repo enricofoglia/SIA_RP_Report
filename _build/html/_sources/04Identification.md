@@ -14,18 +14,48 @@ For more general and scientific purposes, the interpretability of the identified
 
 ### Reduced order modeling
 
-Another challenge in data-driven model discovery is the high dimensionality of the problems involved. In a fluid flow problem, for example, the state of the system, e.g. defined as the velocity field for potential flow, is infite, since the field is continuous in space. Even if it is discretised, the state can consist of thousands or millions of parameters. The modelling of a system this big is possible (since this is exactly what CFD simulations do), but also very costly in terms of time and computational power. However, even in high-dimensional physical systems, there are usually global, low order patterns playing a significant role in their dynamics. For instance, a low Reynolds number flow over a cylinder or airfoil is significantly marked by a periodic von Karman vortex street. To approximate the global pattern of the flow, it is not necessary to exactly know the state of the velocity field —  simply knowing the current positions of the vortices can be enough. This procedure of finding low-order strucutres that dominate (e.g. carry a significant part of the system's mechanical energy) the dynamics of the system, and subsequent creation of lower-order methods approximating it, is called reduced order modeling (ROM) {cite}`brunton2019data`. One of the main ROM algorithms is the proper orthogonal decomposition, which uses a singular value decomposition to find global patterns in the evolution of the system and sort them by their significance, which allows to discard terms (i.e. combinations of states) of little importance to the overall dynamics {cite}`brunton2019data`. Therefore, ROMs allow to approximate the behaviour of complex systems by using a smaller number of states, therefore significantly reducing the computational cost.
+Another challenge in data-driven model discovery is the high dimensionality of the problems involved. In a fluid flow problem, for example, the state of the system, e.g. defined as the velocity field for potential flow, is infite, since the field is continuous in space. Even if it is discretised, the state can consist of thousands or millions of parameters. The modelling of a system this big is possible (since this is exactly what CFD simulations do), but also very costly in terms of time and computational power. However, even in high-dimensional physical systems, there are usually global, low order patterns playing a significant role in their dynamics. For instance, a low Reynolds number flow over a cylinder or airfoil is significantly marked by a periodic von Karman vortex street. To approximate the global pattern of the flow, it is not necessary to exactly know the state of the velocity field —  simply knowing the current positions of the vortices can be enough. This procedure of finding low-order strucutres that dominate (e.g. carry a significant part of the system's mechanical energy) the dynamics of the system, and subsequent creation of lower-order methods approximating it, is called reduced order modeling (ROM) {cite}`brunton2019data`. One of the main ROM algorithms is the proper orthogonal decomposition (POD), which uses a singular value decomposition to find global patterns in the evolution of the system and sort them by their significance, which allows to discard terms (i.e. combinations of states) of little importance to the overall dynamics {cite}`brunton2019data` {cite}`volkwein2011_POD`. Therefore, ROMs allow to approximate the behaviour of complex systems by using a smaller number of states, therefore significantly reducing the computational cost.
 
 ### Balanced models
 
 In control applications it is neither possible nor necessary to know and/or control the full state of such a system, even approximated, but rather some local or global property (which can be defined as an output of the system), like pressure at a certain point of interest or the total lift acting on an object. Models designed for such applications should strive not only to reduce the number of states, like in reduced-order modelling. Since the goal of a controller is to control the output, the model it employs should prioritise the ability to affect the output using the available inputs. This amounts to seeking models with states with two prominent properties from control theory:
+
 1. Observability, i.e. having a measureable influence on the input of the system: if a state does not affect the output in any way, it is useless from the control perspective.
 2. Controllability, i.e. the ability to be influenced by the input: if a state cannot be controlled, from the control perspective it is not only useless, but even detrimental if it is observable at the same time, since it constitutes a perturbance in the output that cannot be directly countered. 
-Reduced order models that use states which balance observability and controllability are called balanced models {cite}`brunton2019data`. The balanced truncation method has been used in {cite}`brunton2013empirical` to find an accurate and balanced linear model of the Theodorsen function, which is being used in this project.
+
+Reduced order models that use states which balance observability and controllability are called balanced models {cite}`brunton2019data`. Some of the methods of balanced modeling present in the literature are balanced truncation {cite}`brunton2019data`, balanced proper orthogonal decomposition (BPOD) and the eigensystem realistation algorithm (ERA) {cite}`juang_eigensystem_1985`. The balanced truncation method has been used in {cite}`brunton2013empirical` to find an accurate and balanced linear model of the Theodorsen function, which is being used in this project, while {cite}`brunton_reduced-order_2013` used ERA as part of a methodology of identifying models of unsteady lift for viscous flows.
 
 ## SINDy
 
-{cite}`brunton2016_SINDy`
+The main system identification method used in the project is the sparse identification of nonlinear dynamics (SINDy) algorithm developed by Brunton et al. {cite}`brunton2016_SINDy`. Specifically, since the system is responding to a control input (the pitching and plunging motion), the exact variation used is SINDy with control (SINDYc) {cite}`brunton_sparse_2016`, introduced below.
+
+Consider a nonlinear system with input $u$ and state $x$. It's dynamics can be modelled by the equation:
+
+:::{math}
+	\dot{x} = f(x,u)
+:::
+
+The purpose of SINDYc is to estimate the $f(x,u)$ function by performing sparse regression over a nonlinear library of functions $\Theta(x, u)$ and snapshots of the evolution of the system's states and inputs. The regression is of the form:
+
+:::{math}
+	\dot{X} = \Xi \Theta^T (X, U)
+::: 
+
+where:
+
+* $X$ is the vector of $\mathbb R^n$ snapshots of the states of the system, i.e. $x = [x(t_0),\; x(t_1),\;x(t_2),\;\dots,\,x(t^{N-1})]^T$
+* $\dot{X}$ is the vector of $\mathbb R^n$ snapshots of the state derivatives of the system, i.e. $\dot{X} = [\dot{x}(t_0),\; \dot{x}(t_1),\;\dot{x}(t_2),\;\dots,\,\dot{x}(t^{N-1})]^T$
+* $U$ is the vector of the history of the inputs, i.e. $U = [u(t_0),\; u(t_1),\;u(t_2),\;\dots,\,u(t^{N-1})]^T$
+* $\Theta \in \mathbb R^{N,M}$ contains the time series for $M$ possible base functions
+* $\Xi \in \mathbb R^M$ contains the coefficients for all of them
+
+The resulting estimated model has the form:
+
+:::{math}
+	f(x) \approx \sum \theta_k(x,u) \xi_k = \Theta(x,u) \Xi
+::: 
+
+The regression is performed using methods promoting sparsity, i.e. making the $\Xi$ matrix have as many 0 terms as possible, and therefore favourising simple and interpretable models. PySINDy is a Python library implementing various variants of {cite}`kaptanoglu2021_PySINDy` and many useful functionalities related to the process, and is being used extensively in the project.
 
 ## Input signals
 
