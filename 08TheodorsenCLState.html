@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Identification of the Theodorsen model by treating \(C_L\) as a state &#8212; System Identification for unsteady Airfoils</title>
+    <title>Identification of the Theodorsen model by treating \(C_L\) as a state &#8212; System Identification for Unsteady Airfoils</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Summary" href="09Summary.html" />
-    <link rel="prev" title="Identify a dynamical system for the Wagner function" href="08WagnerSINDy.html" />
+    <link rel="prev" title="Identification of a dynamical system for the Wagner function" href="08WagnerSINDy.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -99,7 +99,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">System Identification for unsteady Airfoils</h1>
+      <h1 class="site-logo" id="site-title">System Identification for Unsteady Airfoils</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -134,7 +134,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Unsteady lift models
+  Classical unsteady lift models
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -189,7 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="08WagnerSINDy.html">
-   Identify a dynamical system for the Wagner function
+   Identification of a dynamical system for the Wagner function
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -628,7 +628,7 @@ title="Print to PDF"
 \[C_L^x = C_L - Du\]</div>
 <div class="math notranslate nohighlight">
 \[\dot{C}_L^x = CAx + CBu\]</div>
-<p>The above equation is a valid state-space model. The separation of the <span class="math notranslate nohighlight">\(Du\)</span> term is not a big issue, given that it can be easily estimated independently <span id="id1">[<a class="reference internal" href="bibliography.html#id13" title="Steven L. Brunton, Clarence W. Rowley, and David R. Williams. Reduced-order unsteady aerodynamic models at low Reynolds numbers. Journal of Fluid Mechanics, 724:203–233, 2013. doi:10.1017/jfm.2013.163.">BRW13</a>]</span>.</p>
+<p>The above equation is a valid state-space model. The separation of the <span class="math notranslate nohighlight">\(Du\)</span> term is not a big issue, given that it can be easily estimated independently <span id="id1">[<a class="reference internal" href="bibliography.html#id18" title="Steven L. Brunton, Clarence W. Rowley, and David R. Williams. Reduced-order unsteady aerodynamic models at low Reynolds numbers. Journal of Fluid Mechanics, 724:203–233, 2013. doi:10.1017/jfm.2013.163.">BRW13</a>]</span>.</p>
 <p>The final state-space representation of the model is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\dot{\hat{x}} = \frac{d}{dt} \begin{bmatrix}x\\ C_L^x\end{bmatrix} = \begin{bmatrix}A &amp; 0\\ CA &amp; 0\end{bmatrix} \hat{x} + \begin{bmatrix}B \\ CB \end{bmatrix} u\end{split}\]</div>
@@ -669,7 +669,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>The 4-state approximation of the Theodorsen fuction from <span id="id2">[<a class="reference internal" href="bibliography.html#id14" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span> is used in the full Thedorsen state-space LTI approximation:</p>
+<p>The 4-state approximation of the Theodorsen fuction from <span id="id2">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span> is used in the full Thedorsen state-space LTI approximation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the balanced truncation Theodorsen function approximation</span>
@@ -1320,7 +1320,7 @@ Identified model (order 2):
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Identify a dynamical system for the Wagner function</p>
+            <p class="prev-next-title">Identification of a dynamical system for the Wagner function</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="09Summary.html" title="next page">

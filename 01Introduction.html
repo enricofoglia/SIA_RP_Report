@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Introduction &#8212; System Identification for unsteady Airfoils</title>
+    <title>Introduction &#8212; System Identification for Unsteady Airfoils</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -97,7 +97,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">System Identification for unsteady Airfoils</h1>
+      <h1 class="site-logo" id="site-title">System Identification for Unsteady Airfoils</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -132,13 +132,18 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Unsteady lift models
+  Classical unsteady lift models
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="02TheodorsenModel.html">
    The Theodorsen Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="025StateSpaceTheodorsen.html">
+   Implementation of the linearised Theodorsen model
   </a>
  </li>
  <li class="toctree-l1">
@@ -170,7 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07PC_code.html">
-   The code
+   Implementation of the orthogonal polynomial basis
   </a>
  </li>
 </ul>
@@ -396,13 +401,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scope-of-the-work-and-state-of-the-art">
-   Scope of the work and state of the art
+  <a class="reference internal nav-link" href="#scope-of-the-work">
+   Scope of the work
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#applications">
    Applications
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#outline-of-the-report">
+   Outline of the report
   </a>
  </li>
 </ul>
@@ -425,13 +435,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scope-of-the-work-and-state-of-the-art">
-   Scope of the work and state of the art
+  <a class="reference internal nav-link" href="#scope-of-the-work">
+   Scope of the work
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#applications">
    Applications
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#outline-of-the-report">
+   Outline of the report
   </a>
  </li>
 </ul>
@@ -446,19 +461,33 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
-<section id="scope-of-the-work-and-state-of-the-art">
-<h2>Scope of the work and state of the art<a class="headerlink" href="#scope-of-the-work-and-state-of-the-art" title="Permalink to this headline">#</a></h2>
+<section id="scope-of-the-work">
+<h2>Scope of the work<a class="headerlink" href="#scope-of-the-work" title="Permalink to this headline">#</a></h2>
 <p>The goal of the project here presented is to identify sparse and reliable models for the unsteady lift of an airfoil undergoing a general motion (with a focus on pitching and plunging) in a low Reynolds number flow, using data from data captured from simulations of increasing complexity.</p>
-<p>Classical analytical models already exist, based on unsteady potential flow theory. In particular, Theodorsen derived a frequency domain function that models a phase shift and gain of unsteady lift in response to sinusoidal variations of its vertical position and angle of attack <span id="id1">[<a class="reference internal" href="bibliography.html#id3" title="Theodore Theodorsen. General theory of aerodynamic instability and the mechanism of flutter. Technical Report, NACA, 1979.">The79</a>]</span>. Using the same assumptions, Wagner <span id="id2">[<a class="reference internal" href="bibliography.html#id24" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, pages 1–17, 2021.">DB21</a>]</span> computed the time domain lift response to a step in angle of attack, which was generalised by Von Kármán for arbitrary motion <span id="id3">[<a class="reference internal" href="bibliography.html#id2" title="T. Von Kármán and W. R. Sears. Airfoil theory for non-uniform motion. Journal of the aeronautical sciences, 1938.">KS38</a>]</span>. However, both time-domain approaches involve integration of the complex Theodorsen function or of the distribution of vorticity in the wake, and can be thus impractical to compute in many real time applications. Moreover, their true limit lies in the assumption of potential flow, discarding viscous effects which can be very pronounced in low Reynolds number flows.</p>
-<p>Nonetheless, improvements to the classical models have been developed in recent years, allowing to apply them to wings of finite span <span id="id4">[<a class="reference internal" href="bibliography.html#id22" title="Johan Boutet and Grigorios Dimitriadis. Unsteady lifting line theory using the wagner function for the aerodynamic and aeroelastic modeling of 3d wings. Aerospace, 5(3):92, 2018.">BD18</a>]</span> or viscous flow for low frequecy oscillations <span id="id5">[<a class="reference internal" href="bibliography.html#id16" title="Tianshu Liu, Shizhao Wang, Xing Zhang, and Guowei He. Unsteady thin-airfoil theory revisited: application of a simple lift formula. Aiaa Journal, 53(6):1492–1502, 2015.">LWZH15</a>]</span>. In fact, it has been proved by Limacher that the classical separation in added mass and circulatory forces already identified by Theodorsen and Von Kármán is indeed more general and applies beyond potential flow theory <span id="id6">[<a class="reference internal" href="bibliography.html#id21" title="Eric Limacher, Chris Morton, and David Wood. Generalized derivation of the added-mass and circulatory forces for viscous flows. Physical Review Fluids, 3(1):1–25, 2018.">LMW18</a>]</span>. By utilising data from more and more accurate simulations of the phenomenon, we expect to be able to find models that can outperform those proposed up until this point, and for them to be interpretable enough as to allow a physical interpretation of the single terms in the same way classical studies did for inviscid flows. In order to do so, we have employed a machine learning algorithm developed by Steve Brunton and collegues called Sparse Identification for Non-linear Dynamics (or SINDy) <span id="id7">[<a class="reference internal" href="bibliography.html#id17" title="Steven L Brunton, Joshua L Proctor, and J Nathan Kutz. Discovering governing equations from data by sparse identification of nonlinear dynamical systems. Proceedings of the national academy of sciences, 113(15):3932–3937, 2016.">BPK16</a>]</span>. The attractiveness of this particular algorithm is due to the fact that it has a Python implementation <span id="id8">[<a class="reference internal" href="bibliography.html#id26" title="Alan A Kaptanoglu, Brian M de Silva, Urban Fasel, Kadierdan Kaheman, Jared L Callaham, Charles B Delahunt, Kathleen Champion, Jean-Christophe Loiseau, J Nathan Kutz, and Steven L Brunton. Pysindy: a comprehensive python package for robust sparse system identification. arXiv preprint arXiv:2111.08481, 2021.">KdSF+21</a>]</span> and is optimised to retrieve sparse models, i.e. with as little terms as possible. This will help the generalisation of the model and its interpretability.</p>
+<p>Classical analytical models already exist, based on unsteady potential flow theory. In particular, Theodorsen derived a frequency domain function that models a phase shift and gain of unsteady lift in response to sinusoidal variations of its vertical position and angle of attack <span id="id1">[<a class="reference internal" href="bibliography.html#id4" title="Theodore Theodorsen. General theory of aerodynamic instability and the mechanism of flutter. Technical Report, NACA, 1979.">The79</a>]</span>. Using the same assumptions, Wagner <span id="id2">[<a class="reference internal" href="bibliography.html#id31" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, pages 1–17, 2021.">DB21</a>]</span> computed the time domain lift response to a step in angle of attack, which was generalised by Von Kármán for arbitrary motion <span id="id3">[<a class="reference internal" href="bibliography.html#id2" title="T. Von Kármán and W. R. Sears. Airfoil theory for non-uniform motion. Journal of the aeronautical sciences, 1938.">KS38</a>]</span>. However, both time-domain approaches involve integration of the complex Theodorsen function or of the distribution of vorticity in the wake, and can be thus impractical to compute in many real time applications. Moreover, their true limit lies in the assumption of potential flow, discarding viscous effects which can be very pronounced in low Reynolds number flows.</p>
+<p>Nonetheless, improvements to the classical models have been developed in recent years, providing linear state-space representations <span id="id4">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>, adapting them to wings of finite span <span id="id5">[<a class="reference internal" href="bibliography.html#id29" title="Johan Boutet and Grigorios Dimitriadis. Unsteady lifting line theory using the wagner function for the aerodynamic and aeroelastic modeling of 3d wings. Aerospace, 5(3):92, 2018.">BD18</a>]</span>, viscous flow with low frequecy oscillations <span id="id6">[<a class="reference internal" href="bibliography.html#id22" title="Tianshu Liu, Shizhao Wang, Xing Zhang, and Guowei He. Unsteady thin-airfoil theory revisited: application of a simple lift formula. Aiaa Journal, 53(6):1492–1502, 2015.">LWZH15</a>]</span>, or even generalised movement under viscous flow linearised at a certain angle of attack <span id="id7">[<a class="reference internal" href="bibliography.html#id18" title="Steven L. Brunton, Clarence W. Rowley, and David R. Williams. Reduced-order unsteady aerodynamic models at low Reynolds numbers. Journal of Fluid Mechanics, 724:203–233, 2013. doi:10.1017/jfm.2013.163.">BRW13</a>]</span>. In fact, it has been proved by Limacher that the classical separation in added mass and circulatory forces already identified by Theodorsen and Von Kármán is indeed more general and applies beyond potential flow theory <span id="id8">[<a class="reference internal" href="bibliography.html#id28" title="Eric Limacher, Chris Morton, and David Wood. Generalized derivation of the added-mass and circulatory forces for viscous flows. Physical Review Fluids, 3(1):1–25, 2018.">LMW18</a>]</span>; this fact has already contributed to the low Reynolds number system identification framework used in <span id="id9">[<a class="reference internal" href="bibliography.html#id18" title="Steven L. Brunton, Clarence W. Rowley, and David R. Williams. Reduced-order unsteady aerodynamic models at low Reynolds numbers. Journal of Fluid Mechanics, 724:203–233, 2013. doi:10.1017/jfm.2013.163.">BRW13</a>]</span>. The limitation of the models in <span id="id10">[<a class="reference internal" href="bibliography.html#id18" title="Steven L. Brunton, Clarence W. Rowley, and David R. Williams. Reduced-order unsteady aerodynamic models at low Reynolds numbers. Journal of Fluid Mechanics, 724:203–233, 2013. doi:10.1017/jfm.2013.163.">BRW13</a>]</span> is, however, their linearity, leading to accuracy only at a certain range of angles of attack, despite using a reduced order linear model of the unsteady flow and its effects on lift. One of the prinicipal goals of this project is to try to improve on these results by identifying nonlinear models of unsteady lift, which would be either accurate in a broader range of conditions, simpler (e.g. containing less states) or more interpretable. In order to do so, the Sparse Identification for Non-linear Dynamics (SINDy) <span id="id11">[<a class="reference internal" href="bibliography.html#id23" title="Steven L Brunton, Joshua L Proctor, and J Nathan Kutz. Discovering governing equations from data by sparse identification of nonlinear dynamical systems. Proceedings of the national academy of sciences, 113(15):3932–3937, 2016.">BPK16a</a>]</span> machine learning algorithm is being used. The attractiveness of this particular algorithm is due to the fact that it has a mature Python implementation <span id="id12">[<a class="reference internal" href="bibliography.html#id33" title="Alan A Kaptanoglu, Brian M de Silva, Urban Fasel, Kadierdan Kaheman, Jared L Callaham, Charles B Delahunt, Kathleen Champion, Jean-Christophe Loiseau, J Nathan Kutz, and Steven L Brunton. Pysindy: a comprehensive python package for robust sparse system identification. arXiv preprint arXiv:2111.08481, 2021.">KdSF+21</a>]</span> and is designed to retrieve sparse models, i.e. with as little terms as possible. Hopefully, this will result in a nonlinear model that is both accurate and interpretable.</p>
+<p>The system identification performed in the project will be based on 3 types of simulation data:</p>
+<ol class="simple">
+<li><p>Data generated using the Theodorsen model approximation found in <span id="id13">[<a class="reference internal" href="bibliography.html#id18" title="Steven L. Brunton, Clarence W. Rowley, and David R. Williams. Reduced-order unsteady aerodynamic models at low Reynolds numbers. Journal of Fluid Mechanics, 724:203–233, 2013. doi:10.1017/jfm.2013.163.">BRW13</a>]</span>.</p></li>
+<li><p>Inviscid CFD simulations.</p></li>
+<li><p>Low Reynolds number viscous simulations.</p></li>
+</ol>
+<p>The rationale is to initially develop the identification methodology based on data that easy to generate, and that is known to be correct (because of using a good model from the literature). Also the identification itself is easier in this phase, because the obtained models can be explicitly compared to the reference one. An intermediate step after that is the repetition of the identification procedure on inviscid CFD data, which should yield a very similar model, followed by attempts to identify a model using the viscous CFD data. The latter will be a long, iterative process, with gradually adapted methodolody and analysis of the results.</p>
 </section>
 <section id="applications">
 <h2>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">#</a></h2>
 <p>The project here presented is not just a thought exercise in order to go beyond classical analytical models with modern machine learning techniques. The need for precise and interpretable models for airfoils in unsteady flow conditions is felt in diverse fields of the aerospace industry.</p>
-<p>The first analytical models by Wagner and Theodorsen can be applied to the prediction of the onset of flutter and the structural response of a wing to a gust of various shapes <span id="id9">[<a class="reference internal" href="bibliography.html#id25" title="Gianfranco Chiocchia. Aéronautique-Aéroélasticité-Phénomèmes physiques, modélisation mathématique-Applications. Editions Ellipses, 2021.">Chi21</a>]</span>.</p>
-<p>The forward flight of an helicopter induces on the rotor a cyclic load due to the fact that the blade encounters a flow with a changing velocity due to the summation of the linear and rotating motion. The prediction of such loads, and thus of the lift force generated by the rotor, can only be made considering the time-varying nature of the flow <span id="id10">[<a class="reference internal" href="bibliography.html#id12" title="Wayne Johnson. Rotorcraft aeromechanics. Volume 36. Cambridge University Press, 2013.">Joh13</a>]</span>.</p>
-<p>Another emerging field where unsteady airfoil aerodynamics comes into play is Boundary Layer Ingestion engines. Such systems are projected to have up to a 19% efficiency increment over conventional configurations (considering the overall system improvement <span id="id11">[<a class="reference internal" href="bibliography.html#id20" title="Alejandra Uranga, Mark Drela, David K Hall, and Edward M Greitzer. Analysis of the aerodynamic benefit from boundary layer ingestion for transport aircraft. AIAA journal, 56(11):4271–4281, 2018.">UDHG18</a>]</span>) and are thus studied with great attention. However, due to the presence at the inlet of a varying velocity field, the fan blades undergo time varying loading that can result in flutter or fatigue damage <span id="id12">[<a class="reference internal" href="bibliography.html#id19" title="Milind A Bakhle, Tondapu S Reddy, Rula Coroneos, James B Min, Andrew J Provenza, Kirsten P Duffy, George L Stefko, and Gregory Heinlein. Aeromechanics analysis of a distortion-tolerant fan with boundary layer ingestion. In 2018 AIAA Aerospace Sciences Meeting, 1891. 2018.">BRC+18</a>]</span>.</p>
-<p>The intrinsic unsteadiness of the flow generates acoustic waves that propagate from the airfoil. This noises can, in fact, be of considerable intensity when it come to the biggest rotors, and can be a deal braker in those situations where a low acoustic footprint is paramount, like in the case of urban air mobility using drone-like vehicles <span style="color: red;">citation needed</span>.</p>
+<p>The first analytical models by Wagner and Theodorsen can be applied to the prediction of the onset of flutter and the structural response of a wing to a gust of various shapes <span id="id14">[<a class="reference internal" href="bibliography.html#id32" title="Gianfranco Chiocchia. Aéronautique-Aéroélasticité-Phénomèmes physiques, modélisation mathématique-Applications. Editions Ellipses, 2021.">Chi21</a>]</span>.</p>
+<p>There are many modern developments in small and agile drones, either in a rotorcraft, fixed-wing or bio-inspired flapping-wing configurations. Given their small sizes and resulting low velocities, accurate models of low Reynolds number unsteady lift can help in their design, both in terms of structure and control algorithm synthesis <span id="id15">[<a class="reference internal" href="bibliography.html#id15" title="Steven Brunton. Unsteady aerodynamic models for agile flight at low Reynolds numbers. PhD thesis, Princeton University, 2012. doi:10.13140/RG.2.1.1875.4967.">Bru12</a>]</span>.</p>
+<p>The forward flight of an helicopter induces on the rotor a cyclic load due to the fact that the blade encounters a flow with a changing velocity due to the summation of the linear and rotating motion. The prediction of such loads, and thus of the lift force generated by the rotor, can only be made considering the time-varying nature of the flow <span id="id16">[<a class="reference internal" href="bibliography.html#id17" title="Wayne Johnson. Rotorcraft aeromechanics. Volume 36. Cambridge University Press, 2013.">Joh13</a>]</span>.</p>
+<p>Another emerging field where unsteady airfoil aerodynamics comes into play is Boundary Layer Ingestion engines. Such systems are projected to have up to a 19% efficiency increment over conventional configurations (considering the overall system improvement <span id="id17">[<a class="reference internal" href="bibliography.html#id27" title="Alejandra Uranga, Mark Drela, David K Hall, and Edward M Greitzer. Analysis of the aerodynamic benefit from boundary layer ingestion for transport aircraft. AIAA journal, 56(11):4271–4281, 2018.">UDHG18</a>]</span>) and are thus studied with great attention. However, due to the presence at the inlet of a varying velocity field, the fan blades undergo time varying loading that can result in flutter or fatigue damage <span id="id18">[<a class="reference internal" href="bibliography.html#id26" title="Milind A Bakhle, Tondapu S Reddy, Rula Coroneos, James B Min, Andrew J Provenza, Kirsten P Duffy, George L Stefko, and Gregory Heinlein. Aeromechanics analysis of a distortion-tolerant fan with boundary layer ingestion. In 2018 AIAA Aerospace Sciences Meeting, 1891. 2018.">BRC+18</a>]</span>.</p>
+<p>The intrinsic unsteadiness of the flow generates acoustic waves that propagate from the airfoil. This noise can, in fact, be of considerable intensity when it come to the biggest rotors, and can be a deal braker in situations where a low acoustic footprint is paramount, like in the case of urban air mobility using drone-like vehicles.</p>
+</section>
+<section id="outline-of-the-report">
+<h2>Outline of the report<a class="headerlink" href="#outline-of-the-report" title="Permalink to this headline">#</a></h2>
+<p>The first part of the work introduces the topic of unsteady lift by describing in detail the classical Theodorsen model and presenting a Python implementation of its approximate linear state-space representation, reproduced from <span id="id19">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>. The Wagner function, related to the Theodorsen model, is also briefly introduced.</p>
+<p>The second part introduces system identification concepts relevant to the project. Some very relevant works on unsteady lift system identification are briefly discussed, followed by an overview of the key aspects of the currently used identification methodology (which is subject to evolved over time).</p>
+<p>Afterwards, two main pieces of results achieved so far are presented. The first one aims at using SINDy to discover a dynamic model outputting the Wagner function, replicating the results found in <span id="id20">[<a class="reference internal" href="bibliography.html#id35" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span>. The second part aims at reproducing the linearised Theodorsen model found in <span id="id21">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>, using a modified approach involving less states than the reference model. Finally, the current achievements and future considerations are summarised.</p>
 </section>
 </section>
 

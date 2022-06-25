@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Identify a dynamical system for the Wagner function &#8212; System Identification for unsteady Airfoils</title>
+    <title>Identification of a dynamical system for the Wagner function &#8212; System Identification for Unsteady Airfoils</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -99,7 +99,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">System Identification for unsteady Airfoils</h1>
+      <h1 class="site-logo" id="site-title">System Identification for Unsteady Airfoils</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -134,7 +134,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Unsteady lift models
+  Classical unsteady lift models
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -189,7 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Identify a dynamical system for the Wagner function
+   Identification of a dynamical system for the Wagner function
   </a>
  </li>
  <li class="toctree-l1">
@@ -445,7 +445,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Identify a dynamical system for the Wagner function</h1>
+                <h1>Identification of a dynamical system for the Wagner function</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -477,11 +477,11 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="identify-a-dynamical-system-for-the-wagner-function">
-<h1>Identify a dynamical system for the Wagner function<a class="headerlink" href="#identify-a-dynamical-system-for-the-wagner-function" title="Permalink to this headline">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="identification-of-a-dynamical-system-for-the-wagner-function">
+<h1>Identification of a dynamical system for the Wagner function<a class="headerlink" href="#identification-of-a-dynamical-system-for-the-wagner-function" title="Permalink to this headline">#</a></h1>
 <section id="data-generation">
 <h2>Data generation<a class="headerlink" href="#data-generation" title="Permalink to this headline">#</a></h2>
-<p>As a first step we generate data for the analytical form of the Wagner function. As seen in <span style="color: red;">section</span> this can be done by integrating the Theodorsen function in two different ways, depending on the time step we want to compute:</p>
+<p>As a first step, data for the analytical form of the Wagner function is generated. As seen in <span style="color: red;">section</span>, this can be done by integrating the Theodorsen function in two different ways, depending on the time step we want to compute:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{eqnarray}
   \phi(t) &amp;=&amp; \frac{1}{2} + \frac{2}{\pi}\int_0^\infty \frac{1}{k}\left(G_1(k) - \frac{1}{2}\right)\sin(kt)dk \\
@@ -628,10 +628,10 @@ title="Print to PDF"
 <img alt="_images/08WagnerSINDy_4_1.png" src="_images/08WagnerSINDy_4_1.png" />
 </div>
 </div>
-<p>The fact that generating a clean dataset is so time consuming is a statement to the need of a precise but easily computed model for the Wagner function. As stated in <span id="id1">[<a class="reference internal" href="bibliography.html#id32" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span>, this can be done by fitting a simple nonlinear ODE in the polynomial form:</p>
+<p>The fact that generating a clean dataset is so time consuming is a statement to the need of a precise but easily computed model for the Wagner function. As stated in <span id="id1">[<a class="reference internal" href="bibliography.html#id35" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span>, this can be done by fitting a simple nonlinear ODE in the polynomial form:</p>
 <div class="math notranslate nohighlight">
 \[\dot L(t) = \sum_{i=0}^r\xi_iL^i(t)\]</div>
-<p>where <span class="math notranslate nohighlight">\(\xi_r\)</span> is the coefficient of the term of order <span class="math notranslate nohighlight">\(r\)</span>. Once this type of model is correctly identified it can be simulated forward in time as much as needed, or used as part of a closed or open loop controller. In order to do so we have tried to replicate the results proposed in <span id="id2">[<a class="reference internal" href="bibliography.html#id32" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span> for <span class="math notranslate nohighlight">\(r = 1,\dots,8\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(\xi_r\)</span> is the coefficient of the term of order <span class="math notranslate nohighlight">\(r\)</span>. Once this type of model is correctly identified it can be simulated forward in time as much as needed, or used as part of a closed or open loop controller. In order to do so we have tried to replicate the results proposed in <span id="id2">[<a class="reference internal" href="bibliography.html#id35" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span> for <span class="math notranslate nohighlight">\(r = 1,\dots,8\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pysindy</span> <span class="k">as</span> <span class="nn">ps</span>
@@ -719,15 +719,15 @@ title="Print to PDF"
 <img alt="_images/08WagnerSINDy_6_7.png" src="_images/08WagnerSINDy_6_7.png" />
 </div>
 </div>
-<p>As in <span id="id3">[<a class="reference internal" href="bibliography.html#id32" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span> <span class="math notranslate nohighlight">\(\xi_0\)</span> and <span class="math notranslate nohighlight">\(\xi_1\)</span> are always zero. The results for <span class="math notranslate nohighlight">\(r=7\)</span> and <span class="math notranslate nohighlight">\(r=8\)</span> are quite far from of the others, and in fact perform worse than the <span class="math notranslate nohighlight">\(r=6\)</span> case. Possible explanations for this include:</p>
+<p>As in <span id="id3">[<a class="reference internal" href="bibliography.html#id35" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span> <span class="math notranslate nohighlight">\(\xi_0\)</span> and <span class="math notranslate nohighlight">\(\xi_1\)</span> are always zero. The results for <span class="math notranslate nohighlight">\(r=7\)</span> and <span class="math notranslate nohighlight">\(r=8\)</span> are quite far from of the others, and in fact perform worse than the <span class="math notranslate nohighlight">\(r=6\)</span> case. Possible explanations for this include:</p>
 <ul class="simple">
 <li><p>The residual errors not corrected by the correction algorithm</p></li>
 <li><p>An attempt of the algorithm to minimise the error at the beginning, with repercussions of the accuracy for greater times</p></li>
 <li><p>A not long enough time window</p></li>
 </ul>
-<p>The results, even though somewhat different from those presented in <span id="id4">[<a class="reference internal" href="bibliography.html#id32" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span>, are nonetheless satisfying. In particular for <span class="math notranslate nohighlight">\(r=6\)</span> the relative error goes down as much as <span class="math notranslate nohighlight">\(10^{-3}\)</span>, which is remarkable.</p>
+<p>The results, even though somewhat different from those presented in <span id="id4">[<a class="reference internal" href="bibliography.html#id35" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span>, are nonetheless satisfying. In particular for <span class="math notranslate nohighlight">\(r=6\)</span> the relative error goes down as much as <span class="math notranslate nohighlight">\(10^{-3}\)</span>, which is remarkable.</p>
 <p>The results show that the SINDy algorithm, even if quite robust, necessitates of very clean and complete data to work properly, especially in terms of repeatability of the results.</p>
-<p>We can try to fit the data using orthogonal polynomials. To do so it is sufficient to generate the data library using the dedicated script and pass it to the algorithm.</p>
+<p>It can be tried to fit the data using orthogonal polynomials. To do so it is sufficient to generate the data library using the dedicated script and pass it to the algorithm.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PolynomialChaos</span> <span class="kn">import</span> <span class="o">*</span>
@@ -805,10 +805,10 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.002 f0() + -0.165 f1(phi) + -0.436 f2(phi)
-(phi)&#39; = -0.002 f0() + -0.165 f1(phi) + -0.436 f2(phi) + 0.143 f3(phi)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.002 f0() + -0.165 f1(phi) + -0.436 f2(phi) + 0.143 f3(phi) + -1.187 f4(phi)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.002 f0() + -0.165 f1(phi) + -0.436 f2(phi) + 0.143 f3(phi)
+(phi)&#39; = -0.002 f0() + -0.165 f1(phi) + -0.436 f2(phi) + 0.143 f3(phi) + -1.187 f4(phi)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.002 f0() + -0.158 f1(phi) + -0.436 f2(phi) + 0.143 f3(phi) + -1.187 f4(phi) + 3.639 f5(phi)
@@ -826,9 +826,9 @@ title="Print to PDF"
 <img alt="_images/08WagnerSINDy_8_7.png" src="_images/08WagnerSINDy_8_7.png" />
 </div>
 </div>
-<p>We can observe that the results are not particularly better. In particular, if any thresholding is applied when fitting the model the result quality decreases drastically, which prevents us from using the sparsity promoting capability of SINDy to the fullest. This results in the appearence of zeroth and first order terms, even though these are cancelled out when higher order terms appear.</p>
-<p>However, as we coulf expect, new terms are added without drastically modifying the previuos ones, which is a statement about the orthogonalisation procedure.</p>
-<p>Here below we report the form of the orthogonal polynomials for this dataset.</p>
+<p>It can be observed that the results are not particularly better. In particular, if any thresholding is applied when fitting the model the result quality decreases drastically, which prevents us from using the sparsity promoting capability of SINDy to the fullest. This results in the appearence of zeroth and first order terms, even though these are cancelled out when higher order terms appear.</p>
+<p>However, as one could expect, new terms are added without drastically modifying the previuos ones, which confirms the key property of the orthogonalisation procedure.</p>
+<p>Below are reported the the orthogonal polynomials for this dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aPC_Wagner</span><span class="o">.</span><span class="n">printFeatureNames</span><span class="p">()</span>
