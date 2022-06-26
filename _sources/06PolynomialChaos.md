@@ -1,3 +1,4 @@
+(section:polynomial_chaos)=
 # Orthogonal basis and Polynomial Chaos
 
 ## Mathematical Background

@@ -4,7 +4,7 @@ myst:
   dmath_allow_labels: True
 ---
 
-
+(section:theodorsen_model)=
 # The Theodorsen Model
 
 The Theodorsen model is a classical frequency-domain model of unsteady lift, derived analytically using unsteady potential flow theory. Because of this assumption, it is not expected to be accurate for low Reynolds numbers flows. Nevertheless, it is highly important to the project, because:
@@ -154,4 +154,4 @@ Analogously to the pitching dynamics with $a<0$, this leads to an asymptotic gai
 
 ## Summary
 
-The Thedorsen model is a useful tool for understanding and predicting unsteady lift at high Reynolds number flows. While it is difficult to implement in an exact manner, precise linear state-space approximations are available in the literature — one of them, originating from {cite}`brunton2013empirical`, is implemented and demonstrated in <span style="color: red;">section</span>, and later used throughout the report as a reference model for the system identification procedures in <span style="color: red;">section</span> and <span style="color: red;">section</span>.
+The Thedorsen model is a useful tool for understanding and predicting unsteady lift at high Reynolds number flows. While it is difficult to implement in an exact manner, precise linear state-space approximations are available in the literature — one of them, originating from {cite}`brunton2013empirical`, is implemented and demonstrated in {ref}`section:theodorsen_implementation`, and later used throughout the report as a reference model for the system identification procedures in {ref}`section:results_theodorsen`.

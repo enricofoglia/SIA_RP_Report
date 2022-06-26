@@ -189,7 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="08WagnerSINDy.html">
-   Identify a dynamical system for the Wagner function
+   Identification of a dynamical system for the Wagner function
   </a>
  </li>
  <li class="toctree-l1">
@@ -599,7 +599,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="implementation-of-the-linearised-theodorsen-model">
-<h1>Implementation of the linearised Theodorsen model<a class="headerlink" href="#implementation-of-the-linearised-theodorsen-model" title="Permalink to this headline">#</a></h1>
+<span id="section-theodorsen-implementation"></span><h1>Implementation of the linearised Theodorsen model<a class="headerlink" href="#implementation-of-the-linearised-theodorsen-model" title="Permalink to this headline">#</a></h1>
 <p>The purpose of this notebook is to showcase and explain a linear time-independent (LTI) state-space representation of Theodorsen’s unsteady lift model, along with a demonstrative implementation using the Python Control Systems Library (<a class="reference external" href="https://python-control.readthedocs.io/en/0.9.1/">https://python-control.readthedocs.io/en/0.9.1/</a>). The LTI representation has been reproduced from <span id="id1">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>. While it is not exact, since the Theodorsen model cannot be represented by an LTI model with a finite set of states <span id="id2">[<a class="reference internal" href="bibliography.html#id11" title="David A Peters. Two-dimensional incompressible unsteady airfoil theory—an overview. Journal of Fluids and Structures, 24(3):295–312, 2008.">Pet08</a>]</span>, it allows computing unsteady lift responses to arbitrary inputs with a good degree of accuracy, as demonstrated in <span id="id3">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
