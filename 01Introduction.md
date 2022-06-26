@@ -1,3 +1,4 @@
+(section:introduction)=
 # Introduction
 
 ## Scope of the work
@@ -32,8 +33,8 @@ The intrinsic unsteadiness of the flow generates acoustic waves that propagate f
 
 ## Outline of the report
 
-The first part of the work introduces the topic of unsteady lift by describing in detail the classical Theodorsen model and presenting a Python implementation of its approximate linear state-space representation, reproduced from {cite}`brunton2013empirical`. The Wagner function, related to the Theodorsen model, is also briefly introduced.
+The first part of the work introduces the topic of unsteady lift by describing in detail the classical Theodorsen model ({ref}`section:theodorsen_model`) and presenting a Python implementation of its approximate linear state-space representation ({ref}`section:theodorsen_implementation`), reproduced from {cite}`brunton2013empirical`. The Wagner function, related to the Theodorsen model, is also briefly introduced ({ref}`section:wagner`).
 
-The second part introduces system identification concepts relevant to the project. Some very relevant works on unsteady lift system identification are briefly discussed, followed by an overview of the key aspects of the currently used identification methodology (which is subject to evolved over time).
+The second part introduces system identification concepts relevant to the project ({ref}`section:identification_algorithms`). Some very relevant works on unsteady lift system identification are briefly discussed, followed by an overview of the key aspects of the currently used identification methodology ({ref}`section:identification_lift`). A highlited element of the developed methodology are orthogonal base polynomials for the nonlinear model, described theoretically ({ref}`section:polynomial_chaos`) and implemented in code ({ref}`section:polynomial_chaos_code`).
 
-Afterwards, two main pieces of results achieved so far are presented. The first one aims at using SINDy to discover a dynamic model outputting the Wagner function, replicating the results found in {cite}`dawson2022improved`. The second part aims at reproducing the linearised Theodorsen model found in {cite}`brunton2013empirical`, using a modified approach involving less states than the reference model. Finally, the current achievements and future considerations are summarised.
+Afterwards, two main pieces of results achieved so far are presented. The first one aims at using SINDy to discover a dynamic model outputting the Wagner function, replicating the results found in {cite}`dawson2022improved` ({ref}`section:results_wagner`). The second part aims at reproducing the linearised Theodorsen model found in {cite}`brunton2013empirical`, using a modified approach involving less states than the reference model ({ref}`section:results_theodorsen`). Finally, the current achievements and future considerations are summarised ({ref}`section:summary`).

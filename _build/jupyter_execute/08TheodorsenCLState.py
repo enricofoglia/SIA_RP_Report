@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# (section:results_theodorsen)=
 # # Identification of the Theodorsen model by treating $C_L$ as a state
 # 
 # The goal of the following 2-step numerical experiment was to replicate the behaviour of the Theodorsen model by using SINDy on trajectory datasets comprising of the inputs $u = [\ddot \alpha, \ddot h]$ and a state vector expanded to include the lift coefficient $C_L$. The goal was to overcome the fact that SINDy estimates the full-state output model of the system (i.e. the $A$ and $B$ matrices in the case of an LTI system), without regarding how the states contribute to the final output (i.e. not estimating the $C$ and $D$ matrices in case of an LTI system). This limitation is not fundamental, since having estimated the states, the $x \rightarrow y$ relationship can be estimated by a second regression step, but simplyfying the process into one regression step was an interesting alternative.
@@ -518,7 +519,7 @@ plt.show()
 # 
 # $$C_L^{(C(k)=1} = C_1 (\ddot{h} + \dot{\alpha} + a\ddot{\alpha}) + C_2(\alpha + \dot{h} + \dot{\alpha}(1/2-a))C(k)$$
 
-# In[28]:
+# In[26]:
 
 
 C_L_AMQS_1 = (airfoil.C_1*(data.h_ddot + data.alpha_dot - airfoil.a*data.alpha_ddot) +
@@ -549,7 +550,7 @@ plt.tick_params('x', labelbottom=False)
 
 # A comparison is made between the error of the simplified models with various values of $C(k)$, the model identified using $x'$ and the model identified previously using 'x':
 
-# In[29]:
+# In[27]:
 
 
 plt.plot(data.t[:-1], C_L_AMQS_1[:-1]-data.C_L[:-1], 'c-', label='$C_L$ if $C(k)=1$')
@@ -576,4 +577,4 @@ plt.show()
 
 # ## Conclusions
 # 
-# It has been shown that adding $C_L^x = C_L - Du$ to the state vector of the training data is a viable strategy for identification of the unsteady lift dynamical system.It was also discovered that using only $x' = [\dot{h}, \alpha, \dot{\alpha}, C_L^x]$ as states can still yield a model of acceptable performance, and that it seems that the attenuation effects of the Theodorsen function on the lift can be at least partially modeled by a linear system with only $x'$ as states. The latter fact, combined with more in-depth analysis, can help with the choice of states for the low Reynolds number unsteady lift models seeked in the future.
+# It has been shown that adding $C_L^x = C_L - Du$ to the state vector of the training data is a viable strategy for identification of the unsteady lift dynamical system. It was also discovered that using only $x' = [\dot{h}, \alpha, \dot{\alpha}, C_L^x]$ as states can still yield a model of acceptable performance, and that it seems that the attenuation effects of the Theodorsen function on the lift can be at least partially modeled by a linear system with only $x'$ as states. The latter fact, combined with more in-depth analysis, can help with the choice of states for the low Reynolds number unsteady lift models seeked in the future.

@@ -7,11 +7,12 @@
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
+# (section:results_wagner)=
 # # Identification of a dynamical system for the Wagner function
 # 
 # ## Data generation
 # 
-# As a first step, data for the analytical form of the Wagner function is generated. As seen in <span style="color: red;">section</span>, this can be done by integrating the Theodorsen function in two different ways, depending on the time step we want to compute:
+# As a first step, data for the analytical form of the Wagner function is generated. As seen in {ref}`section:wagner`, this can be done by integrating the Theodorsen function in two different ways, depending on the time step we want to compute:
 # ```{math}
 # \begin{eqnarray}
 #   \phi(t) &=& \frac{1}{2} + \frac{2}{\pi}\int_0^\infty \frac{1}{k}\left(G_1(k) - \frac{1}{2}\right)\sin(kt)dk \\

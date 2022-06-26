@@ -1,3 +1,4 @@
+(section:identification_algorithms)=
 # System identification algorithms
 
 ## General considerations

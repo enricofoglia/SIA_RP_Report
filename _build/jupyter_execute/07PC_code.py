@@ -7,6 +7,7 @@
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
+# (section:polynomial_chaos_code)=
 # # Implementation of the orthogonal polynomial basis
 # 
 # ## Introduction and basic structure
