@@ -1,1 +1,0 @@
-# Theodorsen model replication by regression

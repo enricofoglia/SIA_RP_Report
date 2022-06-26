@@ -5,17 +5,26 @@
 # 
 # ## Data generation
 # 
+<<<<<<< HEAD
 # Since the objective is to identify the Theodorsen function through its input-output response the classical model for a monochromatic oscillation cannot be used, since a wide spectrum input has to be prefered. The data-generation code uses then a linear approximation of the Theodorsen function obtained by balanced truncation in {cite}`brunton2013empirical`, as explained in section. 
 # 
+=======
+# As for the previous case the data is generated through a python script. Since the objective is to identify the Theodorsen function through its input-output response the classical model for a monochromatic oscillation cannot be used, since a wide spectrum input has to be prefered. The data-generation code uses then a linear approximation of the Theodorsen function obtained by balanced truncation in {cite}`brunton2013empirical`. 
+>>>>>>> 92e34524627476b295617cb0fc6a0fc24abac033
 
 # In[1]:
 
 
 import numpy as np
 import control
+<<<<<<< HEAD
 import Theodorsen_control as theodorsen
 from signals import prbs
 import matplotlib.pyplot as plt
+=======
+import Theodorsen_control as theodorsen # our library for working with Theodorsen model LTI approximations
+from signals import prbs # our library of identification signals
+>>>>>>> 92e34524627476b295617cb0fc6a0fc24abac033
 
 a = 1/2  # pitch axis wrt to 1/2-chord
 b = 1.  # half-chord length of the airfoil

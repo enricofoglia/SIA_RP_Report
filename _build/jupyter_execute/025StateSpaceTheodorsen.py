@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# (section:theodorsen_implementation)=
 # # Implementation of the linearised Theodorsen model
 # 
 # The purpose of this notebook is to showcase and explain a linear time-independent (LTI) state-space representation of Theodorsen's unsteady lift model, along with a demonstrative implementation using the Python Control Systems Library (https://python-control.readthedocs.io/en/0.9.1/). The LTI representation has been reproduced from {cite}`brunton2013empirical`. While it is not exact, since the Theodorsen model cannot be represented by an LTI model with a finite set of states {cite}`peters2008two`, it allows computing unsteady lift responses to arbitrary inputs with a good degree of accuracy, as demonstrated in {cite}`brunton2013empirical`.
@@ -123,7 +124,7 @@ control.bode_plot(sys_theod, omega_limits=[1e-2, 1e2], dB=True);
 # 0 & 0 & 0 & 0\\ \end{bmatrix}$$
 # 
 # $$B = \begin{bmatrix}0 & 0\\ 1 & 0\\ 0 & 0\\ 0 & 1\end{bmatrix}$$
-# $$C = \begin{bmatrix}\tilde{C} & \tilde{D}C_2 & \tilde{D}C_2 & C_1 + & \tilde{D}C_2(1-2a)/2\end{bmatrix}$$
+# $$C = \begin{bmatrix}\tilde{C} & \tilde{D}C_2 & \tilde{D}C_2 & C_1 + \tilde{D}C_2(1-2a)/2\end{bmatrix}$$
 # $$D = \begin{bmatrix}C_1 & -C_1a\end{bmatrix}$$
 
 # In[6]:
@@ -343,4 +344,10 @@ plt.show()
 # 
 # The LTI state-space representation of the model offers many advantages, including simple and efficient simulation (due to the numerical properties of linear ODEs) and the possibility of applying system identification tools meant for linear systems. The model of the Theodorsen function can be easily swapped for another one (e.g. one with a smaller dimension).
 # 
-# The code shown in this notebook is purely demonstrative; a library for more intensive work with LTI Theodorsen approximations has already been prepared as well.
+# The code shown in this notebook is purely demonstrative; a library for more intensive work with LTI Theodorsen approximations has already been prepared as well, and is used in different sections of this report:
+
+# In[16]:
+
+
+import Theodorsen_control
+

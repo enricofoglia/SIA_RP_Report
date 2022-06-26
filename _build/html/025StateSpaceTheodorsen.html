@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Implementation of the linearised Theodorsen model &#8212; System Identification for unsteady Airfoils</title>
+    <title>Implementation of the linearised Theodorsen model &#8212; System Identification for Unsteady Airfoils</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,10 +50,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Wagner function" href="03WagnerFunction.html" />
+    <link rel="prev" title="The Theodorsen Model" href="02TheodorsenModel.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -97,7 +99,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">System Identification for unsteady Airfoils</h1>
+      <h1 class="site-logo" id="site-title">System Identification for Unsteady Airfoils</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -132,13 +134,18 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Unsteady lift models
+  Classical unsteady lift models
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="02TheodorsenModel.html">
    The Theodorsen Model
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Implementation of the linearised Theodorsen model
   </a>
  </li>
  <li class="toctree-l1">
@@ -170,7 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07PC_code.html">
-   The code
+   Implementation of the orthogonal polynomial basis
   </a>
  </li>
 </ul>
@@ -182,12 +189,16 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="08WagnerSINDy.html">
-   Identify a dynamical system for the Wagner function
+   Identification of a dynamical system for the Wagner function
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="08TheodorsenCLState.html">
-   Theodorsen model replication with lift as a state
+   Identification of the Theodorsen model by treating
+   <span class="math notranslate nohighlight">
+    \(C_L\)
+   </span>
+   as a state
   </a>
  </li>
 </ul>
@@ -588,8 +599,8 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="implementation-of-the-linearised-theodorsen-model">
-<h1>Implementation of the linearised Theodorsen model<a class="headerlink" href="#implementation-of-the-linearised-theodorsen-model" title="Permalink to this headline">#</a></h1>
-<p>The purpose of this notebook is to showcase and explain a linear time-independent (LTI) state-space representation of Theodorsen’s unsteady lift model, along with a demonstrative implementation using the Python Control Systems Library (<a class="reference external" href="https://python-control.readthedocs.io/en/0.9.1/">https://python-control.readthedocs.io/en/0.9.1/</a>). The LTI representation has been reproduced from <span id="id1">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>. While it is not exact, since the Theodorsen model cannot be represented by an LTI model with a finite set of states <span id="id2">[<a class="reference internal" href="bibliography.html#id7" title="David A Peters. Two-dimensional incompressible unsteady airfoil theory—an overview. Journal of Fluids and Structures, 24(3):295–312, 2008.">Pet08</a>]</span>, it allows computing unsteady lift responses to arbitrary inputs with a good degree of accuracy, as demonstrated in <span id="id3">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>.</p>
+<span id="section-theodorsen-implementation"></span><h1>Implementation of the linearised Theodorsen model<a class="headerlink" href="#implementation-of-the-linearised-theodorsen-model" title="Permalink to this headline">#</a></h1>
+<p>The purpose of this notebook is to showcase and explain a linear time-independent (LTI) state-space representation of Theodorsen’s unsteady lift model, along with a demonstrative implementation using the Python Control Systems Library (<a class="reference external" href="https://python-control.readthedocs.io/en/0.9.1/">https://python-control.readthedocs.io/en/0.9.1/</a>). The LTI representation has been reproduced from <span id="id1">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>. While it is not exact, since the Theodorsen model cannot be represented by an LTI model with a finite set of states <span id="id2">[<a class="reference internal" href="bibliography.html#id11" title="David A Peters. Two-dimensional incompressible unsteady airfoil theory—an overview. Journal of Fluids and Structures, 24(3):295–312, 2008.">Pet08</a>]</span>, it allows computing unsteady lift responses to arbitrary inputs with a good degree of accuracy, as demonstrated in <span id="id3">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -651,7 +662,7 @@ x\\u
 \[\begin{equation}
 C(k) = \frac{H_1^{(2)}(k)}{H_1^{(2)}(k) + jH_0^{(2)}(k)}
 \end{equation}\]</div>
-<p>where <span class="math notranslate nohighlight">\(H_\nu^{(2)}(k)\)</span> are Hankel functions, defined by an expression using Bessel functions, <span class="math notranslate nohighlight">\(H_\nu^{(2)}(k) - J_\nu + jY_\nu\)</span>. This formula cannot be expressed as a rational function of <span class="math notranslate nohighlight">\(k\)</span>, and consequently it cannot be represented by an LTI model with finite state. However, it is possible to approximate it with an LTI system, taking quasi-steady lift <span class="math notranslate nohighlight">\(C_L^{QS}\)</span> as input and outputting the circulatory lift <span class="math notranslate nohighlight">\(C_L^{circ}\)</span>. This topic is explored in <span id="id4">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>. The approximation obtained there has the form:</p>
+<p>where <span class="math notranslate nohighlight">\(H_\nu^{(2)}(k)\)</span> are Hankel functions, defined by an expression using Bessel functions, <span class="math notranslate nohighlight">\(H_\nu^{(2)}(k) - J_\nu + jY_\nu\)</span>. This formula cannot be expressed as a rational function of <span class="math notranslate nohighlight">\(k\)</span>, and consequently it cannot be represented by an LTI model with finite state. However, it is possible to approximate it with an LTI system, taking quasi-steady lift <span class="math notranslate nohighlight">\(C_L^{QS}\)</span> as input and outputting the circulatory lift <span class="math notranslate nohighlight">\(C_L^{circ}\)</span>. This topic is explored in <span id="id4">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>. The approximation obtained there has the form:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{equation} \dot{\tilde{x}} = \begin{bmatrix}
 -1.158 &amp; -0.3052 &amp; -0.02028 &amp; -2.325\cdot 10^{-4}\\
@@ -694,7 +705,7 @@ C(k) = \frac{H_1^{(2)}(k)}{H_1^{(2)}(k) + jH_0^{(2)}(k)}
 </section>
 <section id="the-full-lti-system">
 <h3>The full LTI system<a class="headerlink" href="#the-full-lti-system" title="Permalink to this headline">#</a></h3>
-<p>Since the Theodorsen function is the only part of the model that cannot be exactly modeled by a state-space representation, it is possible to construct one for the entire model using the state-space approximation of the Theodorsen function. <span class="math notranslate nohighlight">\(\tilde{A}\)</span>, <span class="math notranslate nohighlight">\(\tilde{B}\)</span>, <span class="math notranslate nohighlight">\(\tilde{C}\)</span>, <span class="math notranslate nohighlight">\(\tilde{D}\)</span>, provided above. The equations for this LTI system are as follows <span id="id5">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>:</p>
+<p>Since the Theodorsen function is the only part of the model that cannot be exactly modeled by a state-space representation, it is possible to construct one for the entire model using the state-space approximation of the Theodorsen function. <span class="math notranslate nohighlight">\(\tilde{A}\)</span>, <span class="math notranslate nohighlight">\(\tilde{B}\)</span>, <span class="math notranslate nohighlight">\(\tilde{C}\)</span>, <span class="math notranslate nohighlight">\(\tilde{D}\)</span>, provided above. The equations for this LTI system are as follows <span id="id5">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>:</p>
 <div class="math notranslate nohighlight">
 \[ \dot{x} = Ax + Bu\]</div>
 <p>where:</p>
@@ -710,7 +721,7 @@ C(k) = \frac{H_1^{(2)}(k)}{H_1^{(2)}(k) + jH_0^{(2)}(k)}
 <div class="math notranslate nohighlight">
 \[\begin{split}B = \begin{bmatrix}0 &amp; 0\\ 1 &amp; 0\\ 0 &amp; 0\\ 0 &amp; 1\end{bmatrix}\end{split}\]</div>
 <div class="math notranslate nohighlight">
-\[C = \begin{bmatrix}\tilde{C} &amp; \tilde{D}C_2 &amp; \tilde{D}C_2 &amp; C_1 + &amp; \tilde{D}C_2(1-2a)/2\end{bmatrix}\]</div>
+\[C = \begin{bmatrix}\tilde{C} &amp; \tilde{D}C_2 &amp; \tilde{D}C_2 &amp; C_1 + \tilde{D}C_2(1-2a)/2\end{bmatrix}\]</div>
 <div class="math notranslate nohighlight">
 \[D = \begin{bmatrix}C_1 &amp; -C_1a\end{bmatrix}\]</div>
 <div class="cell docutils container">
@@ -747,7 +758,7 @@ C(k) = \frac{H_1^{(2)}(k)}{H_1^{(2)}(k) + jH_0^{(2)}(k)}
 </div>
 </div>
 </div>
-<p>The Bode plots of both SISO system are also consistent with <span id="id6">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>:</p>
+<p>The Bode plots of both SISO system are also consistent with <span id="id6">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">control</span><span class="o">.</span><span class="n">bode_plot</span><span class="p">(</span><span class="n">sys_h</span><span class="p">,</span> <span class="n">omega_limits</span><span class="o">=</span><span class="p">[</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e3</span><span class="p">],</span> <span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
@@ -775,7 +786,7 @@ C(k) = \frac{H_1^{(2)}(k)}{H_1^{(2)}(k) + jH_0^{(2)}(k)}
 <p>The Python Control Systems Library allows for easy computing of time responses of LTI systems.</p>
 <section id="impulse-in-ddot-h">
 <h3>Impulse in <span class="math notranslate nohighlight">\(\ddot{h}\)</span><a class="headerlink" href="#impulse-in-ddot-h" title="Permalink to this headline">#</a></h3>
-<p>The first example shall be the response to an <span class="math notranslate nohighlight">\(\ddot{h}\)</span> impulse, equivalent to a step change in angle of attack (as discussed before, a change of <span class="math notranslate nohighlight">\(\dot{h}\)</span> is equivalent to a change in effective angle of attack <span class="math notranslate nohighlight">\(\alpha_e\)</span>, therefore an impulse in <span class="math notranslate nohighlight">\(\ddot{h}\)</span>, corresponding to a step in <span class="math notranslate nohighlight">\(\dot{h}\)</span>, is equivalent to a step in <span class="math notranslate nohighlight">\(\alpha_e\)</span>). This is equivalent to the Wagner function, defined as the generalised step response to <span class="math notranslate nohighlight">\(\alpha_e\)</span> of the lift <span id="id7">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span> <span id="id8">[<a class="reference internal" href="bibliography.html#id7" title="David A Peters. Two-dimensional incompressible unsteady airfoil theory—an overview. Journal of Fluids and Structures, 24(3):295–312, 2008.">Pet08</a>]</span> (the only difference being the scaling factor of <span class="math notranslate nohighlight">\(C_2 = 2\pi\)</span>). The output is compared to an approximation of the Wagner function obtained by Venkatesan &amp; Friedman <span id="id9">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>:</p>
+<p>The first example shall be the response to an <span class="math notranslate nohighlight">\(\ddot{h}\)</span> impulse, equivalent to a step change in angle of attack (as discussed before, a change of <span class="math notranslate nohighlight">\(\dot{h}\)</span> is equivalent to a change in effective angle of attack <span class="math notranslate nohighlight">\(\alpha_e\)</span>, therefore an impulse in <span class="math notranslate nohighlight">\(\ddot{h}\)</span>, corresponding to a step in <span class="math notranslate nohighlight">\(\dot{h}\)</span>, is equivalent to a step in <span class="math notranslate nohighlight">\(\alpha_e\)</span>). This is equivalent to the Wagner function, defined as the generalised step response to <span class="math notranslate nohighlight">\(\alpha_e\)</span> of the lift <span id="id7">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span> <span id="id8">[<a class="reference internal" href="bibliography.html#id11" title="David A Peters. Two-dimensional incompressible unsteady airfoil theory—an overview. Journal of Fluids and Structures, 24(3):295–312, 2008.">Pet08</a>]</span> (the only difference being the scaling factor of <span class="math notranslate nohighlight">\(C_2 = 2\pi\)</span>). The output is compared to an approximation of the Wagner function obtained by Venkatesan &amp; Friedman <span id="id9">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
@@ -806,7 +817,7 @@ C(k) = \frac{H_1^{(2)}(k)}{H_1^{(2)}(k) + jH_0^{(2)}(k)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/control/timeresp.py:1798: UserWarning: System has direct feedthrough: ``D != 0``. The infinite impulse at ``t=0`` does not appear in the output.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>E:\Programy\Anaconda\envs\rp_env\lib\site-packages\control\timeresp.py:1816: UserWarning: System has direct feedthrough: ``D != 0``. The infinite impulse at ``t=0`` does not appear in the output.
 Results may be meaningless!
   warnings.warn(&quot;System has direct feedthrough: ``D != 0``. The &quot;
 </pre></div>
@@ -958,9 +969,16 @@ Results may be meaningless!
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
-<p>The proposed LTI approximation of the Theodorsen model is able to compute the unsteady lift response to arbitrary input, and does so with decent accuracy (for quantative data, see <span id="id10">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span> where it was derived). The only “black box” element of the model is the LTI approximation of the Theodorsen function, which was computed in <span id="id11">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span> using balanced truncation.</p>
+<p>The proposed LTI approximation of the Theodorsen model is able to compute the unsteady lift response to arbitrary input, and does so with decent accuracy (for quantative data, see <span id="id10">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span> where it was derived). The only “black box” element of the model is the LTI approximation of the Theodorsen function, which was computed in <span id="id11">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span> using balanced truncation.</p>
 <p>The LTI state-space representation of the model offers many advantages, including simple and efficient simulation (due to the numerical properties of linear ODEs) and the possibility of applying system identification tools meant for linear systems. The model of the Theodorsen function can be easily swapped for another one (e.g. one with a smaller dimension).</p>
-<p>The code shown in this notebook is purely demonstrative; a library for more intensive work with LTI Theodorsen approximations has already been prepared as well.</p>
+<p>The code shown in this notebook is purely demonstrative; a library for more intensive work with LTI Theodorsen approximations has already been prepared as well, and is used in different sections of this report:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Theodorsen_control</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -991,6 +1009,20 @@ Results may be meaningless!
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="02TheodorsenModel.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">The Theodorsen Model</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="03WagnerFunction.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The Wagner function</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

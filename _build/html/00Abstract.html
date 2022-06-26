@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Abstract &#8212; System Identification for unsteady Airfoils</title>
+    <title>Abstract &#8212; System Identification for Unsteady Airfoils</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Introduction" href="01Introduction.html" />
-    <link rel="prev" title="System Identification for unsteady Airfoils" href="intro.html" />
+    <link rel="prev" title="System Identification for Unsteady Airfoils" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -97,7 +97,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">System Identification for unsteady Airfoils</h1>
+      <h1 class="site-logo" id="site-title">System Identification for Unsteady Airfoils</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -109,7 +109,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    System Identification for unsteady Airfoils
+                    System Identification for Unsteady Airfoils
                 </a>
             </li>
         </ul>
@@ -132,13 +132,18 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Unsteady lift models
+  Classical unsteady lift models
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="02TheodorsenModel.html">
-   The Theodorsen Model
+   The Theodorsen model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="025StateSpaceTheodorsen.html">
+   Implementation of the linearised Theodorsen model
   </a>
  </li>
  <li class="toctree-l1">
@@ -170,7 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07PC_code.html">
-   The code
+   Implementation of the orthogonal polynomial basis
   </a>
  </li>
 </ul>
@@ -182,12 +187,16 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="08WagnerSINDy.html">
-   Identify a dynamical system for the Wagner function
+   Identification of a dynamical system for the Wagner function
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="08TheodorsenCLState.html">
-   Theodorsen model replication with lift as a state
+   Identification of the Theodorsen model by treating
+   <span class="math notranslate nohighlight">
+    \(C_L\)
+   </span>
+   as a state
   </a>
  </li>
 </ul>
@@ -395,6 +404,11 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="abstract">
 <h1>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">#</a></h1>
+<p>Certain emerging aerospace technologies, most notably small unmanned aerial vehicles (UAVs) with either fixed-wing, flapping-wing or rotorcraft configurations, can experience significant unsteady lift effects under low velocities and small geometric sizes, resulting in low Reynolds numbers and resulting significant transient lift variations that need to be taken into account in structural and control design.</p>
+<p>Unsteady lift models have existed since almost 90 years ago, but a significant part of legacy work focused on high Reynolds number flow, more characteristic for manned aircraft. One of these tried and tested models is the Theodorsen model, analytically derived using unsteady potential flow and thin airfoil theory. Despite these factors which limit its validity for low Reynolds number scenarios, it provides a physically meaningful framework for more general modelling unsteady lift.</p>
+<p>The goal of the project is the discovery of interpretable unsteady lift on airfoils in low Reynolds number flows, using a data-based approach. The data is to be generated using Direct Navier-Stokes (DNS) simulations, and the developed identification procedure is to be based on the sparse identification of nonlinear dynamics (SINDy) algorithm. Therefore, improvement on existing linearised model is seeked principally by the use of nonlinear and spare models. Before the final work with DNS data, the identification procedure is being developed and validated based on inviscid flow data, which is easier to generate and whose accurate analytical models are already known.</p>
+<p>The project has already reached some significant milestones. A state-of-the-art linear approximation of the Thedorsen model has been implemented and used as a reference for further work. Models currently identified using data generated using the reference model have some promising properties in terms of accuracy and simplicity, and the methodology used to obtain them is directly applicable to CFD data. Moreover, some more fundamental work on the identification procedure has been performed, most notably related to improving the properties of SINDy results by using an orthonormal polynomial basis for the nonlinear model, which also may help in ensuring good quality final results.</p>
+<p>The report describes the key theoretical aspects of the project as well as the results obtained so far and considerations for further work.</p>
 <p>Keywords: unsteady lift, Theodorsen model, system identification, SINDy</p>
 </section>
 
@@ -429,7 +443,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">System Identification for unsteady Airfoils</p>
+            <p class="prev-next-title">System Identification for Unsteady Airfoils</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="01Introduction.html" title="next page">

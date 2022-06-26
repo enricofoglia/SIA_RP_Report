@@ -8,10 +8,10 @@ parts:
     chapters:
     - file: 00Abstract
     - file: 01Introduction
-  - caption: Unsteady lift models
+  - caption: Classical unsteady lift models
     chapters:
     - file: 02TheodorsenModel
-    - file: State-space_Theodorsen.ipynb
+    - file: 025StateSpaceTheodorsen
     - file: 03WagnerFunction
   - caption: System identification
     chapters:
@@ -22,7 +22,6 @@ parts:
   - caption: Results
     chapters:
     - file: 08WagnerSINDy
-    - file: 08TheodorsenRegression
     - file: 08TheodorsenCLState
   - caption: Summary
     chapters:

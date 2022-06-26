@@ -4,7 +4,7 @@ import scipy.interpolate
 
 def linear_chirp(t, omega_init, omega_end, amplitude):
     '''Chirp signal with linearly progressing frequency.
-    
+
     Inputs:
     t - time [s]
     omega_init - frequency at t=0 [rad/s]
@@ -12,12 +12,12 @@ def linear_chirp(t, omega_init, omega_end, amplitude):
     amplitude - multiplicative amplitude (scalar or array of size t.shape)'''
     t_end = t[-1]
     return amplitude*np.sin((omega_end-omega_init) /
-               (2*t_end)*t**2 + omega_init*t)
+                            (2*t_end)*t**2 + omega_init*t)
 
 
 def square_wave(t, T, phase, amplitude):
     '''Square wave signal with equal upper and lower portions.
-    
+
     Inputs:
     t - time [s]
     T - length of one half-pulse (total period is 2*T) [t]
@@ -28,7 +28,7 @@ def square_wave(t, T, phase, amplitude):
 
 def sine_wave(t, omega, phase, amplitude):
     '''Sine wave.
-    
+
     Inputs:
     t - time [s]
     omega - frequency [rad/s]
@@ -39,7 +39,7 @@ def sine_wave(t, omega, phase, amplitude):
 
 def white_noise(t, sigma, mean=0.):
     '''Discrete white noise sampled from a gaussian distribution.
-    
+
     Inputs:
     t - time
     sigma - standard deviation
@@ -53,7 +53,7 @@ def _moving_average(array, n=3):
 
 def white_noise_averaged(t, sigma, mean=0., averaging_radius=3):
     '''Discrete white noise smoothened by a moving average.
-    
+
     Inputs:
     t - time
     sigma - standard deviation
@@ -80,8 +80,8 @@ def _LFSR31(N, seed):
 def prbs(t, dt, min=0., max=1., seed=None):
     '''Pseudo-random binary signal based on PRBS31.
 
-    
-    
+
+
     Inputs:
     t - time
     dt - minimum time between jumps
@@ -98,4 +98,5 @@ def prbs(t, dt, min=0., max=1., seed=None):
     binary_signal = np.where(_LFSR31(N, seed) > 0.5, max, min)
     interp_function = scipy.interpolate.interp1d(
         t_jumps, binary_signal, kind='previous', fill_value=0., axis=0)
-    return interp_function(t)
+
+    return np.reshape(interp_function(t), newshape=len(t))

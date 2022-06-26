@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>The Wagner function &#8212; System Identification for unsteady Airfoils</title>
+    <title>The Wagner function &#8212; System Identification for Unsteady Airfoils</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,12 +50,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="System identification algorithms" href="04Identification.html" />
-    <link rel="prev" title="The Theodorsen Model" href="02TheodorsenModel.html" />
+    <link rel="prev" title="Implementation of the linearised Theodorsen model" href="025StateSpaceTheodorsen.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -99,7 +99,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">System Identification for unsteady Airfoils</h1>
+      <h1 class="site-logo" id="site-title">System Identification for Unsteady Airfoils</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -134,13 +134,18 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Unsteady lift models
+  Classical unsteady lift models
  </span>
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="02TheodorsenModel.html">
    The Theodorsen Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="025StateSpaceTheodorsen.html">
+   Implementation of the linearised Theodorsen model
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -172,7 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07PC_code.html">
-   The code
+   Implementation of the orthogonal polynomial basis
   </a>
  </li>
 </ul>
@@ -184,12 +189,16 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="08WagnerSINDy.html">
-   Identify a dynamical system for the Wagner function
+   Identification of a dynamical system for the Wagner function
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="08TheodorsenCLState.html">
-   Theodorsen model replication with lift as a state
+   Identification of the Theodorsen model by treating
+   <span class="math notranslate nohighlight">
+    \(C_L\)
+   </span>
+   as a state
   </a>
  </li>
 </ul>
@@ -396,21 +405,23 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="the-wagner-function">
-<h1>The Wagner function<a class="headerlink" href="#the-wagner-function" title="Permalink to this headline">#</a></h1>
-<p>The Wagner function can be seen as the time domain representation of the Theodorsen function. In particular it can be defined as the time-response of an airfoil undergoing a sudden change in angle of attack for time <span class="math notranslate nohighlight">\(t=0\)</span>, i.e. the step response of the system to a change in <span class="math notranslate nohighlight">\(\alpha_e\)</span> <span id="id1">[<a class="reference internal" href="bibliography.html#id26" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span>.</p>
+<span id="section-wagner"></span><h1>The Wagner function<a class="headerlink" href="#the-wagner-function" title="Permalink to this headline">#</a></h1>
+<p>The Wagner function can be seen as the time domain representation of the Theodorsen function. In particular, it can be defined as the lift time response of an airfoil undergoing a sudden change in angle of attack for time <span class="math notranslate nohighlight">\(t=0\)</span>, i.e. the step response of the system to a change in <span class="math notranslate nohighlight">\(\alpha_e\)</span> <span id="id1">[<a class="reference internal" href="bibliography.html#id35" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span>.</p>
 <p>Calling <span class="math notranslate nohighlight">\(\phi(t)\)</span> the Wagner function, the analytical computation can be carried out as:</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation}
         \phi(t) = \mathcal{L}^{-1}\left(\frac{C(s)}{s}\right)
 \end{equation}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathcal{L}^{-1}\)</span> is the inverse Laplace transform, and <span class="math notranslate nohighlight">\(C(s)\)</span> is the Theodorsen function. Defining the real and imaginary part of the Theodorsen function as <span class="math notranslate nohighlight">\(G_1(k)\)</span> and <span class="math notranslate nohighlight">\(G_2(k)\)</span> respectively, it is possible to compute the Wagner function as <span id="id2">[<a class="reference internal" href="bibliography.html#id7" title="David A Peters. Two-dimensional incompressible unsteady airfoil theory—an overview. Journal of Fluids and Structures, 24(3):295–312, 2008.">Pet08</a>]</span>:</p>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{L}^{-1}\)</span> is the inverse Laplace transform, and <span class="math notranslate nohighlight">\(C(s)\)</span> is the Theodorsen function. Defining the real and imaginary part of the Theodorsen function as <span class="math notranslate nohighlight">\(G_1(k)\)</span> and <span class="math notranslate nohighlight">\(G_2(k)\)</span> respectively, it is possible to compute the Wagner function as <span id="id2">[<a class="reference internal" href="bibliography.html#id11" title="David A Peters. Two-dimensional incompressible unsteady airfoil theory—an overview. Journal of Fluids and Structures, 24(3):295–312, 2008.">Pet08</a>]</span>:</p>
 <div class="math notranslate nohighlight" id="equation-wagner-analytical">
 <span class="eqno">(2)<a class="headerlink" href="#equation-wagner-analytical" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{eqnarray}
   \phi(t) &amp;=&amp; \frac{1}{2} + \frac{2}{\pi}\int_0^\infty \frac{1}{k}\left(G_1(k) - \frac{1}{2}\right)\sin(kt)dk \\
   &amp;=&amp; 1 + \frac{2}{\pi}\int_0^\infty \frac{1}{k}G_2(k)\cos(kt)dk\label{eqn:int_large_t} 
 \end{eqnarray}\end{split}\]</div>
-<p>The first equation has better numerical properties when integrated for small time steps, while the second is more stable for large ones.</p>
-<p>The computation of the Wagner function in this fashion is rather cumbersome, as it requires to integrate numerically the Theodorsen function. In particular for large times the trigonometric terms in the above equations make the integrals slowly convergent and require a very fine discretization of the domain, making the computational time quite elevated. As a first step in our project we ahave then decided to test the selected system identification algorithm, presented in <span style="color: red;">section</span>, to reproduce the Wagner function, in an attempt to replicate the study conducted in <span id="id3">[<a class="reference internal" href="bibliography.html#id26" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span> and gain confidence with the numerical methods involved. The results are presented in <span style="color: red;">section</span>.</p>
+<p>The first equation has better numerical properties when integrated for small time steps, while the second is more stable for large ones <span id="id3">[<a class="reference internal" href="bibliography.html#id35" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span>.</p>
+<p>The computation of the Wagner function in this fashion is rather cumbersome, as it requires to integrate numerically the Theodorsen function. In particular for large times the trigonometric terms in the above equations make the integrals slowly convergent and require a very fine discretization of the domain, leading to a long computation time. Many analytical approximations to the function exist <span id="id4">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>, but usually their accuracy is limited to a certain time scale <span id="id5">[<a class="reference internal" href="bibliography.html#id35" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span>.</p>
+<p>As a first step in the project, the SINDy algorith presented in <a class="reference internal" href="04Identification.html#section-identification-algorithms"><span class="std std-ref">System identification algorithms</span></a> has been used to identify a dynamical system generating the Wagner function, in an attempt to replicate the study conducted in <span id="id6">[<a class="reference internal" href="bibliography.html#id35" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span> and gain confidence in the numerical methods involved. The results are presented in <a class="reference internal" href="08WagnerSINDy.html#section-results-wagner"><span class="std std-ref">Identification of a dynamical system for the Wagner function</span></a>.</p>
+<p>The Wagner function, even in an approximated form, can be the base of useful unsteady lift model, since the response to arbitrary input can be computed from it using a convolution integral. However, models based on this framework have the 2 main drawbacks of not being easy to use for many control synthesis problems (state-space representation are often more useful in this regard) and not being easy to parametrise, since the entire dynamics of unsteady lift are compressed into a single function <span id="id7">[<a class="reference internal" href="bibliography.html#id18" title="Steven L. Brunton, Clarence W. Rowley, and David R. Williams. Reduced-order unsteady aerodynamic models at low Reynolds numbers. Journal of Fluid Mechanics, 724:203–233, 2013. doi:10.1017/jfm.2013.163.">BRW13</a>]</span>.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -440,11 +451,11 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="02TheodorsenModel.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="025StateSpaceTheodorsen.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">The Theodorsen Model</p>
+            <p class="prev-next-title">Implementation of the linearised Theodorsen model</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="04Identification.html" title="next page">
