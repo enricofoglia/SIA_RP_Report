@@ -50,11 +50,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Identification of the Theodorsen model by treating \(C_L\) as a state" href="08TheodorsenCLState.html" />
+    <link rel="next" title="&lt;no title&gt;" href="08TheodorsenRegression.html" />
     <link rel="prev" title="Implementation of the orthogonal polynomial basis" href="07PC_code.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -111,7 +111,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    System Identification for unsteady Airfoils
+                    System Identification for Unsteady Airfoils
                 </a>
             </li>
         </ul>
@@ -140,7 +140,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="02TheodorsenModel.html">
-   The Theodorsen Model
+   The Theodorsen model
   </a>
  </li>
  <li class="toctree-l1">
@@ -695,7 +695,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>E:\Programy\Anaconda\envs\rp_env\lib\site-packages\pysindy\optimizers\stlsq.py:183: UserWarning: Sparsity parameter is too big (0.1) and eliminated all coefficients
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/pysindy/optimizers/stlsq.py:183: UserWarning: Sparsity parameter is too big (0.1) and eliminated all coefficients
   warnings.warn(
 </pre></div>
 </div>
@@ -703,7 +703,9 @@ title="Print to PDF"
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.680 phi^2 + 0.396 phi^3
-(phi)&#39; = -0.868 phi^2 + 1.575 phi^3 + -1.684 phi^4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.868 phi^2 + 1.575 phi^3 + -1.684 phi^4
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -0.981 phi^2 + 2.844 phi^3 + -5.902 phi^4 + 4.306 phi^5
@@ -718,9 +720,9 @@ title="Print to PDF"
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(phi)&#39; = -1.049 phi^2 + 4.226 phi^3 + -15.028 phi^4 + 26.150 phi^5 + -68.977 phi^7 + 69.306 phi^8
 </pre></div>
 </div>
-<img alt="_images/08WagnerSINDy_6_7.png" src="_images/08WagnerSINDy_6_7.png" />
 <img alt="_images/08WagnerSINDy_6_8.png" src="_images/08WagnerSINDy_6_8.png" />
 <img alt="_images/08WagnerSINDy_6_9.png" src="_images/08WagnerSINDy_6_9.png" />
+<img alt="_images/08WagnerSINDy_6_10.png" src="_images/08WagnerSINDy_6_10.png" />
 </div>
 </div>
 <p>As in <span id="id3">[<a class="reference internal" href="bibliography.html#id35" title="Scott TM Dawson and Steven L Brunton. Improved approximations to wagner function using sparse identification of nonlinear dynamics. AIAA Journal, 60(3):1691–1707, 2022.">DB22</a>]</span> <span class="math notranslate nohighlight">\(\xi_0\)</span> and <span class="math notranslate nohighlight">\(\xi_1\)</span> are always zero. The results for <span class="math notranslate nohighlight">\(r=7\)</span> and <span class="math notranslate nohighlight">\(r=8\)</span> are quite far from of the others, and in fact perform worse than the <span class="math notranslate nohighlight">\(r=6\)</span> case. Possible explanations for this include:</p>
@@ -894,10 +896,10 @@ f8: (-0.010x0^3 + 0.100x0^4 + -0.501x0^5 + 1.345x0^6 + -1.835x0^7 + 1.000x0^8)
             <p class="prev-next-title">Implementation of the orthogonal polynomial basis</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="08TheodorsenCLState.html" title="next page">
+    <a class='right-next' id="next-link" href="08TheodorsenRegression.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Identification of the Theodorsen model by treating <span class="math notranslate nohighlight">\(C_L\)</span> as a state</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
