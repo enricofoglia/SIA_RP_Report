@@ -210,7 +210,7 @@ datasets.add_dataset(t_long, u_alpha, u_h, plot=True)
 # In[12]:
 
 
-get_ipython().run_cell_magic('capture', '', "\ndef transpose_all(list_of_arrays):\n    '''Transpose all arrays in a list'''\n    return [a.T for a in list_of_arrays]\n\noptimizer = pysindy.optimizers.stlsq.STLSQ(\n    threshold=1e-2, alpha=0.0)\n\nmodel = pysindy.SINDy(optimizer=optimizer,\n                      feature_library=pysindy.PolynomialLibrary(degree=1))\n\n# training\nmodel.fit(transpose_all(datasets.x_with_C_L_Du()),\n          t=datasets.t, u=transpose_all(datasets.u), multiple_trajectories=True)\n")
+get_ipython().run_cell_magic('capture', '', "\ndef transpose_all(list_of_arrays):\n    '''Transpose all arrays in a list'''\n    return [a.T for a in list_of_arrays]\n\noptimizer = pysindy.optimizers.stlsq.STLSQ(\n    threshold=1e-2, alpha=0.0)\n\nmodel = pysindy.SINDy(optimizer=optimizer,\n                      feature_library=pysindy.PolynomialLibrary(degree=1))\n\n# training\nmodel.fit(transpose_all(datasets.x_with_C_L_Du()),\n          t=datasets.t, u=transpose_all(datasets.u), multiple_trajectories=True)")
 
 
 # In[13]:
@@ -245,7 +245,7 @@ data.io_plot()
 # In[15]:
 
 
-get_ipython().run_cell_magic('capture', '', '# simulating the output of the identified model\nx_model = model.simulate(x0=np.zeros((8, )), t=t, u=u_MISO_validation.T)\n')
+get_ipython().run_cell_magic('capture', '', '# simulating the output of the identified model\nx_model = model.simulate(x0=np.zeros((8, )), t=t, u=u_MISO_validation.T)')
 
 
 # The results are plotted for a visual comparison:
@@ -437,7 +437,7 @@ data = theodorsen.TheodorsenTimeResponse(
 # In[23]:
 
 
-get_ipython().run_cell_magic('capture', '', '# simulating the output of the identified model\nx_model_1 = model_1.simulate(x0=np.zeros((4, )), t=t, u=u_MISO_validation.T)\n')
+get_ipython().run_cell_magic('capture', '', '# simulating the output of the identified model\nx_model_1 = model_1.simulate(x0=np.zeros((4, )), t=t, u=u_MISO_validation.T)')
 
 
 # The trajectory of the second degree nonlinear system is not generated here due to computational cost, but its results turned out to be completely equivalent. Note that even its 1st order terms are very similar. Due do this, the second degree model was not considered in the following parts.

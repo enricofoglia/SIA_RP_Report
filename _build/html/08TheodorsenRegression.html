@@ -6,11 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-<<<<<<< HEAD
-    <title>Identification of the Theodorsen unsteady lift &#8212; System Identification for unsteady Airfoils</title>
-=======
-    <title>Identify the Theodorsen unsteady lift &#8212; System Identification for Unsteady Airfoils</title>
->>>>>>> 92e34524627476b295617cb0fc6a0fc24abac033
+    <title>&lt;no title&gt; &#8212; System Identification for Unsteady Airfoils</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,12 +50,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Theodorsen model replication with lift as a state" href="08TheodorsenCLState.html" />
-    <link rel="prev" title="Identify a dynamical system for the Wagner function" href="08WagnerSINDy.html" />
+    <link rel="next" title="Identification of the Theodorsen model by treating \(C_L\) as a state" href="08TheodorsenCLState.html" />
+    <link rel="prev" title="Identification of a dynamical system for the Wagner function" href="08WagnerSINDy.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -115,7 +109,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    System Identification for unsteady Airfoils
+                    System Identification for Unsteady Airfoils
                 </a>
             </li>
         </ul>
@@ -144,7 +138,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="02TheodorsenModel.html">
-   The Theodorsen Model
+   The Theodorsen model
   </a>
  </li>
  <li class="toctree-l1">
@@ -190,15 +184,10 @@ const thebe_selector_output = ".output, .cell_output"
   Results
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="08WagnerSINDy.html">
-   Identify a dynamical system for the Wagner function
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Identification of the Theodorsen unsteady lift
+   Identification of a dynamical system for the Wagner function
   </a>
  </li>
  <li class="toctree-l1">
@@ -285,35 +274,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/08TheodorsenRegression.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -439,22 +399,7 @@ title="Print to PDF"
         <i class="fas fa-list"></i> Contents
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-generation">
-   Data generation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-regression">
-   Model regression
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusions">
-   Conclusions
-  </a>
- </li>
+        <ul class="simple visible nav section-nav flex-column">
 </ul>
 
     </nav>
@@ -464,7 +409,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Identification of the Theodorsen unsteady lift</h1>
+                <h1><no title></h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -473,22 +418,7 @@ title="Print to PDF"
                             <h2> Contents </h2>
                         </div>
                         <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-generation">
-   Data generation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-regression">
-   Model regression
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusions">
-   Conclusions
-  </a>
- </li>
+                            <ul class="simple visible nav section-nav flex-column">
 </ul>
 
                         </nav>
@@ -499,318 +429,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="identification-of-the-theodorsen-unsteady-lift">
-<h1>Identification of the Theodorsen unsteady lift<a class="headerlink" href="#identification-of-the-theodorsen-unsteady-lift" title="Permalink to this headline">#</a></h1>
-<section id="data-generation">
-<h2>Data generation<a class="headerlink" href="#data-generation" title="Permalink to this headline">#</a></h2>
-<<<<<<< HEAD
-<p>Since the objective is to identify the Theodorsen function through its input-output response the classical model for a monochromatic oscillation cannot be used, since a wide spectrum input has to be prefered. The data-generation code uses then a linear approximation of the Theodorsen function obtained by balanced truncation in <span id="id1">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>, as explained in section.</p>
-=======
-<p>As for the previous case the data is generated through a python script. Since the objective is to identify the Theodorsen function through its input-output response the classical model for a monochromatic oscillation cannot be used, since a wide spectrum input has to be prefered. The data-generation code uses then a linear approximation of the Theodorsen function obtained by balanced truncation in <span id="id1">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>.</p>
->>>>>>> 92e34524627476b295617cb0fc6a0fc24abac033
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">control</span>
-<<<<<<< HEAD
-<span class="kn">import</span> <span class="nn">Theodorsen_control</span> <span class="k">as</span> <span class="nn">theodorsen</span>
-<span class="kn">from</span> <span class="nn">signals</span> <span class="kn">import</span> <span class="n">prbs</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-=======
-<span class="kn">import</span> <span class="nn">Theodorsen_control</span> <span class="k">as</span> <span class="nn">theodorsen</span> <span class="c1"># our library for working with Theodorsen model LTI approximations</span>
-<span class="kn">from</span> <span class="nn">signals</span> <span class="kn">import</span> <span class="n">prbs</span> <span class="c1"># our library of identification signals</span>
->>>>>>> 92e34524627476b295617cb0fc6a0fc24abac033
-
-<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span>  <span class="c1"># pitch axis wrt to 1/2-chord</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mf">1.</span>  <span class="c1"># half-chord length of the airfoil</span>
-<span class="c1"># default values of C_1 and C_2 used</span>
-<span class="n">airfoil</span> <span class="o">=</span> <span class="n">theodorsen</span><span class="o">.</span><span class="n">AirfoilGeometry</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
-
-<span class="c1"># THEDORSEN MODEL</span>
-
-<span class="c1"># the balanced truncation Theodorsen function approximation</span>
-<span class="n">theodorsen_function_sys</span> <span class="o">=</span> <span class="n">theodorsen</span><span class="o">.</span><span class="n">theodorsen_function_balanced_truncation_ss</span><span class="p">()</span>
-
-<span class="c1"># state-space system with both α&quot; and h&quot; as inputs</span>
-<span class="n">theodorsen_full_sys</span> <span class="o">=</span> <span class="n">theodorsen</span><span class="o">.</span><span class="n">unsteady_lift_ss</span><span class="p">(</span>
-    <span class="n">airfoil</span><span class="p">,</span> <span class="n">theodorsen_function_sys</span><span class="p">)</span>
-
-<span class="c1"># INPUT SIGNALS</span>
-
-<span class="n">NT</span> <span class="o">=</span> <span class="mi">20000</span> <span class="c1"># number of time steps</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">NT</span><span class="p">)</span>
-<span class="n">dt</span> <span class="o">=</span> <span class="mi">400</span> <span class="o">*</span> <span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">NT</span>
-
-<span class="n">amplitude</span><span class="o">=</span> <span class="mi">1</span>
-<span class="n">seed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">alpha_ddot</span> <span class="o">=</span> <span class="n">prbs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="nb">min</span> <span class="o">=</span> <span class="o">-</span><span class="n">amplitude</span><span class="p">,</span> <span class="nb">max</span> <span class="o">=</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span><span class="p">)</span>
-<span class="n">h_ddot</span> <span class="o">=</span> <span class="n">prbs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">dt</span><span class="p">,</span> <span class="nb">min</span> <span class="o">=</span> <span class="o">-</span><span class="n">amplitude</span><span class="p">,</span> <span class="nb">max</span> <span class="o">=</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span><span class="p">)</span>
-<span class="n">u_MISO</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">h_ddot</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">alpha_ddot</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
-
-<span class="c1"># TIME RESPONSE</span>
-
-<span class="n">X0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
-              <span class="mf">0.0</span><span class="p">,</span>   <span class="c1"># h_dot(0)</span>
-              <span class="mf">0.0</span><span class="p">,</span> <span class="c1"># alpha(0)</span>
-              <span class="mf">0.0</span><span class="p">])</span>   <span class="c1"># alpha_dot(0)</span>
-
-<span class="n">output</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">forced_response</span><span class="p">(</span>
-    <span class="n">theodorsen_full_sys</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">U</span><span class="o">=</span><span class="n">u_MISO</span><span class="p">,</span> <span class="n">X0</span> <span class="o">=</span> <span class="n">X0</span><span class="p">)</span>
-
-<span class="c1"># TIME RESPONSE POSTPROCESSING</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">theodorsen</span><span class="o">.</span><span class="n">TheodorsenTimeResponse</span><span class="p">(</span>
-    <span class="n">output</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">sys</span><span class="o">=</span><span class="n">theodorsen_full_sys</span><span class="p">)</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">alpha_dot</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">h_dot</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Physical states $\alpha$, $\dot \alpha$ and $\dot h$&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time [-]&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="sa">r</span><span class="s1">&#39;$\alpha$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\dot \alpha$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\dot h$&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-<img alt="_images/08TheodorsenRegression_1_1.png" src="_images/08TheodorsenRegression_1_1.png" />
-</div>
-</div>
-</section>
-<section id="model-regression">
-<h2>Model regression<a class="headerlink" href="#model-regression" title="Permalink to this headline">#</a></h2>
-<p>As stated in <span style="color: red;">section</span> we want to fit a model in the form:</p>
-<div class="math notranslate nohighlight">
-\[    C_L(t) = \Theta(t)\xi\]</div>
-<p>where <span class="math notranslate nohighlight">\(\Theta\)</span> is a library of linear and nonlinear functions and <span class="math notranslate nohighlight">\(\xi\)</span> are the corresponding coefficients. The data obtained in the previous section is divided equally between a training set and a test set, such that</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Training set</span>
-<span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">data</span><span class="o">.</span><span class="n">alpha_e</span><span class="p">[:</span><span class="n">NT</span> <span class="o">//</span> <span class="mi">2</span><span class="p">],</span>
-                    <span class="n">data</span><span class="o">.</span><span class="n">alpha_dot</span><span class="p">[:</span><span class="n">NT</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]]</span> <span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># physical states of the system</span>
-<span class="n">CL_train</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">C_L</span><span class="p">[:</span><span class="n">NT</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span> <span class="c1"># output of the system</span>
-
-<span class="c1"># Test set</span>
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">data</span><span class="o">.</span><span class="n">alpha_e</span><span class="p">[</span><span class="n">NT</span> <span class="o">//</span> <span class="mi">2</span><span class="p">:],</span>
-                   <span class="n">data</span><span class="o">.</span><span class="n">alpha_dot</span><span class="p">[</span><span class="n">NT</span> <span class="o">//</span> <span class="mi">2</span><span class="p">:]],</span> <span class="n">axis</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">CL_test</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">C_L</span><span class="p">[</span><span class="n">NT</span> <span class="o">//</span> <span class="mi">2</span><span class="p">:]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Since we know that the possibly nonlinear part of the Theodorsen model lies in the circulatory lift only, and that in general the added mass term behaves linearly, we decided to only fit the first one, assumng as a first moment that the added mass coefficients are known.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CL_train</span> <span class="o">-=</span> <span class="p">(</span><span class="n">theodorsen_full_sys</span><span class="o">.</span><span class="n">D</span> <span class="o">@</span> <span class="n">u_MISO</span><span class="p">[:,:</span><span class="n">NT</span> <span class="o">//</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
-<span class="n">CL_test</span> <span class="o">-=</span> <span class="p">(</span><span class="n">theodorsen_full_sys</span><span class="o">.</span><span class="n">D</span> <span class="o">@</span> <span class="n">u_MISO</span><span class="p">[:,</span> <span class="n">NT</span> <span class="o">//</span> <span class="mi">2</span><span class="p">:])</span><span class="o">.</span><span class="n">T</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Since SINDy is based on the machine learning library <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> it is possible to substitute the derivatives of the classical SINDy models with the <span class="math notranslate nohighlight">\(C_l\)</span> without any modification of the underlying code. The set up for the regression is then:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pysindy</span> <span class="k">as</span> <span class="nn">ps</span>
-
-<span class="n">expansionDegree</span> <span class="o">=</span> <span class="mi">4</span>
-
-<span class="c1"># SETTING UP SINDy </span>
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">stlsq</span><span class="o">.</span><span class="n">STLSQ</span><span class="p">(</span><span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">1e-06</span><span class="p">,</span> <span class="n">max_iter</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">library</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">feature_library</span><span class="o">.</span><span class="n">polynomial_library</span><span class="o">.</span><span class="n">PolynomialLibrary</span><span class="p">(</span><span class="n">degree</span> <span class="o">=</span> <span class="n">expansionDegree</span><span class="p">)</span> <span class="c1"># standard polynomial library</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SINDy</span><span class="p">(</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizer</span><span class="p">,</span> 
-			     <span class="n">feature_library</span> <span class="o">=</span> <span class="n">library</span><span class="p">,</span>
-			     <span class="n">feature_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;alpha_e&#39;</span><span class="p">,</span> <span class="s1">&#39;alpha_dot&#39;</span><span class="p">])</span> 
-<span class="n">t</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">t</span>
-<span class="n">classicalModel</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_dot</span> <span class="o">=</span> <span class="n">CL_train</span><span class="p">)</span>
-<span class="n">CL_classic_SINDy_train</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="n">CL_classic_SINDy_test</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">classicalModel</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<<<<<<< HEAD
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(alpha_e)&#39; = 3.755 alpha_e + 2.584 alpha_dot + 8.309 alpha_e^2 + -3.777 alpha_e alpha_dot + -2.090 alpha_dot^2 + 55.580 alpha_e^3 + -16.590 alpha_e^2 alpha_dot + -51.143 alpha_e alpha_dot^2 + 55.364 alpha_dot^3 + 151.532 alpha_e^4 + -100.224 alpha_e^3 alpha_dot + -197.264 alpha_e^2 alpha_dot^2 + 422.948 alpha_e alpha_dot^3 + -76.028 alpha_dot^4
-=======
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(alpha_e)&#39; = -449.590 1 + 30567.661 alpha_e + -8827.267 alpha_dot + -758554.805 alpha_e^2 + 533415.911 alpha_e alpha_dot + -213739.447 alpha_dot^2 + 8138538.209 alpha_e^3 + -10354506.534 alpha_e^2 alpha_dot + 7850169.030 alpha_e alpha_dot^2 + 2485179.215 alpha_dot^3 + -31920130.556 alpha_e^4 + 63153975.821 alpha_e^3 alpha_dot + -75463413.800 alpha_e^2 alpha_dot^2 + 6122807.959 alpha_e alpha_dot^3 + 200298271.054 alpha_dot^4
->>>>>>> 92e34524627476b295617cb0fc6a0fc24abac033
-</pre></div>
-</div>
-</div>
-</div>
-<p>The results for the classical polynomial library can be compared with those for an orthogonal and othonormal base</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PolynomialChaos</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">aPC</span> <span class="o">=</span> <span class="n">PolynomialChaos</span><span class="p">(</span>
-     <span class="n">X_train</span><span class="p">,</span>
-     <span class="n">expansionDegree</span> <span class="o">=</span> <span class="n">expansionDegree</span><span class="p">,</span>
-     <span class="n">numberOfInputs</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">aPC</span><span class="o">.</span><span class="n">ComputeCoefficients</span><span class="p">(</span><span class="n">threshold</span> <span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">normalize</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-<span class="n">coefficients</span> <span class="o">=</span> <span class="n">aPC</span><span class="o">.</span><span class="n">coefficients</span>
-<span class="n">AlphaMatrix</span> <span class="o">=</span> <span class="n">aPC</span><span class="o">.</span><span class="n">AlphaMatrix</span>
-
-<span class="n">LibraryList</span> <span class="o">=</span> <span class="n">GenerateLibraryList</span><span class="p">(</span>
-     <span class="n">expansionDegree</span><span class="o">=</span><span class="n">expansionDegree</span><span class="p">,</span>
-     <span class="n">coefficients</span> <span class="o">=</span> <span class="n">coefficients</span><span class="p">,</span>
-     <span class="n">AlphaMatrix</span> <span class="o">=</span> <span class="n">AlphaMatrix</span><span class="p">)</span>
-
-<span class="c1"># Expansion of degree 2</span>
-
-<span class="n">aPC2</span> <span class="o">=</span> <span class="n">PolynomialChaos</span><span class="p">(</span>
-     <span class="n">X_train</span><span class="p">,</span>
-     <span class="n">expansionDegree</span> <span class="o">=</span> <span class="n">expansionDegree</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span>
-     <span class="n">numberOfInputs</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">aPC2</span><span class="o">.</span><span class="n">ComputeCoefficients</span><span class="p">(</span><span class="n">threshold</span> <span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">normalize</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-<span class="n">coefficients2</span> <span class="o">=</span> <span class="n">aPC2</span><span class="o">.</span><span class="n">coefficients</span>
-<span class="n">AlphaMatrix2</span> <span class="o">=</span> <span class="n">aPC2</span><span class="o">.</span><span class="n">AlphaMatrix</span>
-
-<span class="n">LibraryList2</span> <span class="o">=</span> <span class="n">GenerateLibraryList</span><span class="p">(</span>
-     <span class="n">expansionDegree</span><span class="o">=</span><span class="n">expansionDegree</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span>
-     <span class="n">coefficients</span> <span class="o">=</span> <span class="n">coefficients</span><span class="p">,</span>
-     <span class="n">AlphaMatrix</span> <span class="o">=</span> <span class="n">AlphaMatrix2</span><span class="p">)</span>
-
-<span class="n">aPC_norm</span> <span class="o">=</span> <span class="n">PolynomialChaos</span><span class="p">(</span>
-     <span class="n">X_train</span><span class="p">,</span>
-     <span class="n">expansionDegree</span> <span class="o">=</span> <span class="n">expansionDegree</span><span class="p">,</span>
-     <span class="n">numberOfInputs</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">aPC_norm</span><span class="o">.</span><span class="n">ComputeCoefficients</span><span class="p">(</span><span class="n">threshold</span> <span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">normalize</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">coefficients_norm</span> <span class="o">=</span> <span class="n">aPC_norm</span><span class="o">.</span><span class="n">coefficients</span>
- 
-<span class="n">LibraryList_norm</span> <span class="o">=</span> <span class="n">GenerateLibraryList</span><span class="p">(</span>
-     <span class="n">expansionDegree</span><span class="o">=</span><span class="n">expansionDegree</span><span class="p">,</span>
-     <span class="n">coefficients</span> <span class="o">=</span> <span class="n">coefficients_norm</span><span class="p">,</span>
-     <span class="n">AlphaMatrix</span> <span class="o">=</span> <span class="n">AlphaMatrix</span><span class="p">)</span>
-
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">stlsq</span><span class="o">.</span><span class="n">STLSQ</span><span class="p">(</span><span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">1e-05</span><span class="p">,</span> <span class="n">max_iter</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">library_orth</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">feature_library</span><span class="o">.</span><span class="n">custom_library</span><span class="o">.</span><span class="n">CustomLibrary</span><span class="p">(</span><span class="n">LibraryList</span><span class="p">)</span>
-<span class="n">library_orthnorm</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">feature_library</span><span class="o">.</span><span class="n">custom_library</span><span class="o">.</span><span class="n">CustomLibrary</span><span class="p">(</span><span class="n">LibraryList_norm</span><span class="p">)</span>
-<span class="n">library_orth2</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">feature_library</span><span class="o">.</span><span class="n">custom_library</span><span class="o">.</span><span class="n">CustomLibrary</span><span class="p">(</span><span class="n">LibraryList2</span><span class="p">)</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SINDy</span><span class="p">(</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizer</span><span class="p">,</span> 
-			     <span class="n">feature_library</span> <span class="o">=</span> <span class="n">library_orth</span><span class="p">,</span>
-			     <span class="n">feature_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;alpha_e&#39;</span><span class="p">,</span> <span class="s1">&#39;alpha_dot&#39;</span><span class="p">])</span> 
-<span class="n">OrthModel</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_dot</span> <span class="o">=</span> <span class="n">CL_train</span><span class="p">)</span> <span class="c1"># Orthogonal model</span>
-<span class="n">CL_SINDy_train</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="n">CL_SINDy_test</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SINDy</span><span class="p">(</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizer</span><span class="p">,</span> 
-			     <span class="n">feature_library</span> <span class="o">=</span> <span class="n">library_orth2</span><span class="p">,</span>
-			     <span class="n">feature_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;alpha_e&#39;</span><span class="p">,</span> <span class="s1">&#39;alpha_dot&#39;</span><span class="p">])</span> 
-<span class="n">OrthModel2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_dot</span> <span class="o">=</span> <span class="n">CL_train</span><span class="p">)</span> <span class="c1"># Orthogonal model</span>
-<span class="n">CL_SINDy_train2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="n">CL_SINDy_test2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------- Orthogonal model order 4 --------</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">OrthModel</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">SINDy</span><span class="p">(</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizer</span><span class="p">,</span> 
-			     <span class="n">feature_library</span> <span class="o">=</span> <span class="n">library_orthnorm</span><span class="p">,</span>
-			     <span class="n">feature_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;alpha_e&#39;</span><span class="p">,</span> <span class="s1">&#39;alpha_dot&#39;</span><span class="p">])</span> 
-<span class="n">OrthNormModel</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_dot</span> <span class="o">=</span> <span class="n">CL_train</span><span class="p">)</span> <span class="c1"># Orthonormal model</span>
-<span class="n">CL_norm_SINDy_train</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="n">CL_norm_SINDy_test</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">----------- Orthonormal model -----------</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">OrthNormModel</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------- Orthogonal model order 4 --------
-
-<<<<<<< HEAD
-(alpha_e)&#39; = -0.265 f0() + 3.155 f1(alpha_e,alpha_dot) + 2.975 f2(alpha_e,alpha_dot) + 1.519 f3(alpha_e,alpha_dot) + -2.350 f4(alpha_e,alpha_dot) + 0.472 f5(alpha_e,alpha_dot)
-=======
-(alpha_e)&#39; = -1.884 f0() + -1.862 f1(alpha_e,alpha_dot) + 0.406 f2(alpha_e,alpha_dot) + -1.249 f3(alpha_e,alpha_dot) + 1.543 f4(alpha_e,alpha_dot) + -0.862 f5(alpha_e,alpha_dot) + -1.141 f6(alpha_e,alpha_dot) + 2.085 f7(alpha_e,alpha_dot) + 0.157 f8(alpha_e,alpha_dot) + -0.699 f9(alpha_e,alpha_dot) + 0.142 f10(alpha_e,alpha_dot) + -0.326 f12(alpha_e,alpha_dot) + 0.621 f13(alpha_e,alpha_dot) + -0.842 f14(alpha_e,alpha_dot)
->>>>>>> 92e34524627476b295617cb0fc6a0fc24abac033
-
------------ Orthonormal model -----------
-
-<<<<<<< HEAD
-(alpha_e)&#39; = -0.272 f0() + 0.143 f1(alpha_e,alpha_dot) + 0.185 f2(alpha_e,alpha_dot)
-=======
-(alpha_e)&#39; = -1.884 f0() + -1.862 f1(alpha_e,alpha_dot) + 0.406 f2(alpha_e,alpha_dot) + -1.249 f3(alpha_e,alpha_dot) + 1.543 f4(alpha_e,alpha_dot) + -0.862 f5(alpha_e,alpha_dot) + -1.141 f6(alpha_e,alpha_dot) + 2.085 f7(alpha_e,alpha_dot) + 0.157 f8(alpha_e,alpha_dot) + -0.699 f9(alpha_e,alpha_dot) + 0.142 f10(alpha_e,alpha_dot) + -0.326 f12(alpha_e,alpha_dot) + 0.621 f13(alpha_e,alpha_dot) + -0.842 f14(alpha_e,alpha_dot)
->>>>>>> 92e34524627476b295617cb0fc6a0fc24abac033
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can see immediatedly that the orthonormal model has retained only the linear terms, while the classical and the non normalised orthogonal arrived up to degree 4. It is not obvious why this must be the case, but looking at the form of the orthogonormal polynomials we can clearly see that the coefficient of the leading term increases very fast:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aPC_norm</span><span class="o">.</span><span class="n">printFeatureNames</span><span class="p">([</span><span class="s1">&#39;a_e&#39;</span><span class="p">,</span> <span class="s1">&#39;a_dot&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f0: 1
-f1: (2.102 + 22.247a_e)
-f2: (-0.217 + 16.117a_dot)
-f3: (2.266 + 77.324a_e + 460.373a_e^2)
-f4: (2.102 + 22.247a_e)(-0.217 + 16.117a_dot)
-f5: (-1.292 + -12.909a_dot + 363.578a_dot^2)
-f6: (2.513 + 187.224a_e + 2644.582a_e^2 + 10028.037a_e^3)
-f7: (2.266 + 77.324a_e + 460.373a_e^2)(-0.217 + 16.117a_dot)
-f8: (0.842 + -28.874a_dot + -417.955a_dot^2 + 6448.687a_dot^3)
-f9: (2.102 + 22.247a_e)(-1.292 + -12.909a_dot + 363.578a_dot^2)
-f10: (1.190 + 39.429a_dot + -851.396a_dot^2 + -10134.861a_dot^3 + 127204.928a_dot^4)
-f11: (2.102 + 22.247a_e)(0.842 + -28.874a_dot + -417.955a_dot^2 + 6448.687a_dot^3)
-f12: (2.266 + 77.324a_e + 460.373a_e^2)(-1.292 + -12.909a_dot + 363.578a_dot^2)
-f13: (2.513 + 187.224a_e + 2644.582a_e^2 + 10028.037a_e^3)(-0.217 + 16.117a_dot)
-f14: (2.138 + 310.551a_e + 8460.272a_e^2 + 77494.122a_e^3 + 226032.961a_e^4)
-</pre></div>
-</div>
-</div>
-</div>
-<p>This is due to the fact that the norm of the polynomials of higher order is decreasing rapidly due to the small nature of the variables <span class="math notranslate nohighlight">\(\alpha_e\)</span> and <span class="math notranslate nohighlight">\(\dot\alpha\)</span>. That is why increasingly large coefficients appear in the other models, while they shrink very rapidly in the normalised case. By comparing the results we can see immediately that the fourth order polynomials critically overfit on the training data and cannot predict the <span class="math notranslate nohighlight">\(C_l\)</span> for more than a fifth of the test set. While the second order polynomial perform better, the most effective one is the first order normalised one, that starts to diverge only at the very end.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">[:</span><span class="n">NT</span> <span class="o">//</span> <span class="mi">2</span><span class="p">],</span> <span class="n">CL_SINDy_train</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">[:</span><span class="n">NT</span> <span class="o">//</span> <span class="mi">2</span><span class="p">],</span> <span class="n">CL_norm_SINDy_train</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">[:</span><span class="n">NT</span> <span class="o">//</span> <span class="mi">2</span><span class="p">],</span> <span class="n">CL_train</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Adimensional time [-]&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$C_l$ circulatory&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Train set&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span> <span class="s1">&#39;SINDy&#39;</span><span class="p">,</span> <span class="s1">&#39;normalised SINDy&#39;</span><span class="p">,</span> <span class="s1">&#39;Train data&#39;</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">NT</span> <span class="o">//</span> <span class="mi">2</span><span class="p">:],</span> <span class="n">CL_SINDy_test</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">NT</span> <span class="o">//</span> <span class="mi">2</span><span class="p">:],</span> <span class="n">CL_SINDy_test2</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">NT</span> <span class="o">//</span> <span class="mi">2</span><span class="p">:],</span> <span class="n">CL_norm_SINDy_test</span><span class="p">,</span> <span class="s1">&#39;tab:red&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">NT</span> <span class="o">//</span> <span class="mi">2</span><span class="p">:],</span> <span class="n">CL_test</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Adimensional time [-]&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$C_l$ circulatory&#39;</span><span class="p">)</span>
-<span class="c1"># ax.set_ylim([-0.0, 2])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Test set&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;SINDy order 4&#39;</span><span class="p">,</span> <span class="s1">&#39;SINDy order 2&#39;</span><span class="p">,</span> <span class="s1">&#39;normalised SINDy&#39;</span><span class="p">,</span> <span class="s1">&#39;test data&#39;</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/08TheodorsenRegression_13_0.png" src="_images/08TheodorsenRegression_13_0.png" />
-<img alt="_images/08TheodorsenRegression_13_1.png" src="_images/08TheodorsenRegression_13_1.png" />
-</div>
-</div>
-</section>
-<section id="conclusions">
-<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">#</a></h2>
-<p>It can be seen that the indentified model of the circulatory part of the lift coefficient is, as a first approximation, linear. In fact for small input signals the nonlinear coefficients in the form of higher powers of the states have such a small norm that, even when included in the model, tend to have little effect make the model overfit to the training data.</p>
-<p>Such a model thus cannot in fact identify significantly the effect of the theodorsen model in terms of delay in the change angle of attack or vertical velocity, which is a fundamental aspect of the original model.</p>
-</section>
-</section>
-
+  
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -842,13 +461,13 @@ f14: (2.138 + 310.551a_e + 8460.272a_e^2 + 77494.122a_e^3 + 226032.961a_e^4)
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Identify a dynamical system for the Wagner function</p>
+            <p class="prev-next-title">Identification of a dynamical system for the Wagner function</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="08TheodorsenCLState.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Theodorsen model replication with lift as a state</p>
+        <p class="prev-next-title">Identification of the Theodorsen model by treating <span class="math notranslate nohighlight">\(C_L\)</span> as a state</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
