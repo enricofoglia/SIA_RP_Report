@@ -231,7 +231,7 @@ if __name__ == '__main__':
     numberOfInputs = 1
     
     aPC = PolynomialChaos(data_uniform.T, expansionDegree, numberOfInputs)
-    aPC.ComputeCoefficients(threshold = 0.0, normalize=True)
+    aPC.ComputeCoefficients(threshold = 0.0, normalize=False)
     coefficients = aPC.coefficients
     A = aPC.AlphaMatrix
     # features_names = aPC._get_feature_names()

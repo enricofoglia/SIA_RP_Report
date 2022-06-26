@@ -22,6 +22,7 @@ parts:
   - caption: Results
     chapters:
     - file: 08WagnerSINDy
+    - file: 08TheodorsenRegression
     - file: 08TheodorsenCLState
   - caption: Summary
     chapters:
