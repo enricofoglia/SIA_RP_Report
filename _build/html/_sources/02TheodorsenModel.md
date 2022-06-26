@@ -5,7 +5,7 @@ myst:
 ---
 
 (section:theodorsen_model)=
-# The Theodorsen Model
+# The Theodorsen model
 
 The Theodorsen model is a classical frequency-domain model of unsteady lift, derived analytically using unsteady potential flow theory. Because of this assumption, it is not expected to be accurate for low Reynolds numbers flows. Nevertheless, it is highly important to the project, because:
 
@@ -78,7 +78,7 @@ where $C_L^{AM}$ is the added-mass lift, corresponding to inertial forces due to
 C(k) = \frac{H_1^{(2)}(k)}{H_1^{(2)}(k) + jH_0^{(2)}(k)}
 :::
 
-where $H_\nu^{(2)}(k)$ are Hankel functions, defined by an expression using Bessel functions, $H_\nu^{(2)}(k) = J_\nu + jY_\nu$. Moreover, the Theodorsen fuction can be generalised to a Laplace-domain transfer function of the nondimensionalised Laplace variable $\overline{s} = sb/U_\infty$  <span style="color: red;">citation</span>. Thanks to this, the Theodorsen model can be used to compute unsteady lift responses to arbitrary pitching and plunging motion {cite}`brunton2013empirical`.
+where $H_\nu^{(2)}(k)$ are Hankel functions, defined by an expression using Bessel functions, $H_\nu^{(2)}(k) = J_\nu + jY_\nu$. Moreover, the Theodorsen fuction can be generalised to a Laplace-domain transfer function of the nondimensionalised Laplace variable $\overline{s} = sb/U_\infty$  {cite}`edwards_unsteady_1977`. Thanks to this, the Theodorsen model can be used to compute unsteady lift responses to arbitrary pitching and plunging motion {cite}`brunton2013empirical`.
 
 ## The model as a dynamical system
 
