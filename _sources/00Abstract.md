@@ -1,13 +1,3 @@
 # Abstract
 
-Certain emerging aerospace technologies, most notably small unmanned aerial vehicles (UAVs) with either fixed-wing, flapping-wing or rotorcraft configurations, can experience significant unsteady lift effects under low velocities and small geometric sizes, resulting in low Reynolds numbers and resulting significant transient lift variations that need to be taken into account in structural and control design.
-
-Unsteady lift models have existed since almost 90 years ago, but a significant part of legacy work focused on high Reynolds number flow, more characteristic for manned aircraft. One of these tried and tested models is the Theodorsen model, analytically derived using unsteady potential flow and thin airfoil theory. Despite these factors which limit its validity for low Reynolds number scenarios, it provides a physically meaningful framework for more general modelling unsteady lift.
-
-The goal of the project is the discovery of interpretable unsteady lift on airfoils in low Reynolds number flows, using a data-based approach. The data is to be generated using Direct Navier-Stokes (DNS) simulations, and the developed identification procedure is to be based on the sparse identification of nonlinear dynamics (SINDy) algorithm. Therefore, improvement on existing linearised model is seeked principally by the use of nonlinear and spare models. Before the final work with DNS data, the identification procedure is being developed and validated based on inviscid flow data, which is easier to generate and whose accurate analytical models are already known.
-
-The project has already reached some significant milestones. A state-of-the-art linear approximation of the Thedorsen model has been implemented and used as a reference for further work. Models currently identified using data generated using the reference model have some promising properties in terms of accuracy and simplicity, and the methodology used to obtain them is directly applicable to CFD data. Moreover, some more fundamental work on the identification procedure has been performed, most notably related to improving the properties of SINDy results by using an orthonormal polynomial basis for the nonlinear model, which also may help in ensuring good quality final results.
-
-The report describes the key theoretical aspects of the project as well as the results obtained so far and considerations for further work.
-
 Keywords: unsteady lift, Theodorsen model, system identification, SINDy

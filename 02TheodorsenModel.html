@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>The Theodorsen model &#8212; System Identification for Unsteady Airfoils</title>
+    <title>The Theodorsen Model &#8212; System Identification for unsteady Airfoils</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,11 +50,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Implementation of the linearised Theodorsen model" href="025StateSpaceTheodorsen.html" />
+    <link rel="next" title="The Wagner function" href="03WagnerFunction.html" />
     <link rel="prev" title="Introduction" href="01Introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -99,7 +99,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">System Identification for Unsteady Airfoils</h1>
+      <h1 class="site-logo" id="site-title">System Identification for unsteady Airfoils</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -111,7 +111,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    System Identification for Unsteady Airfoils
+                    System Identification for unsteady Airfoils
                 </a>
             </li>
         </ul>
@@ -134,18 +134,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Classical unsteady lift models
+  Unsteady lift models
  </span>
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   The Theodorsen model
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="025StateSpaceTheodorsen.html">
-   Implementation of the linearised Theodorsen model
+   The Theodorsen Model
   </a>
  </li>
  <li class="toctree-l1">
@@ -177,7 +172,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07PC_code.html">
-   Implementation of the orthogonal polynomial basis
+   The code
   </a>
  </li>
 </ul>
@@ -189,16 +184,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="08WagnerSINDy.html">
-   Identification of a dynamical system for the Wagner function
+   Identify a dynamical system for the Wagner function
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="08TheodorsenCLState.html">
-   Identification of the Theodorsen model by treating
-   <span class="math notranslate nohighlight">
-    \(C_L\)
-   </span>
-   as a state
+   Theodorsen model replication with lift as a state
   </a>
  </li>
 </ul>
@@ -426,7 +417,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>The Theodorsen model</h1>
+                <h1>The Theodorsen Model</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -462,17 +453,17 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="the-theodorsen-model">
-<span id="section-theodorsen-model"></span><h1>The Theodorsen model<a class="headerlink" href="#the-theodorsen-model" title="Permalink to this headline">#</a></h1>
+<h1>The Theodorsen Model<a class="headerlink" href="#the-theodorsen-model" title="Permalink to this headline">#</a></h1>
 <p>The Theodorsen model is a classical frequency-domain model of unsteady lift, derived analytically using unsteady potential flow theory. Because of this assumption, it is not expected to be accurate for low Reynolds numbers flows. Nevertheless, it is highly important to the project, because:</p>
 <ol class="simple">
-<li><p>It is a well established model, often used in research problems related to unsteady lift <span id="id1">[<a class="reference internal" href="bibliography.html#id4" title="Theodore Theodorsen. General theory of aerodynamic instability and the mechanism of flutter. Technical Report, NACA, 1979.">The79</a>]</span> <span id="id2">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span> <span id="id3">[<a class="reference internal" href="bibliography.html#id18" title="Steven L. Brunton, Clarence W. Rowley, and David R. Williams. Reduced-order unsteady aerodynamic models at low Reynolds numbers. Journal of Fluid Mechanics, 724:203–233, 2013. doi:10.1017/jfm.2013.163.">BRW13</a>]</span>.</p></li>
+<li><p>It is a well established model, often used in research problems related to unsteady lift <span style="color: red;">citation</span>.</p></li>
 <li><p>It is formulated in a very physically meaningful way, with different terms directly related to specific flow phenomena.</p></li>
 <li><p>It can be used to generate reliable unsteady lift data for high Reynolds number flows much more efficiently that CFD simulations.</p></li>
 <li><p>It can be used as a test problem for the system identification methodology developed for the project.</p></li>
 </ol>
 <section id="formulation">
 <h2>Formulation<a class="headerlink" href="#formulation" title="Permalink to this headline">#</a></h2>
-<p>As shown in the previous report, in <span id="id4">[<a class="reference internal" href="bibliography.html#id2" title="T. Von Kármán and W. R. Sears. Airfoil theory for non-uniform motion. Journal of the aeronautical sciences, 1938.">KS38</a>]</span> Von Kármán arrives at the following form for the usteady lift of an airfoil undergoing a general motion:</p>
+<p>As shown in the previous report, in <span id="id1">[<a class="reference internal" href="bibliography.html#id2" title="T. Von Kármán and W. R. Sears. Airfoil theory for non-uniform motion. Journal of the aeronautical sciences, 1938.">KS38</a>]</span> Von Kármán arrives at the following form for the usteady lift of an airfoil undergoing a general motion:</p>
 <div class="math notranslate nohighlight" id="equation-vonkarmanmodel">
 <span class="eqno">(1)<a class="headerlink" href="#equation-vonkarmanmodel" title="Permalink to this equation">#</a></span>\[ L = -\rho\frac{d}{dt}\int_{-1}^1\gamma_0(x)xdx + \rho U \Gamma_0 + \rho U\int_1^{\infty}\frac{\gamma(\xi)d\xi}{\sqrt{\xi^2-1}} \]</div>
 <p>where we can identify the following terms:</p>
@@ -485,7 +476,7 @@ title="Print to PDF"
 <figure class="align-default" id="vonkarmancoordinates">
 <a class="reference internal image-reference" href="_images/VonKarmanCoordinates.png"><img alt="_images/VonKarmanCoordinates.png" src="_images/VonKarmanCoordinates.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Coordinate system used in the Von Kármán model <a class="reference internal" href="#equation-vonkarmanmodel">(1)</a> (and also in the Theodorsen model <span id="id5">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>).</span><a class="headerlink" href="#vonkarmancoordinates" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Coordinate system used in the Von Kármán model <a class="reference internal" href="#equation-vonkarmanmodel">(1)</a> (and also in the Theodorsen model <span style="color: red;">citation</span>).</span><a class="headerlink" href="#vonkarmancoordinates" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In equation <a class="reference internal" href="#equation-vonkarmanmodel">(1)</a> <span class="math notranslate nohighlight">\(\Gamma_0\)</span> is the quasi-steady circulation, <span class="math notranslate nohighlight">\(\gamma_0(x)\)</span> the vorticity distribution on the surface of the airfoil and <span class="math notranslate nohighlight">\(\gamma(\xi)\)</span> the vorticity distribution of the wake.</p>
@@ -495,11 +486,7 @@ title="Print to PDF"
 <p><span class="caption-number">Fig. 2 </span><span class="caption-text">Visualisation of the basic elements of the unsteady airfoil problem.</span><a class="headerlink" href="#unsteady-airfoil" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The Theodorsen model applies this framework to a thin airfoil of chord <span class="math notranslate nohighlight">\(c\)</span> (and half-chord <span class="math notranslate nohighlight">\(b = c/2\)</span>) in a potential flow of free-stream velocity <span class="math notranslate nohighlight">\(U_\infty\)</span> undergoing a pitching (change of angle of attack) and plunging (normal to t) motion, as shown in <a class="reference internal" href="#unsteady-airfoil"><span class="std std-numref">Fig. 2</span></a>. The lift can be nondimensionalised using the notion of the lift coefficient:</p>
-<div class="math notranslate nohighlight">
-\[	C_L = \frac{2 L}{\rho U_\infty^2 c}\]</div>
-<p>Note that in the Von Kármán framework, the lift is expressed with respect to unit span (since the model is 2D), therefore the lift is divided only by the chord <span class="math notranslate nohighlight">\(c\)</span> instead of the reference area.</p>
-<p>For purely sinusoidal motion with nondimensionalised frequency <span class="math notranslate nohighlight">\(k = \omega b / U_\infty\)</span>, the resulting lift can be formulated as <span id="id6">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>:</p>
+<p>The Theodorsen model applies this framework to a thin airfoil of chord <span class="math notranslate nohighlight">\(c\)</span> (and half-chord <span class="math notranslate nohighlight">\(b = c/2\)</span>) in a potential flow of free-stream velocity <span class="math notranslate nohighlight">\(U_\infty\)</span> undergoing a pitching (change of angle of attack) and plunging (normal to t) motion, as shown in <a class="reference internal" href="#unsteady-airfoil"><span class="std std-numref">Fig. 2</span></a>. For purely sinusoidal motion with nondimensionalised frequency <span class="math notranslate nohighlight">\(k = \omega b / U_\infty\)</span>, the resulting lift can be formulated as <span style="color: red;">citation</span>:</p>
 <div class="math notranslate nohighlight">
 \[	C_L = C_1 \left(\ddot{h}+\dot{\alpha}-a\ddot{\alpha} \right) + C_2 \left(\alpha + \dot{h} + \dot{\alpha}\left(\frac{1}{2}-a \right) \right)C(k)\]</div>
 <p>where:</p>
@@ -517,7 +504,7 @@ title="Print to PDF"
 <p>where <span class="math notranslate nohighlight">\(C_L^{AM}\)</span> is the added-mass lift, corresponding to inertial forces due to air being displaced by the airfoil’s movement, while <span class="math notranslate nohighlight">\(C_L^{QS}\)</span> is the quasi-steady lift, corresponding to a steady-state flow condition around the airfoil. Contrary to the added-mass effects, which are instant, the quasi-steady lift experiences an attenuation and phase shift due to unsteady flow effects, which can be related to the vorticity of the wake behind the airfoil. The Theodorsen function was derived to model this exact phenomenon. It is analytically formulated as:</p>
 <div class="math notranslate nohighlight">
 \[C(k) = \frac{H_1^{(2)}(k)}{H_1^{(2)}(k) + jH_0^{(2)}(k)}\]</div>
-<p>where <span class="math notranslate nohighlight">\(H_\nu^{(2)}(k)\)</span> are Hankel functions, defined by an expression using Bessel functions, <span class="math notranslate nohighlight">\(H_\nu^{(2)}(k) = J_\nu + jY_\nu\)</span>. Moreover, the Theodorsen fuction can be generalised to a Laplace-domain transfer function of the nondimensionalised Laplace variable <span class="math notranslate nohighlight">\(\overline{s} = sb/U_\infty\)</span>  <span id="id7">[<a class="reference internal" href="bibliography.html#id3" title="J. W. Edwards. Unsteady aerodynamic modeling and active aeroelastic control. Technical Report SUDAAR-504, Stanford University, February 1977. URL: https://ntrs.nasa.gov/citations/19780002074 (visited on 2022-06-22).">Edw77</a>]</span>. Thanks to this, the Theodorsen model can be used to compute unsteady lift responses to arbitrary pitching and plunging motion <span id="id8">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(H_\nu^{(2)}(k)\)</span> are Hankel functions, defined by an expression using Bessel functions, <span class="math notranslate nohighlight">\(H_\nu^{(2)}(k) = J_\nu + jY_\nu\)</span>. Moreover, the Theodorsen fuction can be generalised to a Laplace-domain transfer function of the nondimensionalised Laplace variable <span class="math notranslate nohighlight">\(\overline{s} = sb/U_\infty\)</span>  <span style="color: red;">citation</span>. Thanks to this, the Theodorsen model can be used to compute unsteady lift responses to arbitrary pitching and plunging motion <span style="color: red;">citation</span>.</p>
 </section>
 <section id="the-model-as-a-dynamical-system">
 <h2>The model as a dynamical system<a class="headerlink" href="#the-model-as-a-dynamical-system" title="Permalink to this headline">#</a></h2>
@@ -530,47 +517,21 @@ title="Print to PDF"
 <figure class="align-default" id="theodorsen-diagram">
 <a class="reference internal image-reference" href="_images/Theodorsen_diagram.png"><img alt="_images/Theodorsen_diagram.png" src="_images/Theodorsen_diagram.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Diagram of the subsystems of the dynamical system defined by the Theodorsen model (modified from <span id="id9">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>).</span><a class="headerlink" href="#theodorsen-diagram" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Diagram of the subsystems of the dynamical system defined by the Theodorsen model (modified from <span id="id2">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>).</span><a class="headerlink" href="#theodorsen-diagram" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The input was defined using the second derivatives of <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(h\)</span>, because a dynamical system that need to internally differentiate its input has undesireable properties, both analytically and numerically. The choice of second derivatives is also often useful in practical applications, since physically speaking, the movement of the airfoil with respect to the free-stream flow is related to pitching moments (which cause an angular acceleration that translates to <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span>) and normal forces (which cause the vertical acceleration <span class="math notranslate nohighlight">\(\ddot{h}\)</span>).</p>
-<p>After splitting the system into 2 single-input, single-output (SISO) systems, Bode plots can be created for both, as shown in <a class="reference internal" href="#theodorsen-bode"><span class="std std-numref">Fig. 4</span></a>.</p>
 <figure class="align-default" id="theodorsen-bode">
 <a class="reference internal image-reference" href="_images/Theodorsen_bode.png"><img alt="_images/Theodorsen_bode.png" src="_images/Theodorsen_bode.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Bode plot of the Theodorsen model with respect to both <span class="math notranslate nohighlight">\(\ddot h\)</span> and <span class="math notranslate nohighlight">\(\ddot \alpha\)</span> inputs, the latter depending also on the pitching center location (copied from <span id="id10">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>).</span><a class="headerlink" href="#theodorsen-bode" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Bode plot of the Theodorsen model wit respect to both <span class="math notranslate nohighlight">\(\ddot h\)</span> and <span class="math notranslate nohighlight">\(\ddot \alpha\)</span> inputs, the latter depending also on the pitching center location (copied from <span id="id3">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>).</span><a class="headerlink" href="#theodorsen-bode" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The Bode plot provides insight into the dynamics of the system, as described in <span id="id11">[<a class="reference internal" href="bibliography.html#id18" title="Steven L. Brunton, Clarence W. Rowley, and David R. Williams. Reduced-order unsteady aerodynamic models at low Reynolds numbers. Journal of Fluid Mechanics, 724:203–233, 2013. doi:10.1017/jfm.2013.163.">BRW13</a>]</span> and <span id="id12">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>. For the <span class="math notranslate nohighlight">\(\ddot{\alpha} \rightarrow C_L\)</span> system, in the low-frequency limit, the dominating effects are those of <span class="math notranslate nohighlight">\(\alpha\)</span>, since <span class="math notranslate nohighlight">\(\dot{\alpha}\)</span> and <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span> are significantly smaller for low frequencies. The system simplifies to the classical steady linear model of lift:</p>
-<div class="math notranslate nohighlight">
-\[C_L \approx C_2 \alpha C(k) \approx C_2 \alpha\]</div>
-<p>Since the input to the system is <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span>, the system dynamics consists mainly of integrating the input twice (which corresponds to the magnitude slope of -40dB/decade, since integrating the input always reduces the slope by 20dB/decade) and applying a gain of <span class="math notranslate nohighlight">\(C_2\)</span>. The phase of <span class="math notranslate nohighlight">\(C_L\)</span> is <span class="math notranslate nohighlight">\(180 [deg]\)</span> behind <span class="math notranslate nohighlight">\(\alpha\)</span>, because each integration of a sine wave moves its phase back by <span class="math notranslate nohighlight">\(90[deg]\)</span>. For the <span class="math notranslate nohighlight">\(\ddot(h) \rightarrow C_L\)</span> subsystem, the low frequency limit is:</p>
-<div class="math notranslate nohighlight">
-\[C_L \approx C_2 \dot{h} C(k) \approx C_2 \dot{h}\]</div>
-<p>This shows that the plunging velocity has the same effect on the lift as the angle of attack, because of its direct influence on the apparent velocity of the incoming flow (this remains true for other frequencies as well). Because of this, an equivalent angle of attack is sometimes used as an alternative state for <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\dot{h}\)</span> (which has the benefit of being observable, contrary to  <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\dot{h}\)</span> whose effects are not distinguishable):</p>
-<div class="math notranslate nohighlight">
-\[\alpha_e = \alpha + \dot{h}\]</div>
-<p>For the low frequency <span class="math notranslate nohighlight">\(\ddot(h) \rightarrow C_L\)</span> system, since the dominant action is integration (but only once) of the input, the slope of the Bode plot is -20dB/decade, and the phase is <span class="math notranslate nohighlight">\(-90[deg]\)</span>, due to considerations analogous to the <span class="math notranslate nohighlight">\(\ddot{\alpha} \rightarrow C_L\)</span> system.</p>
-<p>In the high frequency limit, the <span class="math notranslate nohighlight">\(\ddot{\alpha} \rightarrow C_L\)</span> system is dominated by the <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span> term of the added-mass force, resulting in the form:</p>
-<div class="math notranslate nohighlight">
-\[C_L \approx - C_1 a \ddot{\alpha} C(k) \approx - C_1 a  \ddot{\alpha}/4\]</div>
-<p>Depending on the location of the pitching centre <span class="math notranslate nohighlight">\(a\)</span>, 3 dynamics are possible:</p>
-<ol class="simple">
-<li><p>If the pitch centre is before the half-chord, i.e. <span class="math notranslate nohighlight">\(a&lt;0\)</span>, the system becomes <span class="math notranslate nohighlight">\(C_L \approx - C_1 a \ddot{\alpha}/4 = C  \ddot{\alpha}\)</span>, where <span class="math notranslate nohighlight">\(C &gt; 0\)</span>. This means that <span class="math notranslate nohighlight">\(C_L\)</span> is proportional to <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span>, with a gain asymptotically approaching <span class="math notranslate nohighlight">\(C = -C_1 a /4 &gt; 0\)</span>). Because <span class="math notranslate nohighlight">\(C&gt;0\)</span>, C_L is in phase with <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span> (hence the phase of the Bode plot approaching <span class="math notranslate nohighlight">\(0[deg]\)</span>), meaning that it is also in opposite phase to <span class="math notranslate nohighlight">\(\alpha\)</span>. This means that during a rapid pitch up movement, the initial resulting lift is actually directed downwards.</p></li>
-<li><p>If the pitch centre is behind the half-chord, i.e. <span class="math notranslate nohighlight">\(a&gt;0\)</span>, the system becomes <span class="math notranslate nohighlight">\(C_L \approx - C_1 a \ddot{\alpha}/4 = C  \ddot{\alpha}\)</span>, where <span class="math notranslate nohighlight">\(C &lt; 0\)</span>. This means that <span class="math notranslate nohighlight">\(C_L\)</span> is proportional to <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span>, with a gain asymptotically approaching <span class="math notranslate nohighlight">\(C = -C_1 a /4 &lt; 0\)</span>). Because <span class="math notranslate nohighlight">\(C&lt;0\)</span>, C_L is in opposite phase to <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span> (hence the phase of the Bode plot approaching <span class="math notranslate nohighlight">\(-180[deg]\)</span>), meaning that it is also in phase with <span class="math notranslate nohighlight">\(\alpha\)</span>. This means that during a rapid pitch up movement, the initial resulting lift is directed upwards.</p></li>
-<li><p>If the pitch centre is exactly at the half-chord, i.e. <span class="math notranslate nohighlight">\(a=0\)</span>, the <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span> term gets cancelled, meaning that <span class="math notranslate nohighlight">\(\dot{\alpha}\)</span> terms are dominant instead:</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[C_L \approx C_1 \dot{\alpha} + C_2 \dot{\alpha} (0.5-a) C(k) \approx C_1 \dot{\alpha} + C_2 \dot{\alpha}/8 = (C_1 + C_2/8) \dot{\alpha}\]</div>
-<p>This means that the dynamics of <span class="math notranslate nohighlight">\(C_L\)</span> consist of a single integration of the input <span class="math notranslate nohighlight">\(\ddot{\alpha}\)</span> and a constant gain of <span class="math notranslate nohighlight">\(C = (C_1 + C_2/8)\)</span>. Consistent with this, the Bode plot has a gain slope of -20dB/decade an phase asymptotically approaching <span class="math notranslate nohighlight">\(-90[deg]\)</span>.</p>
-<p>The <span class="math notranslate nohighlight">\(\ddot{h} \rightarrow C_L\)</span> system in the high frequency limit is dominated by the <span class="math notranslate nohighlight">\(\ddot{h}\)</span> term of the added-mass force, resulting in the form:</p>
-<div class="math notranslate nohighlight">
-\[C_L \approx C_1 \ddot{h}\]</div>
-<p>Analogously to the pitching dynamics with <span class="math notranslate nohighlight">\(a&lt;0\)</span>, this leads to an asymptotic gain of <span class="math notranslate nohighlight">\(C_1\)</span> and phase of <span class="math notranslate nohighlight">\(0[deg]\)</span>.</p>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
-<p>The Thedorsen model is a useful tool for understanding and predicting unsteady lift at high Reynolds number flows. While it is difficult to implement in an exact manner, precise linear state-space approximations are available in the literature — one of them, originating from <span id="id13">[<a class="reference internal" href="bibliography.html#id19" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>, is implemented and demonstrated in <a class="reference internal" href="025StateSpaceTheodorsen.html#section-theodorsen-implementation"><span class="std std-ref">Implementation of the linearised Theodorsen model</span></a>, and later used throughout the report as a reference model for the system identification procedures in <a class="reference internal" href="08TheodorsenCLState.html#section-results-theodorsen"><span class="std std-ref">Identification of the Theodorsen model by treating C_L as a state</span></a>.</p>
+<p>As linear approximations of the Theodorsen function in the time domain already exist in literature <span id="id4">[<a class="reference internal" href="bibliography.html#id12" title="Steven L Brunton and Clarence W Rowley. Empirical state-space representations for theodorsen's lift model. Journal of Fluids and Structures, 38:174–186, 2013.">BR13</a>]</span>, we have
+decided to use them as a first approach to generate the data necessary for the system identification. Such representation allow to construct a linear Multi-Input-Single-Output system (MISO), which has been implemented in a python script presented in <span style="color: red;">section</span>. That data has then been used to extract a first data-driven approximation of the <span class="math notranslate nohighlight">\(C(k)\)</span> function in <span style="color: red;">section</span> using the algorithm presented in <span style="color: red;">section</span>.</p>
 </section>
 </section>
 
@@ -608,10 +569,10 @@ title="Print to PDF"
             <p class="prev-next-title">Introduction</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="025StateSpaceTheodorsen.html" title="next page">
+    <a class='right-next' id="next-link" href="03WagnerFunction.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Implementation of the linearised Theodorsen model</p>
+        <p class="prev-next-title">The Wagner function</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
