@@ -579,7 +579,7 @@ plt.show()
 
 # It can be seen that none of the limit values of $C(k)$ provides an error as small as the identified model. The intermediate value $C(k)=0.8$ achieves a similar RMSE. However, the identified model's error evolves in a much more predictable way, most likely due to the integrative properties of the model accumulating error over time, while the simplified model's error is more erratic. This suggests that the identified model actually does capture some of the effects of the Theodorsen function, and, by extension, of the quasi-steady lift attenuation by the wake behind the airfoil. This is possible, because the identified model has the form:
 # 
-# $$\frac{d}{dt} C_L^x = a_1 \dot{h} + a_2 \alpha + a_3 \dot{\alpha} + a_4 C_L + b_1 \ddot{h} + b_2 \ddot{\alpha} $$
+# $$\frac{d}{dt} C_L^x = a_1 \dot{h} + a_2 \alpha + a_3 \dot{\alpha} + a_4 C_L^x + b_1 \ddot{h} + b_2 \ddot{\alpha} $$
 # 
 # where $a_i$ are the significant identified coefficients of the last row of the $A'$ matrix, while the $b_i$ — of the $B'$ matrix. The simplified model, on the other hand, after subtracting the $Du$ term and differentiating would have form:
 # 

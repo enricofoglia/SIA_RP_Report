@@ -662,6 +662,85 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">File &lt;frozen importlib._bootstrap_external&gt;:148,</span> in <span class="ni">_path_is_mode_type</span><span class="nt">(path, mode)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap_external&gt;:142,</span> in <span class="ni">_path_stat</span><span class="nt">(path)</span>
+
+<span class="ne">FileNotFoundError</span>: [WinError 2] Nie można odnaleźć określonego pliku: &#39;E:\\Programy\\Anaconda\\envs\\rp_env\\lib\\site-packages\\cvxpy\\reductions\\dgp2dcp\\__init__.cp38-win_amd64.pyd&#39;
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 5&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">control</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">Theodorsen_control</span> <span class="k">as</span> <span class="nn">theodorsen</span> <span class="c1"># our library for using Theodorsen model LTI approximations</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">pysindy</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">signals</span> <span class="c1"># our library with identification signals</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">sklearn</span> <span class="k">as</span> <span class="nn">sk</span>
+
+<span class="n">File</span> <span class="n">E</span><span class="p">:</span>\<span class="n">Programy</span>\<span class="n">Anaconda</span>\<span class="n">envs</span>\<span class="n">rp_env</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">pysindy</span>\<span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">differentiation</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">feature_library</span>
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">optimizers</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">deeptime</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">utils</span>
+
+<span class="n">File</span> <span class="n">E</span><span class="p">:</span>\<span class="n">Programy</span>\<span class="n">Anaconda</span>\<span class="n">envs</span>\<span class="n">rp_env</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">pysindy</span>\<span class="n">optimizers</span>\<span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="n">BaseOptimizer</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">.constrained_sr3</span> <span class="kn">import</span> <span class="n">ConstrainedSR3</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">.frols</span> <span class="kn">import</span> <span class="n">FROLS</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">.sindy_optimizer</span> <span class="kn">import</span> <span class="n">SINDyOptimizer</span>
+
+<span class="n">File</span> <span class="n">E</span><span class="p">:</span>\<span class="n">Programy</span>\<span class="n">Anaconda</span>\<span class="n">envs</span>\<span class="n">rp_env</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">pysindy</span>\<span class="n">optimizers</span>\<span class="n">constrained_sr3</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">warnings</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">cho_factor</span>
+
+<span class="n">File</span> <span class="n">E</span><span class="p">:</span>\<span class="n">Programy</span>\<span class="n">Anaconda</span>\<span class="n">envs</span>\<span class="n">rp_env</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">cvxpy</span>\<span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">27</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="kn">from</span> <span class="nn">cvxpy.expressions.variable</span> <span class="kn">import</span> <span class="n">Variable</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="kn">from</span> <span class="nn">cvxpy.problems.objective</span> <span class="kn">import</span> <span class="n">Maximize</span><span class="p">,</span> <span class="n">Minimize</span>
+<span class="ne">---&gt; </span><span class="mi">27</span> <span class="kn">from</span> <span class="nn">cvxpy.problems.problem</span> <span class="kn">import</span> <span class="n">Problem</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">cvxpy.transforms</span> <span class="kn">import</span> <span class="n">linearize</span><span class="p">,</span> <span class="n">partial_optimize</span><span class="p">,</span> <span class="n">suppfunc</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">from</span> <span class="nn">cvxpy.reductions</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">File</span> <span class="n">E</span><span class="p">:</span>\<span class="n">Programy</span>\<span class="n">Anaconda</span>\<span class="n">envs</span>\<span class="n">rp_env</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">cvxpy</span>\<span class="n">problems</span>\<span class="n">problem</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">36</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="kn">from</span> <span class="nn">cvxpy.interface.matrix_utilities</span> <span class="kn">import</span> <span class="n">scalar_value</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="kn">from</span> <span class="nn">cvxpy.problems.objective</span> <span class="kn">import</span> <span class="n">Maximize</span><span class="p">,</span> <span class="n">Minimize</span>
+<span class="ne">---&gt; </span><span class="mi">36</span> <span class="kn">from</span> <span class="nn">cvxpy.reductions</span> <span class="kn">import</span> <span class="n">InverseData</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="kn">from</span> <span class="nn">cvxpy.reductions.chain</span> <span class="kn">import</span> <span class="n">Chain</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="kn">from</span> <span class="nn">cvxpy.reductions.dgp2dcp.dgp2dcp</span> <span class="kn">import</span> <span class="n">Dgp2Dcp</span>
+
+<span class="n">File</span> <span class="n">E</span><span class="p">:</span>\<span class="n">Programy</span>\<span class="n">Anaconda</span>\<span class="n">envs</span>\<span class="n">rp_env</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">cvxpy</span>\<span class="n">reductions</span>\<span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">26</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="kn">from</span> <span class="nn">cvxpy.reductions.dcp2cone.cone_matrix_stuffing</span> <span class="kn">import</span> <span class="n">ConeMatrixStuffing</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="kn">from</span> <span class="nn">cvxpy.reductions.dcp2cone.dcp2cone</span> <span class="kn">import</span> <span class="n">Dcp2Cone</span>
+<span class="ne">---&gt; </span><span class="mi">26</span> <span class="kn">from</span> <span class="nn">cvxpy.reductions.dgp2dcp.dgp2dcp</span> <span class="kn">import</span> <span class="n">Dgp2Dcp</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="kn">from</span> <span class="nn">cvxpy.reductions.dqcp2dcp.dqcp2dcp</span> <span class="kn">import</span> <span class="n">Dqcp2Dcp</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">cvxpy.reductions.eval_params</span> <span class="kn">import</span> <span class="n">EvalParams</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:991,</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:971,</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:914,</span> in <span class="ni">_find_spec</span><span class="nt">(name, path, target)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap_external&gt;:1407,</span> in <span class="ni">find_spec</span><span class="nt">(cls, fullname, path, target)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap_external&gt;:1379,</span> in <span class="ni">_get_spec</span><span class="nt">(cls, fullname, path, target)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap_external&gt;:1525,</span> in <span class="ni">find_spec</span><span class="nt">(self, fullname, target)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap_external&gt;:156,</span> in <span class="ni">_path_isfile</span><span class="nt">(path)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap_external&gt;:148,</span> in <span class="ni">_path_is_mode_type</span><span class="nt">(path, mode)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
 </div>
 <p>The parameters of the airfoil:</p>
 <div class="cell docutils container">
@@ -1297,7 +1376,7 @@ Identified model (order 2):
 </div>
 <p>It can be seen that none of the limit values of <span class="math notranslate nohighlight">\(C(k)\)</span> provides an error as small as the identified model. The intermediate value <span class="math notranslate nohighlight">\(C(k)=0.8\)</span> achieves a similar RMSE. However, the identified model’s error evolves in a much more predictable way, most likely due to the integrative properties of the model accumulating error over time, while the simplified model’s error is more erratic. This suggests that the identified model actually does capture some of the effects of the Theodorsen function, and, by extension, of the quasi-steady lift attenuation by the wake behind the airfoil. This is possible, because the identified model has the form:</p>
 <div class="math notranslate nohighlight">
-\[\frac{d}{dt} C_L^x = a_1 \dot{h} + a_2 \alpha + a_3 \dot{\alpha} + a_4 C_L + b_1 \ddot{h} + b_2 \ddot{\alpha} \]</div>
+\[\frac{d}{dt} C_L^x = a_1 \dot{h} + a_2 \alpha + a_3 \dot{\alpha} + a_4 C_L^x + b_1 \ddot{h} + b_2 \ddot{\alpha} \]</div>
 <p>where <span class="math notranslate nohighlight">\(a_i\)</span> are the significant identified coefficients of the last row of the <span class="math notranslate nohighlight">\(A'\)</span> matrix, while the <span class="math notranslate nohighlight">\(b_i\)</span> — of the <span class="math notranslate nohighlight">\(B'\)</span> matrix. The simplified model, on the other hand, after subtracting the <span class="math notranslate nohighlight">\(Du\)</span> term and differentiating would have form:</p>
 <div class="math notranslate nohighlight">
 \[\frac{d}{dt} C_L^x = b_1 \ddot{h} + b_2 \ddot{\alpha} + a_3 \dot{\alpha}\]</div>
